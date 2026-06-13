@@ -9,15 +9,22 @@
   <button onclick="login()">Login con Pi</button>
 
   <script>
+    // Inizializzazione corretta
+    // Nota: Imposta sandbox: false quando passerai in produzione
     Pi.init({ version: "1.5", sandbox: true });
 
     async function login() {
       try {
-        const auth = await Pi.authenticate(["username", "payments", "wallet_address"], () => {});
+        // IMPORTANTE: Tutti e 3 gli scope devono essere presenti per il funzionamento dei pagamenti
+        const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (payment) => {
+          console.log("Pagamento incompleto trovato:", payment);
+        });
+        
         console.log("Loggato come:", auth.user.username);
-        alert("Login effettuato: " + auth.user.username);
+        alert("Benvenuto " + auth.user.username);
       } catch (err) {
-        console.error(err);
+        console.error("Errore durante il login:", err);
+        alert("Errore di login: " + err.message);
       }
     }
   </script>
