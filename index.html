@@ -1,32 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>IIOU App</title>
-  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-</head>
-<body>
-  <h1>Benvenuto in IIOU</h1>
-  <button onclick="login()">Login con Pi</button>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<script>
+  // Inizializza subito al caricamento della pagina
+  Pi.init({ version: "1.5", sandbox: true });
 
-  <script>
-    // Inizializzazione corretta
-    // Nota: Imposta sandbox: false quando passerai in produzione
-    Pi.init({ version: "1.5", sandbox: true });
-
-    async function login() {
-      try {
-        // IMPORTANTE: Tutti e 3 gli scope devono essere presenti per il funzionamento dei pagamenti
-        const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (payment) => {
-          console.log("Pagamento incompleto trovato:", payment);
-        });
-        
-        console.log("Loggato come:", auth.user.username);
-        alert("Benvenuto " + auth.user.username);
-      } catch (err) {
-        console.error("Errore durante il login:", err);
-        alert("Errore di login: " + err.message);
-      }
+  async function login() {
+    try {
+      // Ora Pi.init() è già stato chiamato
+      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (payment) => {
+        console.log("Pagamento interrotto trovato:", payment);
+      });
+      console.log("Loggato come:", auth.user.username);
+      alert("Login effettuato: " + auth.user.username);
+    } catch (err) {
+      console.error(err);
+      alert("Errore di login: " + err.message);
     }
-  </script>
-</body>
-</html>
+  }
+</script>
+<button onclick="login()">Login con Pi</button>
