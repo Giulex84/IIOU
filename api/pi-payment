@@ -1,29 +1,19 @@
-document.getElementById('u2aBtn').onclick = async () => {
-    try {
-      console.log("Tentativo creazione pagamento minimale...");
-      await Pi.createPayment({
-        amount: 1.0,
-        memo: "Test"
-      }, {
-        onReadyForServerApproval: (pId) => {
-            console.log("Approvazione:", pId);
-            return fetch("/api/pi-payment", { 
-                method: "POST", 
-                headers: {"Content-Type":"application/json"}, 
-                body: JSON.stringify({ action: "approve", paymentId: pId })
-            });
-        },
-        onReadyForServerCompletion: (pId, txid) => {
-            console.log("Completamento:", pId);
-            return fetch("/api/pi-payment", { 
-                method: "POST", 
-                headers: {"Content-Type":"application/json"}, 
-                body: JSON.stringify({ action: "complete", paymentId: pId, txid })
-            });
-        },
-        onError: (e) => { alert("Errore SDK: " + e); }
-      });
-    } catch (e) {
-      alert("Errore chiamata: " + e.message);
-    }
-  };
+export default async function handler(req, res) {
+  const { action, paymentId, txid } = req.body;
+  const PI_API_KEY = process.env.PI_API_KEY;
+
+  try {
+    const response = await fetch(`https://api.minepi.com/v2/payments/${paymentId}/${action}`, {
+      method: "POST",
+      headers: { 
+        "Authorization": `Key ${PI_API_KEY}`,
+        "Content-Type": "application/json" 
+      },
+      body: action === "complete" ? JSON.stringify({ txid }) : undefined
+    });
+    const data = await response.json();
+    return res.status(200).json(data);
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+}
