@@ -12,7 +12,7 @@
     #loginBtn { background: #5a6cff; color: white; }
     #u2aBtn { background: #f1c40f; color: black; }
     #a2uBtn { background: #2ecc71; color: white; }
-    #debugLog { background: #333; color: #0f0; padding: 10px; font-size: 10px; height: 100px; overflow-y: scroll; margin-top: 10px; border-radius: 5px; text-align: left; }
+    #debugLog { background: #333; color: #0f0; padding: 10px; font-size: 10px; height: 150px; overflow-y: scroll; margin-top: 10px; border-radius: 5px; text-align: left; }
   </style>
 </head>
 <body>
@@ -53,7 +53,7 @@
 
   // APP TO USER
   document.getElementById('a2uBtn').onclick = async () => {
-    const res = await fetch("/api/a2u", { 
+    const res = await fetch("https://iiou.vercel.app/api/a2u", { 
       method: "POST", 
       headers: {"Content-Type":"application/json"}, 
       body: JSON.stringify({ amount: 0.1 })
@@ -62,7 +62,7 @@
     alert(data.success ? "Ricompensa inviata!" : "Errore: " + data.error);
   };
 
-  // USER TO APP - Implementazione impeccabile con tutte le callback
+  // USER TO APP - Implementazione con URL Assoluti e feedback a schermo
   document.getElementById('u2aBtn').onclick = async () => {
     log("Inizio U2A...");
     try {
@@ -72,23 +72,23 @@
         metadata: { type: "u2a" }
       }, {
         onReadyForServerApproval: (pId) => {
-          log("Approvazione richiesta: " + pId);
-          fetch("/api/pi-payment", { 
+          log("Approvazione richiesta...");
+          fetch("https://iiou.vercel.app/api/pi-payment", { 
             method: "POST", 
             headers: {"Content-Type":"application/json"}, 
             body: JSON.stringify({ action: "approve", paymentId: pId })
-          });
+          }).then(res => log("Stato Approvazione: " + res.status));
         },
         onReadyForServerCompletion: (pId, txid) => {
-          log("Completamento richiesto: " + pId);
-          fetch("/api/pi-payment", { 
+          log("Completamento richiesto...");
+          fetch("https://iiou.vercel.app/api/pi-payment", { 
             method: "POST", 
             headers: {"Content-Type":"application/json"}, 
             body: JSON.stringify({ action: "complete", paymentId: pId, txid: txid })
-          });
+          }).then(res => log("Stato Completamento: " + res.status));
         },
         onCancel: (pId) => {
-          log("Pagamento annullato: " + pId);
+          log("Pagamento annullato.");
         },
         onError: (err, pId) => {
           log("Errore SDK: " + err.message);
