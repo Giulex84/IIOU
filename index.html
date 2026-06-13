@@ -1,20 +1,23 @@
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 <script>
-  // Inizializza subito al caricamento della pagina
-  Pi.init({ version: "1.5", sandbox: true });
+  // Invece di chiamare init() subito, aspettiamo che la pagina sia pronta
+  window.addEventListener('DOMContentLoaded', (event) => {
+    try {
+      Pi.init({ version: "2.0", sandbox: true });
+      console.log("SDK Initialized successfully");
+    } catch (e) {
+      console.error("Initialization error:", e);
+    }
+  });
 
   async function login() {
     try {
-      // Ora Pi.init() è già stato chiamato
-      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (payment) => {
-        console.log("Pagamento interrotto trovato:", payment);
-      });
-      console.log("Loggato come:", auth.user.username);
-      alert("Login effettuato: " + auth.user.username);
+      // Ora siamo sicuri che Pi.init sia stato chiamato
+      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], onIncompletePaymentFound);
+      // ... resto del tuo codice
     } catch (err) {
       console.error(err);
       alert("Errore di login: " + err.message);
     }
   }
 </script>
-<button onclick="login()">Login con Pi</button>
