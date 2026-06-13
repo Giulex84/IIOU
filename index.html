@@ -1,23 +1,55 @@
-<script src="https://sdk.minepi.com/pi-sdk.js"></script>
-<script>
-  // Invece di chiamare init() subito, aspettiamo che la pagina sia pronta
-  window.addEventListener('DOMContentLoaded', (event) => {
-    try {
-      Pi.init({ version: "2.0", sandbox: true });
-      console.log("SDK Initialized successfully");
-    } catch (e) {
-      console.error("Initialization error:", e);
-    }
-  });
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IIOU App</title>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  
+  <style>
+    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #f4f4f9; }
+    button { padding: 15px 30px; font-size: 16px; border-radius: 10px; border: none; cursor: pointer; background: #5a6cff; color: white; margin: 10px; }
+    #status { margin-top: 20px; font-family: monospace; color: #333; }
+  </style>
+</head>
+<body>
 
-  async function login() {
-    try {
-      // Ora siamo sicuri che Pi.init sia stato chiamato
-      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], onIncompletePaymentFound);
-      // ... resto del tuo codice
-    } catch (err) {
-      console.error(err);
-      alert("Errore di login: " + err.message);
-    }
-  }
-</script>
+  <h1>Benvenuto in IIOU</h1>
+  <button id="loginBtn">Login con Pi</button>
+  <div id="status">Status: In attesa...</div>
+
+  <script>
+    // 1. Inizializzazione sicura e asincrona
+    window.addEventListener('DOMContentLoaded', () => {
+      try {
+        Pi.init({ version: "2.0", sandbox: true });
+        document.getElementById('status').innerText = "SDK Inizializzato";
+      } catch (e) {
+        document.getElementById('status').innerText = "Errore SDK: " + e.message;
+      }
+    });
+
+    // 2. Callback per pagamenti interrotti
+    const onIncompletePaymentFound = (payment) => {
+      console.log("Pagamento incompleto:", payment);
+      // Qui aggiungeresti la chiamata al tuo backend per chiudere il pagamento
+    };
+
+    // 3. Logica di Login
+    document.getElementById('loginBtn').onclick = async () => {
+      try {
+        const statusEl = document.getElementById('status');
+        statusEl.innerText = "Autenticazione in corso...";
+        
+        const auth = await Pi.authenticate(["username", "payments", "wallet_address"], onIncompletePaymentFound);
+        
+        statusEl.innerText = "Loggato come: " + auth.user.username;
+        console.log("Dati utente:", auth.user);
+      } catch (err) {
+        console.error(err);
+        alert("Errore di login: " + err.message);
+      }
+    };
+  </script>
+</body>
+</html>
