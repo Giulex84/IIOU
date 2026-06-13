@@ -5,51 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IIOU App</title>
   <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-  
   <style>
-    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background: #f4f4f9; }
-    button { padding: 15px 30px; font-size: 16px; border-radius: 10px; border: none; cursor: pointer; background: #5a6cff; color: white; margin: 10px; }
-    #status { margin-top: 20px; font-family: monospace; color: #333; }
+    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background: #f4f4f9; min-height: 100vh; }
+    .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+    button { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: none; cursor: pointer; font-weight: bold; font-size: 1rem; }
+    #loginBtn { background: #5a6cff; color: white; }
+    #u2aBtn { background: #f1c40f; color: black; } /* User to App */
+    #a2uBtn { background: #2ecc71; color: white; } /* App to User */
+    footer { margin-top: auto; padding: 20px; font-size: 0.8rem; }
+    footer a { color: #5a6cff; text-decoration: none; margin: 0 10px; }
   </style>
 </head>
 <body>
 
-  <h1>Benvenuto in IIOU</h1>
+<div class="card">
+  <h1>IIOU</h1>
+  <div id="status">Status: Disconnesso</div>
   <button id="loginBtn">Login con Pi</button>
-  <div id="status">Status: In attesa...</div>
+  
+  <div id="paymentControls" style="display:none;">
+    <button id="u2aBtn">USER TO APP</button>
+    <button id="a2uBtn">APP TO USER</button>
+  </div>
+</div>
 
-  <script>
-    // 1. Inizializzazione sicura e asincrona
-    window.addEventListener('DOMContentLoaded', () => {
-      try {
-        Pi.init({ version: "2.0", sandbox: true });
-        document.getElementById('status').innerText = "SDK Inizializzato";
-      } catch (e) {
-        document.getElementById('status').innerText = "Errore SDK: " + e.message;
-      }
+<footer>
+  <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a>
+</footer>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => Pi.init({ version: "2.0", sandbox: true }));
+
+  let user = null;
+
+  document.getElementById('loginBtn').onclick = async () => {
+    try {
+      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (p) => console.log(p));
+      user = auth.user;
+      document.getElementById('status').innerText = "Loggato: " + user.username;
+      document.getElementById('paymentControls').style.display = "block";
+      document.getElementById('loginBtn').style.display = "none";
+    } catch (e) { alert("Login fallito: " + e.message); }
+  };
+
+  // Logica APP TO USER (Ricompense)
+  document.getElementById('a2uBtn').onclick = async () => {
+    const res = await fetch("/api/a2u", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ uid: user.uid, amount: 0.1 })});
+    const data = await res.json();
+    alert(data.success ? "Ricompensa inviata!" : "Errore: " + data.error);
+  };
+
+  // Logica USER TO APP (Pagamenti)
+  document.getElementById('u2aBtn').onclick = async () => {
+    const payment = await Pi.createPayment({ amount: 1.0, memo: "Servizio IIOU", metadata: { uid: user.uid }}, {
+      onReadyForServerApproval: (pId) => fetch("/api/pi-payment", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ action: "approve", paymentId: pId })}),
+      onReadyForServerCompletion: (pId, txid) => fetch("/api/pi-payment", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ action: "complete", paymentId: pId, txid })})
     });
-
-    // 2. Callback per pagamenti interrotti
-    const onIncompletePaymentFound = (payment) => {
-      console.log("Pagamento incompleto:", payment);
-      // Qui aggiungeresti la chiamata al tuo backend per chiudere il pagamento
-    };
-
-    // 3. Logica di Login
-    document.getElementById('loginBtn').onclick = async () => {
-      try {
-        const statusEl = document.getElementById('status');
-        statusEl.innerText = "Autenticazione in corso...";
-        
-        const auth = await Pi.authenticate(["username", "payments", "wallet_address"], onIncompletePaymentFound);
-        
-        statusEl.innerText = "Loggato come: " + auth.user.username;
-        console.log("Dati utente:", auth.user);
-      } catch (err) {
-        console.error(err);
-        alert("Errore di login: " + err.message);
-      }
-    };
-  </script>
+  };
+</script>
 </body>
 </html>
