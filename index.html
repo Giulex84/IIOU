@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IIOU App</title>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+</head>
+<body>
+  <h1>Benvenuto in IIOU</h1>
+  <button onclick="login()">Login con Pi</button>
+
+  <script>
+    Pi.init({ version: "1.5", sandbox: true });
+
+    async function login() {
+      try {
+        const auth = await Pi.authenticate(["username", "payments", "wallet_address"], () => {});
+        console.log("Loggato come:", auth.user.username);
+        alert("Login effettuato: " + auth.user.username);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  </script>
+</body>
+</html>
