@@ -6,67 +6,56 @@
   <title>IIOU App</title>
   <script src="https://sdk.minepi.com/pi-sdk.js"></script>
   <style>
-    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background: #f4f4f9; min-height: 100vh; }
-    .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-    button { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: none; cursor: pointer; font-weight: bold; font-size: 1rem; }
-    #loginBtn { background: #5a6cff; color: white; }
-    #u2aBtn { background: #f1c40f; color: black; }
-    #a2uBtn { background: #2ecc71; color: white; }
+    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; background: #f4f4f9; }
+    .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+    button { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: none; cursor: pointer; font-weight: bold; }
+    #debugLog { background: #333; color: #0f0; padding: 10px; font-size: 10px; height: 100px; overflow-y: scroll; margin-top: 10px; border-radius: 5px; }
   </style>
 </head>
 <body>
-
 <div class="card">
   <h1>IIOU</h1>
-  <div id="status">Status: Disconnesso</div>
   <button id="loginBtn">Login con Pi</button>
   <div id="paymentControls" style="display:none;">
-    <button id="u2aBtn">USER TO APP</button>
-    <button id="a2uBtn">APP TO USER</button>
+    <button id="u2aBtn" style="background: #f1c40f;">USER TO APP</button>
   </div>
+  <div id="debugLog">Log:</div>
 </div>
 
 <script>
-  window.addEventListener('DOMContentLoaded', () => Pi.init({ version: "2.0", sandbox: true }));
-  window.piUser = null;
+  function log(m) { document.getElementById('debugLog').innerHTML += m + "<br>"; }
+  Pi.init({ version: "2.0", sandbox: false }); // Messo false per produzione
 
   document.getElementById('loginBtn').onclick = async () => {
-    try {
-      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (p) => {});
-      window.piUser = auth.user;
-      document.getElementById('status').innerText = "Loggato: " + window.piUser.username;
-      document.getElementById('paymentControls').style.display = "block";
-      document.getElementById('loginBtn').style.display = "none";
-    } catch (e) { alert("Login fallito: " + e.message); }
+    const auth = await Pi.authenticate(["payments"], () => {});
+    window.piUser = auth.user;
+    document.getElementById('paymentControls').style.display = "block";
   };
 
-  // APP TO USER
-  document.getElementById('a2uBtn').onclick = async () => {
-    const res = await fetch("/api/a2u", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ uid: window.piUser.uid, amount: 0.1 })});
-    const data = await res.json();
-    alert(data.success ? "Ricompensa inviata!" : "Errore: " + data.error);
-  };
-
-  // USER TO APP (Ottimizzato per velocità)
   document.getElementById('u2aBtn').onclick = async () => {
-    await Pi.createPayment({
-      amount: 1.0,
-      memo: "Pagamento IIOU",
-      metadata: { uid: window.piUser.uid }
-    }, {
-      onReadyForServerApproval: (pId) => fetch("/api/pi-payment", { 
-        method: "POST", 
-        headers: {"Content-Type":"application/json"}, 
-        body: JSON.stringify({ action: "approve", paymentId: pId })
-      }),
-      onReadyForServerCompletion: (pId, txid) => fetch("/api/pi-payment", { 
-        method: "POST", 
-        headers: {"Content-Type":"application/json"}, 
-        body: JSON.stringify({ action: "complete", paymentId: pId, txid })
-      }),
-      onCancel: (pId) => alert("Annullato"),
-      onError: (err, pId) => alert("Errore: " + err)
-    });
+    log("Inizio U2A...");
+    try {
+      await Pi.createPayment({ amount: 1.0, memo: "Test" }, {
+        onReadyForServerApproval: async (pId) => {
+          log("Approvazione richiesta: " + pId);
+          const res = await fetch("/api/pi-payment", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ action: "approve", paymentId: pId })
+          });
+          return res;
+        },
+        onReadyForServerCompletion: async (pId, txid) => {
+          log("Completamento...");
+          await fetch("/api/pi-payment", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({ action: "complete", paymentId: pId, txid })
+          });
+        },
+        onError: (err) => log("ERRORE: " + JSON.stringify(err))
+      });
+    } catch (e) { log("ECCEZIONE: " + e.message); }
   };
 </script>
 </body>
