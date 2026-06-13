@@ -10,54 +10,49 @@
     .card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
     button { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: none; cursor: pointer; font-weight: bold; font-size: 1rem; }
     #loginBtn { background: #5a6cff; color: white; }
-    #u2aBtn { background: #f1c40f; color: black; } /* User to App */
-    #a2uBtn { background: #2ecc71; color: white; } /* App to User */
+    #u2aBtn { background: #f1c40f; color: black; } 
+    #a2uBtn { background: #2ecc71; color: white; } 
     footer { margin-top: auto; padding: 20px; font-size: 0.8rem; }
     footer a { color: #5a6cff; text-decoration: none; margin: 0 10px; }
   </style>
 </head>
 <body>
-
 <div class="card">
   <h1>IIOU</h1>
   <div id="status">Status: Disconnesso</div>
   <button id="loginBtn">Login con Pi</button>
-  
   <div id="paymentControls" style="display:none;">
     <button id="u2aBtn">USER TO APP</button>
     <button id="a2uBtn">APP TO USER</button>
   </div>
 </div>
-
 <footer>
   <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a>
 </footer>
-
 <script>
   window.addEventListener('DOMContentLoaded', () => Pi.init({ version: "2.0", sandbox: true }));
-
-  let user = null;
+  window.piUser = null;
 
   document.getElementById('loginBtn').onclick = async () => {
     try {
       const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (p) => console.log(p));
-      user = auth.user;
-      document.getElementById('status').innerText = "Loggato: " + user.username;
+      window.piUser = auth.user;
+      document.getElementById('status').innerText = "Loggato: " + window.piUser.username;
       document.getElementById('paymentControls').style.display = "block";
       document.getElementById('loginBtn').style.display = "none";
     } catch (e) { alert("Login fallito: " + e.message); }
   };
 
-  // Logica APP TO USER (Ricompense)
   document.getElementById('a2uBtn').onclick = async () => {
-    const res = await fetch("/api/a2u", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ uid: user.uid, amount: 0.1 })});
+    if (!window.piUser) return alert("Errore: Login richiesto");
+    const res = await fetch("/api/a2u", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ uid: window.piUser.uid, amount: 0.1 })});
     const data = await res.json();
     alert(data.success ? "Ricompensa inviata!" : "Errore: " + data.error);
   };
 
-  // Logica USER TO APP (Pagamenti)
   document.getElementById('u2aBtn').onclick = async () => {
-    const payment = await Pi.createPayment({ amount: 1.0, memo: "Servizio IIOU", metadata: { uid: user.uid }}, {
+    if (!window.piUser) return alert("Errore: Login richiesto");
+    await Pi.createPayment({ amount: 1.0, memo: "Servizio IIOU", metadata: { uid: window.piUser.uid }}, {
       onReadyForServerApproval: (pId) => fetch("/api/pi-payment", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ action: "approve", paymentId: pId })}),
       onReadyForServerCompletion: (pId, txid) => fetch("/api/pi-payment", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ action: "complete", paymentId: pId, txid })})
     });
