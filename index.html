@@ -12,8 +12,6 @@
     #loginBtn { background: #5a6cff; color: white; }
     #u2aBtn { background: #f1c40f; color: black; }
     #a2uBtn { background: #2ecc71; color: white; }
-    footer { margin-top: auto; padding: 20px; font-size: 0.8rem; }
-    footer a { color: #5a6cff; text-decoration: none; margin: 0 10px; }
   </style>
 </head>
 <body>
@@ -22,78 +20,53 @@
   <h1>IIOU</h1>
   <div id="status">Status: Disconnesso</div>
   <button id="loginBtn">Login con Pi</button>
-  
   <div id="paymentControls" style="display:none;">
     <button id="u2aBtn">USER TO APP</button>
     <button id="a2uBtn">APP TO USER</button>
   </div>
 </div>
 
-<footer>
-  <a href="/privacy.html">Privacy Policy</a> | <a href="/terms.html">Terms of Service</a>
-</footer>
-
 <script>
-  // 1. Inizializzazione SDK
-  window.addEventListener('DOMContentLoaded', () => {
-    try {
-      Pi.init({ version: "2.0", sandbox: true });
-    } catch (e) {
-      console.error("Init error:", e);
-    }
-  });
-
+  window.addEventListener('DOMContentLoaded', () => Pi.init({ version: "2.0", sandbox: true }));
   window.piUser = null;
 
-  // 2. Login
   document.getElementById('loginBtn').onclick = async () => {
     try {
-      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (p) => console.log("Pagamento non completato rilevato", p));
+      const auth = await Pi.authenticate(["username", "payments", "wallet_address"], (p) => {});
       window.piUser = auth.user;
       document.getElementById('status').innerText = "Loggato: " + window.piUser.username;
       document.getElementById('paymentControls').style.display = "block";
       document.getElementById('loginBtn').style.display = "none";
-    } catch (e) { alert("Errore di login: " + e.message); }
+    } catch (e) { alert("Login fallito: " + e.message); }
   };
 
-  // 3. A2U (App to User)
+  // APP TO USER
   document.getElementById('a2uBtn').onclick = async () => {
-    if (!window.piUser) return alert("Login necessario");
-    try {
-      const res = await fetch("/api/a2u", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ uid: window.piUser.uid, amount: 0.1 })});
-      const data = await res.json();
-      alert(data.success ? "Ricompensa inviata!" : "Errore: " + data.error);
-    } catch (err) { alert("Errore A2U: " + err.message); }
+    const res = await fetch("/api/a2u", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ uid: window.piUser.uid, amount: 0.1 })});
+    const data = await res.json();
+    alert(data.success ? "Ricompensa inviata!" : "Errore: " + data.error);
   };
 
-  // 4. U2A (User to App)
+  // USER TO APP (Ottimizzato per velocità)
   document.getElementById('u2aBtn').onclick = async () => {
-    if (!window.piUser) return alert("Login necessario");
-    
-    try {
-      // Usiamo una variabile per gestire il pagamento
-      const payment = await Pi.createPayment({
-        amount: 1.0,
-        memo: "Pagamento IIOU",
-        metadata: { uid: window.piUser.uid }
-      }, {
-        onReadyForServerApproval: (pId) => {
-          console.log("Approvazione richiesta per:", pId);
-          return fetch("/api/pi-payment", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ action: "approve", paymentId: pId })});
-        },
-        onReadyForServerCompletion: (pId, txid) => {
-          console.log("Completamento richiesto per:", pId);
-          return fetch("/api/pi-payment", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({ action: "complete", paymentId: pId, txid })})
-            .then(res => res.json())
-            .then(data => alert("Pagamento completato con successo!"));
-        },
-        onCancel: (pId) => alert("Pagamento annullato dall'utente"),
-        onError: (err, pId) => alert("Errore durante il pagamento: " + err)
-      });
-    } catch (err) {
-      console.error("Errore fatale SDK:", err);
-      alert("Impossibile avviare il pagamento. Errore: " + err.message);
-    }
+    await Pi.createPayment({
+      amount: 1.0,
+      memo: "Pagamento IIOU",
+      metadata: { uid: window.piUser.uid }
+    }, {
+      onReadyForServerApproval: (pId) => fetch("/api/pi-payment", { 
+        method: "POST", 
+        headers: {"Content-Type":"application/json"}, 
+        body: JSON.stringify({ action: "approve", paymentId: pId })
+      }),
+      onReadyForServerCompletion: (pId, txid) => fetch("/api/pi-payment", { 
+        method: "POST", 
+        headers: {"Content-Type":"application/json"}, 
+        body: JSON.stringify({ action: "complete", paymentId: pId, txid })
+      }),
+      onCancel: (pId) => alert("Annullato"),
+      onError: (err, pId) => alert("Errore: " + err)
+    });
   };
 </script>
 </body>
