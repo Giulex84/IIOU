@@ -10,10 +10,10 @@ export default async function handler(req, res) {
     const response = await fetch("https://api.minepi.com/v2/payments", {
       method: "POST",
       headers: { "Authorization": `Key ${PI_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({ payment: { amount: Number(amount), memo: "Reward", metadata: { s: "a2u" }, uid } })
+      body: JSON.stringify({ payment: { amount: Number(amount), memo: "A2U Reward", metadata: { s: "a2u" }, uid } })
     });
     const data = await response.json();
-    if (!response.ok) throw new Error(data.message);
+    if (!response.ok) throw new Error(data.message || "Errore Pi API");
 
     await fetch(`https://api.minepi.com/v2/payments/${data.identifier}/approve`, {
       method: "POST",
@@ -23,6 +23,7 @@ export default async function handler(req, res) {
     const server = new StellarSdk.Horizon.Server("https://api.testnet.minepi.com");
     const keypair = StellarSdk.Keypair.fromSecret(APP_SEED);
     const account = await server.loadAccount(keypair.publicKey());
+    
     const tx = new StellarSdk.TransactionBuilder(account, { fee: "1000000", networkPassphrase: "Pi Testnet" })
       .addMemo(StellarSdk.Memo.text(data.identifier.substring(0, 28)))
       .addOperation(StellarSdk.Operation.payment({ destination: data.to_address, asset: StellarSdk.Asset.native(), amount: Number(amount).toFixed(7) }))
