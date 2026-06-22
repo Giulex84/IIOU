@@ -46,7 +46,7 @@
     } catch (e) { log("Errore Login: " + e.message); }
   };
 
-  // U2A RIPRISTINATO COME PRIMA
+  // U2A: Funziona come prima, diretto via SDK
   document.getElementById('u2aBtn').onclick = async () => {
     log("Inizio U2A...");
     try {
@@ -73,20 +73,25 @@
     } catch (e) { log("Errore critico: " + e.message); }
   };
 
-  // A2U CON CALLBACK COMPLETI
+  // A2U: Corretto per passare dal backend
   document.getElementById('a2uBtn').onclick = async () => {
-    log("Inizio A2U...");
+    log("Richiesta A2U al server...");
     try {
-      await Pi.createPayment({
-        amount: 0.1,
-        memo: "A2U Reward"
-      }, {
-        onReadyForServerApproval: (pId) => log("A2U: Approvazione richiesta..."),
-        onReadyForServerCompletion: (pId, txid) => log("A2U: Completato!"),
-        onCancel: (pId) => log("A2U: Annullato."),
-        onError: (err, pId) => log("A2U Errore: " + err.message)
+      // 1. Chiedi al backend di creare il pagamento
+      const res = await fetch("https://iiou.vercel.app/api/a2u", { 
+        method: "POST", 
+        headers: {"Content-Type":"application/json"}, 
+        body: JSON.stringify({ amount: 0.1, uid: window.piUser.uid })
       });
-    } catch (e) { log("Errore A2U: " + e.message); }
+      const data = await res.json();
+      
+      if (!data.success) throw new Error(data.error || "Backend fallito");
+
+      log("Pagamento A2U avviato.");
+      alert("Richiesta di pagamento inviata al tuo wallet!");
+    } catch (e) { 
+      log("Errore A2U: " + e.message); 
+    }
   };
 </script>
 </body>
