@@ -1,19 +1,25 @@
 export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, error: 'Metodo non consentito' });
+  }
+
   const { action, paymentId, txid } = req.body;
-  const PI_API_KEY = process.env.PI_API_KEY;
 
   try {
-    const response = await fetch(`https://api.minepi.com/v2/payments/${paymentId}/${action}`, {
-      method: "POST",
-      headers: { 
-        "Authorization": `Key ${PI_API_KEY}`,
-        "Content-Type": "application/json" 
-      },
-      body: action === "complete" ? JSON.stringify({ txid }) : undefined
-    });
-    const data = await response.json();
-    return res.status(200).json(data);
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
+    if (action === 'approve') {
+      console.log("Approvazione richiesta per:", paymentId);
+      // Qui aggiungeresti la logica per validare il pagamento lato server
+      return res.status(200).json({ success: true, message: "Approvazione ricevuta" });
+    } 
+    
+    if (action === 'complete') {
+      console.log("Completamento richiesto per:", paymentId, "TXID:", txid);
+      // Qui aggiungeresti la logica per finalizzare il pagamento
+      return res.status(200).json({ success: true, message: "Completamento ricevuto" });
+    }
+
+    return res.status(400).json({ success: false, error: 'Azione non valida' });
+  } catch (err) {
+    return res.status(500).json({ success: false, error: err.message });
   }
 }
