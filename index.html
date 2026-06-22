@@ -31,9 +31,8 @@
 </div>
 
 <script>
-  function log(m) { console.log(m); document.getElementById('debugLog').innerHTML += m + "<br>"; }
+  function log(m) { document.getElementById('debugLog').innerHTML += m + "<br>"; }
   
-  // IMPORTANTE: sandbox: true per Testnet
   Pi.init({ version: "2.0", sandbox: true });
 
   document.getElementById('loginBtn').onclick = async () => {
@@ -47,23 +46,7 @@
     } catch (e) { log("Errore Login: " + e.message); }
   };
 
-  // APP TO USER - Corretto
-  document.getElementById('a2uBtn').onclick = async () => {
-    log("Inizio A2U...");
-    try {
-        // Chiama il tuo backend per preparare il pagamento lato server
-        const res = await fetch("https://iiou.vercel.app/api/a2u", { 
-            method: "POST", 
-            headers: {"Content-Type":"application/json"}, 
-            body: JSON.stringify({ amount: 0.1 })
-        });
-        const data = await res.json();
-        if(!data.success) throw new Error(data.error || "Errore nel backend A2U");
-        log("Pagamento preparato dal server.");
-    } catch (e) { log("Errore A2U: " + e.message); }
-  };
-
-  // USER TO APP
+  // U2A RIPRISTINATO COME PRIMA
   document.getElementById('u2aBtn').onclick = async () => {
     log("Inizio U2A...");
     try {
@@ -73,24 +56,37 @@
         metadata: { type: "u2a" }
       }, {
         onReadyForServerApproval: (pId) => {
-          log("Approvazione richiesta...");
           fetch("https://iiou.vercel.app/api/pi-payment", { 
-            method: "POST", 
-            headers: {"Content-Type":"application/json"}, 
+            method: "POST", headers: {"Content-Type":"application/json"}, 
             body: JSON.stringify({ action: "approve", paymentId: pId })
           }).then(res => log("Stato Approvazione: " + res.status));
         },
         onReadyForServerCompletion: (pId, txid) => {
-          log("Completamento richiesto...");
           fetch("https://iiou.vercel.app/api/pi-payment", { 
-            method: "POST", 
-            headers: {"Content-Type":"application/json"}, 
+            method: "POST", headers: {"Content-Type":"application/json"}, 
             body: JSON.stringify({ action: "complete", paymentId: pId, txid: txid })
           }).then(res => log("Stato Completamento: " + res.status));
         },
-        onError: (err) => log("Errore SDK: " + JSON.stringify(err))
+        onCancel: (pId) => log("Pagamento annullato."),
+        onError: (err, pId) => log("Errore SDK: " + err.message)
       });
     } catch (e) { log("Errore critico: " + e.message); }
+  };
+
+  // A2U CON CALLBACK COMPLETI
+  document.getElementById('a2uBtn').onclick = async () => {
+    log("Inizio A2U...");
+    try {
+      await Pi.createPayment({
+        amount: 0.1,
+        memo: "A2U Reward"
+      }, {
+        onReadyForServerApproval: (pId) => log("A2U: Approvazione richiesta..."),
+        onReadyForServerCompletion: (pId, txid) => log("A2U: Completato!"),
+        onCancel: (pId) => log("A2U: Annullato."),
+        onError: (err, pId) => log("A2U Errore: " + err.message)
+      });
+    } catch (e) { log("Errore A2U: " + e.message); }
   };
 </script>
 </body>
