@@ -13,6 +13,9 @@
     #u2aBtn { background: #f1c40f; color: black; }
     #a2uBtn { background: #2ecc71; color: white; }
     #debugLog { background: #333; color: #0f0; padding: 10px; font-size: 10px; height: 150px; overflow-y: scroll; margin-top: 10px; border-radius: 5px; text-align: left; }
+    /* Nuovi stili per il footer */
+    .footer { margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; display: flex; justify-content: space-between; }
+    .footer a { color: #5a6cff; text-decoration: none; font-size: 0.85rem; font-weight: bold; }
   </style>
 </head>
 <body>
@@ -28,6 +31,11 @@
   </div>
   
   <div id="debugLog">Log:</div>
+
+  <div class="footer">
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms of Service</a>
+  </div>
 </div>
 
 <script>
@@ -46,7 +54,6 @@
     } catch (e) { log("Errore Login: " + e.message); }
   };
 
-  // U2A: Funziona come prima, diretto via SDK
   document.getElementById('u2aBtn').onclick = async () => {
     log("Inizio U2A...");
     try {
@@ -73,20 +80,16 @@
     } catch (e) { log("Errore critico: " + e.message); }
   };
 
-  // A2U: Corretto per passare dal backend
   document.getElementById('a2uBtn').onclick = async () => {
     log("Richiesta A2U al server...");
     try {
-      // 1. Chiedi al backend di creare il pagamento
       const res = await fetch("https://iiou.vercel.app/api/a2u", { 
         method: "POST", 
         headers: {"Content-Type":"application/json"}, 
         body: JSON.stringify({ amount: 0.1, uid: window.piUser.uid })
       });
       const data = await res.json();
-      
       if (!data.success) throw new Error(data.error || "Backend fallito");
-
       log("Pagamento A2U avviato.");
       alert("Richiesta di pagamento inviata al tuo wallet!");
     } catch (e) { 
