@@ -20,11 +20,13 @@
 <div class="card">
   <h1>IIOU</h1>
   <div id="status">Status: Disconnesso</div>
+  
+  <!-- Il bottone login deve essere visibile inizialmente -->
   <button id="loginBtn">Login con Pi</button>
   
+  <!-- Contenitore di gioco nascosto all'avvio -->
   <div id="gameSection" style="display:none;">
     <button id="gameBtn">Start Click Challenge (1 Pi)</button>
-    <div id="gameUI"></div>
   </div>
   
   <div id="debugLog">Log:</div>
@@ -36,42 +38,48 @@
   Pi.init({ version: "2.0", sandbox: true });
 
   document.getElementById('loginBtn').onclick = async () => {
-    const auth = await Pi.authenticate(["username", "payments"], (user) => {});
-    window.piUser = auth.user;
-    document.getElementById('status').innerText = "Loggato: " + window.piUser.username;
-    document.getElementById('gameBtn').style.display = "block";
-    document.getElementById('loginBtn').style.display = "none";
+    try {
+      const auth = await Pi.authenticate(["username", "payments"], (user) => {});
+      window.piUser = auth.user;
+      document.getElementById('status').innerText = "Loggato: " + window.piUser.username;
+      
+      // Mostriamo il gioco e nascondiamo il login dopo l'autenticazione
+      document.getElementById('gameSection').style.display = "block";
+      document.getElementById('gameBtn').style.display = "block";
+      document.getElementById('loginBtn').style.display = "none";
+      log("Login effettuato: " + window.piUser.username);
+    } catch (e) { log("Errore: " + e.message); }
   };
 
-  // Logica GIOCO: U2A per iniziare, Click, A2U per vincere
   document.getElementById('gameBtn').onclick = async () => {
-    // 1. U2A: Paghi il ticket di ingresso
-    await Pi.createPayment({ amount: 1.0, memo: "Ticket Gara", metadata: { type: "game" } }, {
-      onReadyForServerCompletion: async (pId, txid) => {
-        log("Ticket pagato! Clicca il tasto!");
-        let clicks = 0;
-        const btn = document.getElementById('gameBtn');
-        btn.innerText = "CLICCA VELOCE! (0)";
-        
-        // Timer 5 secondi
-        const interval = setInterval(() => { clicks++; btn.innerText = "CLICCA! ("+clicks+")"; }, 500);
-        setTimeout(async () => {
-          clearInterval(interval);
-          if(clicks >= 5) {
-            log("Vittoria! Invio premio...");
-            // 2. A2U: Invio premio
-            const res = await fetch("https://iiou.vercel.app/api/a2u", { 
-              method: "POST", headers: {"Content-Type":"application/json"}, 
-              body: JSON.stringify({ amount: 1.5, uid: window.piUser.uid })
-            });
-            log("Premio inviato!");
-          } else {
-            log("Troppo lento!");
-          }
-          btn.innerText = "Start Click Challenge (1 Pi)";
-        }, 5000);
-      }
-    });
+    log("Avvio sfida...");
+    try {
+      await Pi.createPayment({ amount: 1.0, memo: "Ticket Gara", metadata: { type: "game" } }, {
+        onReadyForServerCompletion: async (pId, txid) => {
+          log("Ticket pagato! Clicca il tasto!");
+          let clicks = 0;
+          const btn = document.getElementById('gameBtn');
+          btn.innerText = "CLICCA VELOCE! (0)";
+          
+          const interval = setInterval(() => { clicks++; btn.innerText = "CLICCA! ("+clicks+")"; }, 500);
+          setTimeout(async () => {
+            clearInterval(interval);
+            if(clicks >= 5) {
+              log("Vittoria! Invio premio...");
+              const res = await fetch("https://iiou.vercel.app/api/a2u", { 
+                method: "POST", headers: {"Content-Type":"application/json"}, 
+                body: JSON.stringify({ amount: 1.5, uid: window.piUser.uid })
+              });
+              log("Premio inviato!");
+            } else {
+              log("Troppo lento, riprova!");
+            }
+            btn.innerText = "Start Click Challenge (1 Pi)";
+          }, 5000);
+        },
+        onError: (err) => log("Errore Pagamento: " + err.message)
+      });
+    } catch (e) { log("Errore Gara: " + e.message); }
   };
 </script>
 </body>
