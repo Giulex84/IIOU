@@ -15,7 +15,10 @@ function view(iou, user) {
   const isCreditor = same(iou.creditorUsername, user.username);
   const confirmedPartials = (iou.partialPayments || []).filter(p => p.status === 'confirmed');
   const paidAmount = Math.round(confirmedPartials.reduce((s,p)=>s+Number(p.amount||0),0)*1e7)/1e7;
-  const remainingAmount = Math.max(0, Math.round((Number(iou.amount)-paidAmount)*1e7)/1e7);
+  const remainingAmount = iou.status === 'settled'
+    ? 0
+    : Math.max(0, Math.round((Number(iou.amount)-paidAmount)*1e7)/1e7);
+  const effectivePaidAmount = iou.status === 'settled' ? Number(iou.amount) : paidAmount;
   const pendingPartial = (iou.partialPayments || []).find(p => p.status === 'claimed') || null;
   return {
     id:iou.id, amount:iou.amount, note:iou.note, dueDate:iou.dueDate, status:iou.status,
@@ -24,7 +27,7 @@ function view(iou, user) {
     createdAt:iou.createdAt, updatedAt:iou.updatedAt, settledAt:iou.settledAt || null,
     settlementClaimedAt:iou.settlementClaimedAt || null,
     role:isDebtor?'debtor':'creditor', history:Array.isArray(iou.history)?iou.history:[],
-    partialPayments:iou.partialPayments || [], paidAmount, remainingAmount,
+    partialPayments:iou.partialPayments || [], paidAmount, effectivePaidAmount, remainingAmount,
     archived:Boolean((iou.archivedBy || []).includes(user.uid)),
     permissions:{
       canAddNote:!terminal(iou.status),
