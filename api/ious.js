@@ -27,11 +27,13 @@ function publicIou(iou, user) {
     updatedAt: iou.updatedAt,
     settlementClaimedAt: iou.settlementClaimedAt || null,
     settledAt: iou.settledAt || null,
+    testMode: Boolean(iou.testMode),
     role: iou.debtorUsername.toLowerCase() === user.username.toLowerCase() ? 'debtor' : 'creditor',
     canRespond: amCounterparty && iou.status === 'proposed',
     canCancel: amCreator && iou.status === 'proposed',
     canClaimPaid: iou.debtorUsername.toLowerCase() === user.username.toLowerCase() && iou.status === 'accepted',
-    canConfirmPaid: iou.creditorUsername.toLowerCase() === user.username.toLowerCase() && iou.status === 'payment_claimed'
+    canConfirmPaid: iou.creditorUsername.toLowerCase() === user.username.toLowerCase() && iou.status === 'payment_claimed',
+    canTestAdvance: Boolean(iou.testMode) && amCreator && ['proposed','accepted','payment_claimed'].includes(iou.status)
   };
 }
 
