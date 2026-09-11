@@ -17,7 +17,7 @@ IIOU also supports a two-step **partial settlement record** while an IOU is acce
 ## Product surfaces
 
 - `/` — main responsive IOU dashboard
-- `/details.html` — authenticated activity center with full IOU timeline, due-state context, shared activity notes, partial settlement claims/confirmations, remaining balance, and archive controls for closed IOUs
+- `/details.html` — authenticated activity center with full IOU timeline, due-state context, shared activity notes, partial settlement claims/confirmations, remaining balance, settlement receipt, and archive controls for closed IOUs
 - `/test.html` — owner-only Pi Testnet two-party simulator used to exercise the lifecycle without bypassing Pi authentication
 
 ## Pi integration
@@ -26,9 +26,13 @@ IIOU also supports a two-step **partial settlement record** while an IOU is acce
 - Pi Authentication only
 - Access tokens are verified server-side with `GET /v2/me`
 - Optional 0.1 Pi Testnet support payment uses the standard U2A approve/complete handshake
-- Payment ownership, direction, network, amount, memo, and metadata are verified server-side before approval/completion
+- Payment ownership, direction, network, amount, memo, metadata, txid and final verification flags are checked server-side
+- U2A completion is treated as successful only after Pi reports both `developer_completed` and `transaction_verified`
+- Payment callbacks are idempotent: completed payments are recorded once and repeated callbacks return the same verified result
+- A persistent payment audit record stores payment id, txid, Pi UID, username, amount, network, destination address, verification state and timestamps
+- A txid cannot be reused for a different payment record
 - Incomplete Pi payments are recovered after authentication when possible
-- A2U is deliberately disabled while the Testnet app wallet is being rotated
+- A2U remains deliberately disabled until a product-justified use case is approved for Testnet
 
 ## Storage
 
@@ -42,14 +46,14 @@ Supported examples include:
 - `KV_REST_API_TOKEN`
 - prefixed Vercel Marketplace equivalents used by this Testnet project
 
-All product keys are namespaced with `iiou:` so the shared Redis database can coexist with other applications without key collisions.
+All product keys are namespaced with `iiou:` so the shared Redis database can coexist with other applications without key collisions. Payment audit records use `iiou:payment:*`, `iiou:tx:*`, and per-user payment indexes.
 
 ## Required environment variables
 
 - `PI_API_KEY` — Pi Developer Portal server API key for this Testnet app
 - Redis REST URL/token variables shown above
 
-`PI_APP_WALLET_SEED` is **not required by the current non-custodial ledger or U2A flow**. Do not expose wallet seeds to the frontend or commit them to Git.
+`PI_APP_WALLET_SEED` is **not required by the current non-custodial ledger or U2A flow**. If retained for future A2U work, it must remain server-side only and must never be committed or exposed to the browser.
 
 ## Architecture
 
@@ -60,16 +64,18 @@ All product keys are namespaced with `iiou:` so the shared Redis database can co
 - `api/ious.js` — create/list IOUs
 - `api/iou-action.js` — controlled IOU state transitions
 - `api/iou-detail.js` — timeline, shared notes, partial settlement confirmation and archive controls
-- `api/pi-payment.js` — hardened Testnet U2A support payment
-- `api/a2u.js` — explicitly disabled until wallet rotation is complete
+- `api/pi-payment.js` — hardened, audited and idempotent Testnet U2A support payment
+- `api/a2u.js` — explicitly disabled until a justified Testnet use case is implemented
 - `lib/pi.js` — Pi Platform API helpers
-- `lib/store.js` — persistent Redis REST storage
+- `lib/store.js` — persistent Redis REST storage plus IOU/payment audit helpers
 - `privacy.html`, `terms.html` — app policies
+- `MAINNET_READINESS.md` — separation plan and launch gates for a future paired Mainnet app
+- `PI_REVIEW_CHECKLIST.md` — reviewer-oriented Testnet verification path
 
 ## Security notes
 
-The browser-supplied Pi user object is presentation-only. The backend uses the access token and Pi `/me` response as the identity source of truth. Mutating routes verify authentication and authorization before changing records. Partial payment claims require confirmation by the opposite role before they affect the confirmed paid balance. No email/password login, third-party login, fiat payment, or non-Pi token flow is present.
+The browser-supplied Pi user object is presentation-only. The backend uses the access token and Pi `/me` response as the identity source of truth. Mutating routes verify authentication and authorization before changing records. Partial payment claims require confirmation by the opposite role before they affect the confirmed paid balance. Payment delivery/audit state is derived from Pi Platform API responses rather than frontend claims. No email/password login, third-party login, fiat payment, or non-Pi token flow is present.
 
 ## Network
 
-This repository is for the **IIOU Testnet app**. A separate Pi Mainnet application and deployment should be created only after Testnet product, wallet, storage, and payment testing are complete.
+This repository is for the **IIOU Testnet app**. A separate Pi Mainnet application, credentials, wallet and deployment must be created and paired only after Testnet product, wallet, storage, security and payment testing are complete.
