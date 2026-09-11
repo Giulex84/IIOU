@@ -20,6 +20,8 @@ IIOU also supports a two-step **partial settlement record** while an IOU is acce
 - `/details.html` — authenticated activity center with full IOU timeline, due-state context, shared activity notes, partial settlement claims/confirmations, remaining balance, settlement receipt, and archive controls for closed IOUs
 - `/test.html` — owner-only Pi Testnet two-party simulator used to exercise the lifecycle without bypassing Pi authentication
 
+Simulator-created records are marked with `testMode: true`. They remain available to the owner-only simulator and storage diagnostics, but are excluded server-side from the normal `/api/ious` list used by the public dashboard and Activity Center. This keeps test data separate from the real product experience without deleting useful Testnet evidence.
+
 ## Pi integration
 
 - Pi SDK v2, Testnet sandbox mode
@@ -61,7 +63,7 @@ All product keys are namespaced with `iiou:` so the shared Redis database can co
 - `details.html` — detailed activity/timeline experience
 - `test.html` — owner-only Testnet lifecycle simulator
 - `api/auth.js` — verified Pi sign-in
-- `api/ious.js` — create/list IOUs
+- `api/ious.js` — create/list real product IOUs; simulator records are excluded from normal listing
 - `api/iou-action.js` — controlled IOU state transitions
 - `api/iou-detail.js` — timeline, shared notes, partial settlement confirmation and archive controls
 - `api/pi-payment.js` — hardened, audited and idempotent Testnet U2A support payment
