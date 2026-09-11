@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#07101e" />
+  <title>IIOU Testnet Lab</title>
+  <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+  <style>
+    :root{--bg:#07101e;--panel:#0e1a2c;--line:#223553;--text:#f7f9fc;--muted:#9db0c9;--accent:#37d4b2;--blue:#66a7ff;--yellow:#ffd166;--red:#ff8b98}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}.wrap{width:min(620px,100%);margin:auto;padding:22px 14px 80px}.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:20px;margin-bottom:14px}.badge{display:inline-block;padding:6px 9px;border:1px solid var(--line);border-radius:999px;color:var(--yellow);font-size:12px;font-weight:800}.muted{color:var(--muted);line-height:1.5}.status{font-size:28px;font-weight:900;margin:10px 0}.row{display:flex;gap:10px;flex-wrap:wrap}button,a.btn{appearance:none;border:0;border-radius:13px;padding:13px 15px;font-weight:800;text-decoration:none;text-align:center;cursor:pointer;flex:1;min-width:160px}.primary{background:var(--accent);color:#06121d}.secondary{background:#1a3150;color:var(--text);border:1px solid #2b4a71}.ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}button:disabled{opacity:.5;cursor:not-allowed}.log{white-space:pre-wrap;background:#081524;border:1px solid var(--line);padding:13px;border-radius:14px;color:#bcd0e7;min-height:96px;font-size:13px}.step{display:grid;grid-template-columns:32px 1fr;gap:10px;align-items:start;margin:13px 0}.dot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#18304f;color:var(--muted);font-weight:900}.step.done .dot{background:#153a32;color:var(--accent)}.step.active .dot{background:#3d3314;color:var(--yellow)}h1,h2{margin-top:0}
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <div class="card">
+    <span class="badge">OWNER-ONLY · PI TESTNET</span>
+    <h1>IIOU two-party simulator</h1>
+    <p class="muted">This lab lets the verified Testnet owner exercise the full shared-IOU lifecycle with a simulated second Pioneer. It never bypasses Pi authentication and cannot operate for other accounts.</p>
+    <div class="row"><button id="login" class="primary">Continue with Pi</button><a class="btn ghost" href="/">Back to IIOU</a></div>
+  </div>
+
+  <div id="lab" class="card" hidden>
+    <div class="muted">Signed in as <b id="user"></b></div>
+    <div id="state" class="status">No test IOU</div>
+    <div class="step" data-step="proposed"><div class="dot">1</div><div><b>Create</b><div class="muted">Create a 0.25 π simulated IOU.</div></div></div>
+    <div class="step" data-step="accepted"><div class="dot">2</div><div><b>Counterparty accepts</b><div class="muted">Simulates the second Pioneer confirming the shared record.</div></div></div>
+    <div class="step" data-step="payment_claimed"><div class="dot">3</div><div><b>Debtor marks paid</b><div class="muted">Simulates the debtor claiming the obligation was paid.</div></div></div>
+    <div class="step" data-step="settled"><div class="dot">4</div><div><b>Creditor confirms</b><div class="muted">Completes the ledger lifecycle as settled.</div></div></div>
+    <div class="row"><button id="create" class="primary">Create test IOU</button><button id="advance" class="secondary" disabled>Advance next side</button></div>
+  </div>
+
+  <div class="card"><h2>Test log</h2><div id="log" class="log">Ready.</div></div>
+</main>
+<script>
+Pi.init({version:'2.0',sandbox:true});
+let token=null, testId=null, status=null;
+const $=id=>document.getElementById(id);
+function log(m){$('log').textContent=`${new Date().toLocaleTimeString()}  ${m}\n`+$('log').textContent}
+function headers(){return {'Content-Type':'application/json','Authorization':`Bearer ${token}`}}
+async function api(body){const r=await fetch('/api/test-iou',{method:'POST',headers:headers(),body:JSON.stringify(body)});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||`Request failed (${r.status})`);return d}
+function paint(){
+  const order=['proposed','accepted','payment_claimed','settled'];
+  document.querySelectorAll('.step').forEach(el=>{el.classList.remove('done','active');const idx=order.indexOf(el.dataset.step),cur=order.indexOf(status);if(cur>idx)el.classList.add('done');else if(cur===idx)el.classList.add('active')});
+  $('state').textContent=status?status.replace('_',' ').toUpperCase():'No test IOU';
+  $('advance').disabled=!testId||status==='settled';
+  $('advance').textContent=status==='proposed'?'Simulate acceptance':status==='accepted'?'Simulate paid claim':status==='payment_claimed'?'Confirm settlement':'Completed';
+}
+$('login').onclick=async()=>{try{$('login').disabled=true;const a=await Pi.authenticate(['username'],()=>{});token=a.accessToken;$('user').textContent='@'+a.user.username;$('lab').hidden=false;$('login').textContent='Authenticated';log('Pi authentication verified. Owner restriction will also be checked server-side.')}catch(e){log('Login error: '+e.message);$('login').disabled=false}}
+$('create').onclick=async()=>{try{$('create').disabled=true;const d=await api({mode:'create',direction:'i_owe'});testId=d.id;status=d.status;paint();log(`Created test IOU ${testId.slice(0,8)}… at status ${status}.`)}catch(e){log('Create error: '+e.message)}finally{$('create').disabled=false}}
+$('advance').onclick=async()=>{try{$('advance').disabled=true;const d=await api({mode:'advance',id:testId});status=d.status;paint();log('Advanced test IOU to '+status+'.')}catch(e){log('Advance error: '+e.message)}finally{paint()}}
+paint();
+</script>
+</body>
+</html>
