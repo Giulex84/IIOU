@@ -45,7 +45,8 @@ export default async function handler(req, res) {
 
     if (req.method === 'GET') {
       const items = await listIousFor(user.uid);
-      return res.status(200).json({ success: true, ious: items.map(i => publicIou(i, user)) });
+      const realItems = items.filter(iou => !iou.testMode);
+      return res.status(200).json({ success: true, ious: realItems.map(i => publicIou(i, user)) });
     }
 
     if (req.method === 'POST') {
