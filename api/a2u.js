@@ -13,7 +13,7 @@ function getRemoteMessage(error) {
   const data = error?.response?.data || error?.piBody;
   if (typeof data === 'string') return data.slice(0, 300);
   if (data && typeof data === 'object') {
-    return String(data.error || data.message || data.detail || data.raw || '').slice(0, 300) || null;
+    return String(data.error || data.error_message || data.message || data.detail || data.raw || '').slice(0, 300) || null;
   }
   return null;
 }
@@ -34,7 +34,7 @@ async function probeServerApiKey() {
       ok: response.ok,
       result: response.ok ? 'accepted' : 'rejected',
       piError: body && typeof body === 'object'
-        ? String(body.error || body.message || body.detail || '').slice(0, 200) || null
+        ? String(body.error || body.error_message || body.message || body.detail || '').slice(0, 200) || null
         : null
     };
   } catch (probeError) {
@@ -152,8 +152,9 @@ export default async function handler(req, res) {
       console.error('Pi Server API key probe', keyProbe);
       let diagnosticError = 'Pi rejected the server credential while creating the A2U payment.';
       if (keyProbe.status === 401) diagnosticError = 'Pi rejects the Server API Key itself. The key configured in Vercel is not accepted for this Testnet app.';
-      else if (keyProbe.ok) diagnosticError = 'The Server API Key is valid, but Pi is refusing A2U payment creation for this app. Direct Platform API test also failed.';
+      else if (keyProbe.ok) diagnosticError = 'The Server API Key is valid, but Pi is refusing A2U payment creation for this app.';
       else if (keyProbe.status === 403) diagnosticError = 'Pi recognizes the server request but this app is not authorized for the required server-payment operation.';
+      if (remoteMessage) diagnosticError += ` Pi response: ${remoteMessage}`;
 
       return res.status(401).json({
         success: false,
@@ -170,7 +171,7 @@ export default async function handler(req, res) {
     if (stage === 'create_payment_direct' && remoteStatus) {
       return res.status(remoteStatus).json({
         success: false,
-        error: 'Direct Pi Platform API payment creation failed.',
+        error: remoteMessage ? `Direct Pi Platform API payment creation failed. Pi response: ${remoteMessage}` : 'Direct Pi Platform API payment creation failed.',
         stage,
         piStatus: remoteStatus,
         ...(remoteMessage ? { piMessage: remoteMessage } : {})
