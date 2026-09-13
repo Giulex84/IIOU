@@ -6,6 +6,7 @@
     "node": "22.x"
   },
   "dependencies": {
+    "@stellar/stellar-sdk": "^13.2.0",
     "pi-backend": "0.1.3"
   }
 }
