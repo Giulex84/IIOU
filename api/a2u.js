@@ -1,5 +1,5 @@
 import { verifyPiUser, apiError } from '../lib/pi.js';
-import { getPiA2uClient } from '../lib/pi-a2u.js';
+import { getPiA2uClient, getPiApiKey } from '../lib/pi-a2u.js';
 import { getA2uForUser, saveA2uForUser, getA2uWalletCount } from '../lib/a2u-store.js';
 
 const AMOUNT = 0.01;
@@ -16,6 +16,44 @@ function getRemoteMessage(error) {
     return String(data.error || data.message || data.detail || '').slice(0, 300) || null;
   }
   return null;
+}
+
+async function probeServerApiKey() {
+  const apiKey = getPiApiKey();
+  if (!apiKey) return { status: 0, ok: false, result: 'missing' };
+
+  try {
+    const response = await fetch('https://api.minepi.com/v2/payments/incomplete_server_payments', {
+      method: 'GET',
+      headers: {
+        Authorization: `Key ${apiKey}`,
+        Accept: 'application/json'
+      }
+    });
+
+    let body = null;
+    try {
+      body = await response.json();
+    } catch {
+      body = null;
+    }
+
+    return {
+      status: response.status,
+      ok: response.ok,
+      result: response.ok ? 'accepted' : 'rejected',
+      piError: body && typeof body === 'object'
+        ? String(body.error || body.message || body.detail || '').slice(0, 200) || null
+        : null
+    };
+  } catch (probeError) {
+    return {
+      status: 0,
+      ok: false,
+      result: 'probe_failed',
+      piError: String(probeError?.message || 'Probe failed').slice(0, 200)
+    };
+  }
 }
 
 export default async function handler(req, res) {
@@ -123,12 +161,27 @@ export default async function handler(req, res) {
     });
 
     if (stage === 'create_payment' && remoteStatus === 401) {
+      const keyProbe = await probeServerApiKey();
+      console.error('Pi Server API key probe', keyProbe);
+
+      let diagnosticError = 'Pi rejected the server credential while creating the A2U payment.';
+      if (keyProbe.status === 401) {
+        diagnosticError = 'Pi rejects the Server API Key itself. The key configured in Vercel is not accepted for this Testnet app.';
+      } else if (keyProbe.ok) {
+        diagnosticError = 'The Server API Key is valid, but Pi is refusing A2U payment creation for this app. Check Testnet A2U/app-wallet eligibility in Developer Portal.';
+      } else if (keyProbe.status === 403) {
+        diagnosticError = 'Pi recognizes the server request but this app is not authorized for the required server-payment operation.';
+      }
+
       return res.status(401).json({
         success: false,
-        error: 'Pi rejected the server credential while creating the A2U payment.',
+        error: diagnosticError,
         stage,
         piStatus: remoteStatus,
-        ...(remoteMessage ? { piMessage: remoteMessage } : {})
+        keyProbeStatus: keyProbe.status,
+        keyProbeResult: keyProbe.result,
+        ...(remoteMessage ? { piMessage: remoteMessage } : {}),
+        ...(keyProbe.piError ? { keyProbeMessage: keyProbe.piError } : {})
       });
     }
 
