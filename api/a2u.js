@@ -10,10 +10,10 @@ function getRemoteStatus(error) {
 }
 
 function getRemoteMessage(error) {
-  const data = error?.response?.data;
+  const data = error?.response?.data || error?.piBody;
   if (typeof data === 'string') return data.slice(0, 300);
   if (data && typeof data === 'object') {
-    return String(data.error || data.message || data.detail || '').slice(0, 300) || null;
+    return String(data.error || data.message || data.detail || data.raw || '').slice(0, 300) || null;
   }
   return null;
 }
@@ -25,19 +25,10 @@ async function probeServerApiKey() {
   try {
     const response = await fetch('https://api.minepi.com/v2/payments/incomplete_server_payments', {
       method: 'GET',
-      headers: {
-        Authorization: `Key ${apiKey}`,
-        Accept: 'application/json'
-      }
+      headers: { Authorization: `Key ${apiKey}`, Accept: 'application/json' }
     });
-
     let body = null;
-    try {
-      body = await response.json();
-    } catch {
-      body = null;
-    }
-
+    try { body = await response.json(); } catch { body = null; }
     return {
       status: response.status,
       ok: response.ok,
@@ -47,13 +38,34 @@ async function probeServerApiKey() {
         : null
     };
   } catch (probeError) {
-    return {
-      status: 0,
-      ok: false,
-      result: 'probe_failed',
-      piError: String(probeError?.message || 'Probe failed').slice(0, 200)
-    };
+    return { status: 0, ok: false, result: 'probe_failed', piError: String(probeError?.message || 'Probe failed').slice(0, 200) };
   }
+}
+
+async function createPaymentDirect(payment) {
+  const apiKey = getPiApiKey();
+  const response = await fetch('https://api.minepi.com/v2/payments', {
+    method: 'POST',
+    headers: { Authorization: `Key ${apiKey}`, Accept: 'application/json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ payment })
+  });
+  const raw = await response.text();
+  let body = null;
+  try { body = raw ? JSON.parse(raw) : null; } catch { body = raw ? { raw: raw.slice(0, 300) } : null; }
+  if (!response.ok) {
+    const error = new Error('Direct Pi payment creation failed');
+    error.status = response.status;
+    error.piBody = body;
+    throw error;
+  }
+  const paymentId = body?.identifier || body?.payment?.identifier || null;
+  if (!paymentId) {
+    const error = new Error('Pi accepted payment creation but returned no identifier');
+    error.status = 502;
+    error.piBody = body;
+    throw error;
+  }
+  return paymentId;
 }
 
 export default async function handler(req, res) {
@@ -80,11 +92,7 @@ export default async function handler(req, res) {
     }
 
     if (record?.status === 'completed') {
-      return res.status(409).json({
-        success: false,
-        error: 'This Pi account has already completed the Testnet A2U validation payout.',
-        payout: record
-      });
+      return res.status(409).json({ success: false, error: 'This Pi account has already completed the Testnet A2U validation payout.', payout: record });
     }
 
     stage = 'init_a2u';
@@ -94,31 +102,21 @@ export default async function handler(req, res) {
     let txid = record?.txid || null;
 
     if (!paymentId) {
-      stage = 'create_payment';
-      paymentId = await pi.createPayment({
+      stage = 'create_payment_direct';
+      paymentId = await createPaymentDirect({
         amount: AMOUNT,
         memo: MEMO,
-        metadata: {
-          product: 'iiou_testnet_a2u_validation',
-          purpose: 'mainnet_wallet_eligibility'
-        },
+        metadata: { product: 'iiou_testnet_a2u_validation', purpose: 'mainnet_wallet_eligibility' },
         uid: user.uid
       });
-      record = {
-        status: 'created', paymentId, uid: user.uid, username: user.username,
-        amount: AMOUNT, createdAt
-      };
+      record = { status: 'created', paymentId, uid: user.uid, username: user.username, amount: AMOUNT, createdAt };
       await saveA2uForUser(user.uid, record);
     }
 
     if (!txid) {
       stage = 'submit_payment';
       txid = await pi.submitPayment(paymentId);
-      record = {
-        ...record,
-        status: 'submitted', txid, paymentId,
-        uid: user.uid, username: user.username, amount: AMOUNT, createdAt
-      };
+      record = { ...record, status: 'submitted', txid, paymentId, uid: user.uid, username: user.username, amount: AMOUNT, createdAt };
       await saveA2uForUser(user.uid, record);
     }
 
@@ -138,40 +136,24 @@ export default async function handler(req, res) {
     record = {
       status: 'completed', paymentId, txid, uid: user.uid, username: user.username,
       amount: Number(payment.amount || AMOUNT), toAddress: payment.to_address || null,
-      createdAt,
-      completedAt: new Date().toISOString()
+      createdAt, completedAt: new Date().toISOString()
     };
     await saveA2uForUser(user.uid, record);
 
-    return res.status(200).json({
-      success: true,
-      payout: record,
-      uniqueWalletsCompleted: await getA2uWalletCount(),
-      targetUniqueWallets: 5
-    });
+    return res.status(200).json({ success: true, payout: record, uniqueWalletsCompleted: await getA2uWalletCount(), targetUniqueWallets: 5 });
   } catch (error) {
     const remoteStatus = getRemoteStatus(error);
     const remoteMessage = getRemoteMessage(error);
 
-    console.error('A2U failure', {
-      stage,
-      remoteStatus,
-      remoteMessage,
-      message: error?.message || 'Unknown error'
-    });
+    console.error('A2U failure', { stage, remoteStatus, remoteMessage, message: error?.message || 'Unknown error' });
 
-    if (stage === 'create_payment' && remoteStatus === 401) {
+    if ((stage === 'create_payment' || stage === 'create_payment_direct') && remoteStatus === 401) {
       const keyProbe = await probeServerApiKey();
       console.error('Pi Server API key probe', keyProbe);
-
       let diagnosticError = 'Pi rejected the server credential while creating the A2U payment.';
-      if (keyProbe.status === 401) {
-        diagnosticError = 'Pi rejects the Server API Key itself. The key configured in Vercel is not accepted for this Testnet app.';
-      } else if (keyProbe.ok) {
-        diagnosticError = 'The Server API Key is valid, but Pi is refusing A2U payment creation for this app. Check Testnet A2U/app-wallet eligibility in Developer Portal.';
-      } else if (keyProbe.status === 403) {
-        diagnosticError = 'Pi recognizes the server request but this app is not authorized for the required server-payment operation.';
-      }
+      if (keyProbe.status === 401) diagnosticError = 'Pi rejects the Server API Key itself. The key configured in Vercel is not accepted for this Testnet app.';
+      else if (keyProbe.ok) diagnosticError = 'The Server API Key is valid, but Pi is refusing A2U payment creation for this app. Direct Platform API test also failed.';
+      else if (keyProbe.status === 403) diagnosticError = 'Pi recognizes the server request but this app is not authorized for the required server-payment operation.';
 
       return res.status(401).json({
         success: false,
@@ -182,6 +164,16 @@ export default async function handler(req, res) {
         keyProbeResult: keyProbe.result,
         ...(remoteMessage ? { piMessage: remoteMessage } : {}),
         ...(keyProbe.piError ? { keyProbeMessage: keyProbe.piError } : {})
+      });
+    }
+
+    if (stage === 'create_payment_direct' && remoteStatus) {
+      return res.status(remoteStatus).json({
+        success: false,
+        error: 'Direct Pi Platform API payment creation failed.',
+        stage,
+        piStatus: remoteStatus,
+        ...(remoteMessage ? { piMessage: remoteMessage } : {})
       });
     }
 
