@@ -13,49 +13,58 @@ export default async function handler(req, res) {
 
   try {
     const user = await verifyPiUser(req);
-    const existing = await getA2uForUser(user.uid);
+    let record = await getA2uForUser(user.uid);
 
     if (req.method === 'GET') {
       return res.status(200).json({
         success: true,
-        eligible: !existing,
-        payout: existing || null,
+        eligible: !record || record.status !== 'completed',
+        payout: record || null,
         uniqueWalletsCompleted: await getA2uWalletCount(),
         targetUniqueWallets: 5,
         amount: AMOUNT
       });
     }
 
-    if (existing) {
+    if (record?.status === 'completed') {
       return res.status(409).json({
         success: false,
-        error: 'This Pi account has already received the Testnet A2U validation payout.',
-        payout: existing
+        error: 'This Pi account has already completed the Testnet A2U validation payout.',
+        payout: record
       });
     }
 
     const pi = getPiA2uClient();
-    const paymentId = await pi.createPayment({
-      amount: AMOUNT,
-      memo: MEMO,
-      metadata: {
-        product: 'iiou_testnet_a2u_validation',
-        purpose: 'mainnet_wallet_eligibility'
-      },
-      uid: user.uid
-    });
+    const createdAt = record?.createdAt || new Date().toISOString();
+    let paymentId = record?.paymentId || null;
+    let txid = record?.txid || null;
 
-    const createdAt = new Date().toISOString();
-    await saveA2uForUser(user.uid, {
-      status: 'created', paymentId, uid: user.uid, username: user.username,
-      amount: AMOUNT, createdAt
-    });
+    if (!paymentId) {
+      paymentId = await pi.createPayment({
+        amount: AMOUNT,
+        memo: MEMO,
+        metadata: {
+          product: 'iiou_testnet_a2u_validation',
+          purpose: 'mainnet_wallet_eligibility'
+        },
+        uid: user.uid
+      });
+      record = {
+        status: 'created', paymentId, uid: user.uid, username: user.username,
+        amount: AMOUNT, createdAt
+      };
+      await saveA2uForUser(user.uid, record);
+    }
 
-    const txid = await pi.submitPayment(paymentId);
-    await saveA2uForUser(user.uid, {
-      status: 'submitted', paymentId, txid, uid: user.uid, username: user.username,
-      amount: AMOUNT, createdAt
-    });
+    if (!txid) {
+      txid = await pi.submitPayment(paymentId);
+      record = {
+        ...record,
+        status: 'submitted', txid, paymentId,
+        uid: user.uid, username: user.username, amount: AMOUNT, createdAt
+      };
+      await saveA2uForUser(user.uid, record);
+    }
 
     const payment = await pi.completePayment(paymentId, txid);
     if (payment?.direction !== 'app_to_user' || payment?.network !== 'Pi Testnet') {
@@ -69,9 +78,10 @@ export default async function handler(req, res) {
       throw error;
     }
 
-    const record = {
+    record = {
       status: 'completed', paymentId, txid, uid: user.uid, username: user.username,
       amount: Number(payment.amount || AMOUNT), toAddress: payment.to_address || null,
+      createdAt,
       completedAt: new Date().toISOString()
     };
     await saveA2uForUser(user.uid, record);
