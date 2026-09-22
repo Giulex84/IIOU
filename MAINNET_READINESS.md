@@ -59,3 +59,7 @@ IIOU Testnet is the permanent validation environment. Mainnet must be a **separa
 ## Domain
 
 The purchased product domain can be connected only after the final Testnet/Mainnet routing plan is decided. Keep Testnet and Mainnet distinguishable so reviewers and users cannot confuse networks.
+
+## Group split parity gate
+
+Testnet now exercises private agreement links and 2–12 participant expense splits. Mainnet parity must preserve separate credentials, namespace and deployment, keep participant authorization server-side, and must not treat split creation as a payment or settlement.

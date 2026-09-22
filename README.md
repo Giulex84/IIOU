@@ -10,11 +10,17 @@ Current lifecycle:
 
 `proposed → accepted → payment_claimed → settled`
 
-Alternative terminal states are `declined` and `cancelled`.
+Alternative terminal states are `declined`, `cancelled`, and `closed_by_agreement`. An accepted agreement can be closed without settlement only after both participants confirm.
 
 IIOU also supports a two-step **partial settlement record** while an IOU is accepted: the debtor can claim a partial payment, but it only counts toward the confirmed paid total after the creditor confirms it. Rejected partial claims remain in the activity history.
 
 IIOU 2.5 Testnet also supports one-time, weekly and monthly agreements, suggested installment plans and private reminders limited to once every 72 hours. A recurring cycle is generated only after the current agreement is mutually settled. These application records do not custody or transfer Test-Pi between participants.
+
+## Shared requests and group splits
+
+Every agreement has a private share link for its two participants. The link never bypasses Pi authentication or server-side authorization.
+
+`Split expense` creates 2–12 separate shares connected by common group metadata. Each share retains its own acceptance, due date and settlement lifecycle, while each participant can read only their own bilateral agreement. Creating a split never initiates a Test-Pi payment. See `GROUP_SPLITS.md`.
 
 ## Product surfaces
 
@@ -66,6 +72,7 @@ All product keys are namespaced with `iiou:` so the shared Redis database can co
 - `test.html` — owner-only Testnet lifecycle simulator
 - `api/auth.js` — verified Pi sign-in
 - `api/ious.js` — create/list real product IOUs; simulator records are excluded from normal listing
+- `api/splits.js` — validate and create private shares for a group expense
 - `api/iou-action.js` — controlled IOU state transitions
 - `api/iou-detail.js` — timeline, shared notes, partial settlement confirmation and archive controls
 - `api/pi-payment.js` — hardened, audited and idempotent Testnet U2A support payment

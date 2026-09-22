@@ -60,3 +60,11 @@ Before freezing the Testnet release candidate, re-run:
 - payment audit/idempotency
 - Privacy and Terms links
 - mobile layout in Pi Browser
+
+## Group split review
+
+1. Authenticate with Pi Testnet.
+2. Create a split with at least two different Pi usernames and verify the displayed total.
+3. Open each generated share and verify the common group summary.
+4. Open a share link as its counterparty and confirm access; verify an unrelated account cannot read it.
+5. Confirm that creating the split opens no wallet prompt and creates no Test-Pi transaction.

@@ -32,7 +32,7 @@ function view(iou, user) {
     closedAt:iou.closedAt||null, closeRequest,
     role:isDebtor?'debtor':'creditor', history:Array.isArray(iou.history)?iou.history:[],
     partialPayments:iou.partialPayments || [], paidAmount, effectivePaidAmount, remainingAmount,
-    recurrence:iou.recurrence||{frequency:'none'}, installmentPlan:iou.installmentPlan||null,
+    recurrence:iou.recurrence||{frequency:'none'}, installmentPlan:iou.installmentPlan||null, split:iou.split||null,
     reminderCount:Array.isArray(iou.reminders)?iou.reminders.length:0,
     lastReminderAt:iou.reminders?.at(-1)?.at||null,
     archived:Boolean((iou.archivedBy || []).includes(user.uid)),
