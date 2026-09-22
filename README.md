@@ -70,6 +70,7 @@ All product keys are namespaced with `iiou:` so the shared Redis database can co
 - `api/a2u.js` — explicitly disabled until a justified Testnet use case is implemented
 - `lib/pi.js` — Pi Platform API helpers
 - `lib/store.js` — persistent Redis REST storage plus IOU/payment audit helpers
+- `admin.html` and `api/metrics.js` — owner-only aggregate telemetry (daily pseudonymous users, logins, lifecycle actions and completed support payments)
 - `privacy.html`, `terms.html` — app policies
 - `MAINNET_READINESS.md` — separation plan and launch gates for a future paired Mainnet app
 - `PI_REVIEW_CHECKLIST.md` — reviewer-oriented Testnet verification path

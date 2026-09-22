@@ -1,5 +1,6 @@
 import { verifyPiUser, piServerRequest, apiError } from '../lib/pi.js';
 import { getPaymentAudit, getPaymentByTxid, savePaymentAudit } from '../lib/store.js';
+import { safeRecordMetric } from '../lib/metrics.js';
 
 const SUPPORT_AMOUNT = 0.1;
 const SUPPORT_MEMO = 'Support IIOU Testnet';
@@ -115,6 +116,7 @@ export default async function handler(req, res) {
     }
 
     const audit = await record(completed, user, { lastAction: 'completed', txid });
+    await safeRecordMetric(user.uid, 'support_payment', paymentId);
     return res.status(200).json({ success: true, payment: completed, audit });
   } catch (error) {
     return apiError(res, error);

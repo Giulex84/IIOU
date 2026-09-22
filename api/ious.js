@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { verifyPiUser, apiError } from '../lib/pi.js';
+import { safeRecordMetric } from '../lib/metrics.js';
 import {
   rememberUser,
   claimPendingIous,
@@ -101,6 +102,7 @@ export default async function handler(req, res) {
       };
 
       await saveIou(iou);
+      await safeRecordMetric(user.uid, 'iou_created', iou.id);
       return res.status(201).json({ success: true, iou: publicIou(iou, user) });
     }
 

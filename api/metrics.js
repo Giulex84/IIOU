@@ -1,0 +1,4 @@
+import { verifyPiUser } from '../lib/pi.js';
+import { getMetricsReport } from '../lib/store.js';
+const ADMIN=(process.env.IIOU_ADMIN_USERNAME||'Giulex84').toLowerCase();
+export default async function handler(req,res){res.setHeader('Cache-Control','no-store, private');if(req.method!=='GET'){res.setHeader('Allow','GET');return res.status(405).json({success:false,error:'Method not allowed'})}try{const user=await verifyPiUser(req);if(String(user.username||'').toLowerCase()!==ADMIN)return res.status(403).json({success:false,error:'Admin access required'});const days=Math.max(1,Math.min(90,Number(req.query?.days)||30));return res.status(200).json({success:true,generatedAt:new Date().toISOString(),rows:await getMetricsReport(days)})}catch(error){const status=Number(error?.status)||401;return res.status(status).json({success:false,error:status===401?'Pi authentication required':'Metrics request failed'})}}

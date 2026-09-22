@@ -1,5 +1,6 @@
 import { verifyPiUser, apiError } from '../lib/pi.js';
 import { rememberUser, claimPendingIous, getIou, saveIou } from '../lib/store.js';
+import { safeRecordMetric } from '../lib/metrics.js';
 
 function sameUsername(a, b) {
   return String(a || '').toLowerCase() === String(b || '').toLowerCase();
@@ -51,6 +52,7 @@ export default async function handler(req, res) {
     iou.history.push({ type: action, by: user.username, at: now });
 
     await saveIou(iou);
+    await safeRecordMetric(user.uid, nextStatus === 'settled' ? 'iou_settled' : 'iou_action', `${iou.id}:${action}`);
     return res.status(200).json({ success: true, status: iou.status, updatedAt: iou.updatedAt });
   } catch (error) {
     return apiError(res, error);
