@@ -103,6 +103,7 @@ export default async function handler(req,res){
         iou.history.push({type:'partial_rejected',by:user.username,amount:payment.amount,paymentId:payment.id,at:now});
       }
     } else if(action==='request_close'){
+      if(iou.status==='closure_requested'&&same(iou.closeRequest?.requestedBy,user.username))return res.status(200).json({success:true,iou:view(iou,user)});
       if(iou.status!=='accepted'||iou.partialPayments.some(p=>p.status==='claimed'))return res.status(409).json({success:false,error:'This agreement cannot be closed while another confirmation is pending'});
       const reason=String(req.body?.reason||'other');
       if(!['created_by_mistake','duplicate','agreement_cancelled','other'].includes(reason))return res.status(400).json({success:false,error:'Choose a valid closure reason'});
