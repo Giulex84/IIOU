@@ -1,114 +1,21 @@
 import { randomUUID } from 'node:crypto';
 import { verifyPiUser, apiError } from '../lib/pi.js';
 import { safeRecordMetric } from '../lib/metrics.js';
-import {
-  rememberUser,
-  claimPendingIous,
-  getUserByUsername,
-  saveIou,
-  listIousFor
-} from '../lib/store.js';
+import { rememberUser, claimPendingIous, getUserByUsername, saveIou, listIousFor } from '../lib/store.js';
 
-function publicIou(iou, user) {
-  const amCreator = iou.creatorUid === user.uid;
-  const amCounterparty = iou.counterpartyUid === user.uid ||
-    String(iou.counterpartyUsername).toLowerCase() === String(user.username).toLowerCase();
-  return {
-    id: iou.id,
-    amount: iou.amount,
-    currency: 'Pi',
-    note: iou.note,
-    dueDate: iou.dueDate,
-    status: iou.status,
-    creatorUsername: iou.creatorUsername,
-    counterpartyUsername: iou.counterpartyUsername,
-    debtorUsername: iou.debtorUsername,
-    creditorUsername: iou.creditorUsername,
-    createdAt: iou.createdAt,
-    updatedAt: iou.updatedAt,
-    settlementClaimedAt: iou.settlementClaimedAt || null,
-    settledAt: iou.settledAt || null,
-    testMode: Boolean(iou.testMode),
-    role: iou.debtorUsername.toLowerCase() === user.username.toLowerCase() ? 'debtor' : 'creditor',
-    canRespond: amCounterparty && iou.status === 'proposed',
-    canCancel: amCreator && iou.status === 'proposed',
-    canClaimPaid: iou.debtorUsername.toLowerCase() === user.username.toLowerCase() && iou.status === 'accepted',
-    canConfirmPaid: iou.creditorUsername.toLowerCase() === user.username.toLowerCase() && iou.status === 'payment_claimed',
-    canTestAdvance: Boolean(iou.testMode) && amCreator && ['proposed','accepted','payment_claimed'].includes(iou.status)
-  };
-}
-
-export default async function handler(req, res) {
-  try {
-    const user = await verifyPiUser(req);
-    await rememberUser(user);
-    await claimPendingIous(user);
-
-    if (req.method === 'GET') {
-      const items = await listIousFor(user.uid);
-      const realItems = items.filter(iou => !iou.testMode);
-      return res.status(200).json({ success: true, ious: realItems.map(i => publicIou(i, user)) });
+const same=(a,b)=>String(a||'').toLowerCase()===String(b||'').toLowerCase();
+const roundPi=value=>Math.round(Number(value)*1e7)/1e7;
+function publicIou(iou,user){const amCreator=iou.creatorUid===user.uid;const amCounterparty=iou.counterpartyUid===user.uid||same(iou.counterpartyUsername,user.username);const partials=Array.isArray(iou.partialPayments)?iou.partialPayments:[];const paidAmount=roundPi(partials.filter(p=>p.status==='confirmed').reduce((sum,p)=>sum+Number(p.amount||0),0));return{id:iou.id,amount:iou.amount,currency:'Pi',note:iou.note,dueDate:iou.dueDate,status:iou.status,creatorUsername:iou.creatorUsername,counterpartyUsername:iou.counterpartyUsername,debtorUsername:iou.debtorUsername,creditorUsername:iou.creditorUsername,createdAt:iou.createdAt,updatedAt:iou.updatedAt,settlementClaimedAt:iou.settlementClaimedAt||null,settledAt:iou.settledAt||null,paidAmount,remainingAmount:iou.status==='settled'?0:roundPi(Math.max(0,Number(iou.amount)-paidAmount)),recurrence:iou.recurrence||{frequency:'none'},installmentPlan:iou.installmentPlan||null,reminderCount:Array.isArray(iou.reminders)?iou.reminders.length:0,lastReminderAt:iou.reminders?.at(-1)?.at||null,testMode:Boolean(iou.testMode),role:same(iou.debtorUsername,user.username)?'debtor':'creditor',canRespond:amCounterparty&&iou.status==='proposed',canCancel:amCreator&&iou.status==='proposed',canClaimPaid:same(iou.debtorUsername,user.username)&&iou.status==='accepted',canConfirmPaid:same(iou.creditorUsername,user.username)&&iou.status==='payment_claimed',canTestAdvance:Boolean(iou.testMode)&&amCreator&&['proposed','accepted','payment_claimed'].includes(iou.status)}}
+export default async function handler(req,res){
+  try{
+    const user=await verifyPiUser(req);await rememberUser(user);await claimPendingIous(user);
+    if(req.method==='GET'){const items=await listIousFor(user.uid);return res.status(200).json({success:true,ious:items.filter(i=>!i.testMode).map(i=>publicIou(i,user))});}
+    if(req.method==='POST'){
+      const{counterpartyUsername,amount,note,dueDate,direction,recurrenceFrequency,installments}=req.body||{};const username=String(counterpartyUsername||'').trim().replace(/^@/,'');const numericAmount=Number(amount);const cleanNote=String(note||'').trim();const frequency=['none','weekly','monthly'].includes(recurrenceFrequency)?recurrenceFrequency:'none';const installmentCount=Math.max(1,Math.min(24,Math.trunc(Number(installments)||1)));
+      if(!/^[A-Za-z0-9_-]{3,32}$/.test(username))return res.status(400).json({success:false,error:'Enter a valid Pi username'});if(same(username,user.username))return res.status(400).json({success:false,error:'You cannot create an IOU with yourself'});if(!Number.isFinite(numericAmount)||numericAmount<=0||numericAmount>100000)return res.status(400).json({success:false,error:'Enter a valid Pi amount'});if(!['i_owe','owed_to_me'].includes(direction))return res.status(400).json({success:false,error:'Invalid IOU direction'});if(cleanNote.length>160)return res.status(400).json({success:false,error:'Note is too long'});
+      let parsedDueDate=null;if(dueDate){const d=new Date(`${dueDate}T00:00:00Z`);if(Number.isNaN(d.getTime()))return res.status(400).json({success:false,error:'Invalid due date'});parsedDueDate=dueDate;}if(frequency!=='none'&&!parsedDueDate)return res.status(400).json({success:false,error:'Recurring IOUs require a first due date'});
+      const known=await getUserByUsername(username);const now=new Date().toISOString();const creatorOwes=direction==='i_owe';const id=randomUUID();const iou={id,creatorUid:user.uid,creatorUsername:user.username,counterpartyUid:known?.uid||null,counterpartyUsername:known?.username||username,debtorUsername:creatorOwes?user.username:(known?.username||username),creditorUsername:creatorOwes?(known?.username||username):user.username,amount:roundPi(numericAmount),note:cleanNote||'Personal IOU',dueDate:parsedDueDate,status:'proposed',recurrence:{frequency,seriesId:id,cycle:1},installmentPlan:installmentCount>1?{count:installmentCount,suggestedAmount:roundPi(numericAmount/installmentCount)}:null,reminders:[],createdAt:now,updatedAt:now,history:[{type:'created',by:user.username,at:now},{type:'terms_set',by:user.username,at:now,frequency,installments:installmentCount}]};await saveIou(iou);await Promise.all([safeRecordMetric(user.uid,'iou_created',iou.id),frequency!=='none'?safeRecordMetric(user.uid,'recurrence_created',iou.id):Promise.resolve(false),installmentCount>1?safeRecordMetric(user.uid,'installment_plan',iou.id):Promise.resolve(false)]);return res.status(201).json({success:true,iou:publicIou(iou,user)});
     }
-
-    if (req.method === 'POST') {
-      const { counterpartyUsername, amount, note, dueDate, direction } = req.body || {};
-      const normalizedUsername = String(counterpartyUsername || '').trim().replace(/^@/, '');
-      const numericAmount = Number(amount);
-      const cleanNote = String(note || '').trim();
-
-      if (!/^[A-Za-z0-9_-]{3,32}$/.test(normalizedUsername)) {
-        return res.status(400).json({ success: false, error: 'Enter a valid Pi username' });
-      }
-      if (normalizedUsername.toLowerCase() === user.username.toLowerCase()) {
-        return res.status(400).json({ success: false, error: 'You cannot create an IOU with yourself' });
-      }
-      if (!Number.isFinite(numericAmount) || numericAmount <= 0 || numericAmount > 100000) {
-        return res.status(400).json({ success: false, error: 'Enter a valid Pi amount' });
-      }
-      if (!['i_owe', 'owed_to_me'].includes(direction)) {
-        return res.status(400).json({ success: false, error: 'Invalid IOU direction' });
-      }
-      if (cleanNote.length > 160) {
-        return res.status(400).json({ success: false, error: 'Note is too long' });
-      }
-
-      let parsedDueDate = null;
-      if (dueDate) {
-        const d = new Date(`${dueDate}T00:00:00Z`);
-        if (Number.isNaN(d.getTime())) {
-          return res.status(400).json({ success: false, error: 'Invalid due date' });
-        }
-        parsedDueDate = dueDate;
-      }
-
-      const knownCounterparty = await getUserByUsername(normalizedUsername);
-      const now = new Date().toISOString();
-      const creatorOwes = direction === 'i_owe';
-      const iou = {
-        id: randomUUID(),
-        creatorUid: user.uid,
-        creatorUsername: user.username,
-        counterpartyUid: knownCounterparty?.uid || null,
-        counterpartyUsername: knownCounterparty?.username || normalizedUsername,
-        debtorUsername: creatorOwes ? user.username : (knownCounterparty?.username || normalizedUsername),
-        creditorUsername: creatorOwes ? (knownCounterparty?.username || normalizedUsername) : user.username,
-        amount: Math.round(numericAmount * 10000000) / 10000000,
-        note: cleanNote || 'Personal IOU',
-        dueDate: parsedDueDate,
-        status: 'proposed',
-        createdAt: now,
-        updatedAt: now,
-        history: [{ type: 'created', by: user.username, at: now }]
-      };
-
-      await saveIou(iou);
-      await safeRecordMetric(user.uid, 'iou_created', iou.id);
-      return res.status(201).json({ success: true, iou: publicIou(iou, user) });
-    }
-
-    res.setHeader('Allow', 'GET, POST');
-    return res.status(405).json({ success: false, error: 'Method not allowed' });
-  } catch (error) {
-    return apiError(res, error);
-  }
+    res.setHeader('Allow','GET, POST');return res.status(405).json({success:false,error:'Method not allowed'});
+  }catch(error){return apiError(res,error)}
 }

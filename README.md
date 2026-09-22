@@ -14,6 +14,8 @@ Alternative terminal states are `declined` and `cancelled`.
 
 IIOU also supports a two-step **partial settlement record** while an IOU is accepted: the debtor can claim a partial payment, but it only counts toward the confirmed paid total after the creditor confirms it. Rejected partial claims remain in the activity history.
 
+IIOU 2.5 Testnet also supports one-time, weekly and monthly agreements, suggested installment plans and private reminders limited to once every 72 hours. A recurring cycle is generated only after the current agreement is mutually settled. These application records do not custody or transfer Test-Pi between participants.
+
 ## Product surfaces
 
 - `/` — main responsive IOU dashboard

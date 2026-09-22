@@ -1,6 +1,7 @@
 import { randomUUID } from 'node:crypto';
 import { verifyPiUser, apiError } from '../lib/pi.js';
 import { rememberUser, claimPendingIous, getIou, saveIou } from '../lib/store.js';
+import { safeRecordMetric } from '../lib/metrics.js';
 
 const same = (a,b) => String(a||'').toLowerCase() === String(b||'').toLowerCase();
 const terminal = status => ['settled','declined','cancelled'].includes(status);
@@ -28,9 +29,13 @@ function view(iou, user) {
     settlementClaimedAt:iou.settlementClaimedAt || null,
     role:isDebtor?'debtor':'creditor', history:Array.isArray(iou.history)?iou.history:[],
     partialPayments:iou.partialPayments || [], paidAmount, effectivePaidAmount, remainingAmount,
+    recurrence:iou.recurrence||{frequency:'none'}, installmentPlan:iou.installmentPlan||null,
+    reminderCount:Array.isArray(iou.reminders)?iou.reminders.length:0,
+    lastReminderAt:iou.reminders?.at(-1)?.at||null,
     archived:Boolean((iou.archivedBy || []).includes(user.uid)),
     permissions:{
       canAddNote:!terminal(iou.status),
+      canRemind:!terminal(iou.status)&&!([...(iou.reminders||[])].reverse().find(r=>same(r.by,user.username))&&Date.now()-new Date([...(iou.reminders||[])].reverse().find(r=>same(r.by,user.username)).at).getTime()<259200000),
       canClaimPartial:isDebtor && iou.status === 'accepted' && remainingAmount > 0 && !pendingPartial,
       canReviewPartial:isCreditor && iou.status === 'accepted' && Boolean(pendingPartial),
       canArchive:terminal(iou.status)
@@ -54,12 +59,21 @@ export default async function handler(req,res){
     const now = new Date().toISOString();
     iou.history = Array.isArray(iou.history) ? iou.history : [];
     iou.partialPayments = Array.isArray(iou.partialPayments) ? iou.partialPayments : [];
+    iou.reminders = Array.isArray(iou.reminders) ? iou.reminders : [];
 
     if(action === 'add_note'){
       if(terminal(iou.status)) return res.status(409).json({success:false,error:'Closed IOUs cannot receive new activity notes'});
       const text = String(req.body?.text || '').trim();
       if(!text || text.length > 240) return res.status(400).json({success:false,error:'Note must be between 1 and 240 characters'});
       iou.history.push({type:'note',by:user.username,text,at:now});
+    } else if(action === 'send_reminder'){
+      if(terminal(iou.status)) return res.status(409).json({success:false,error:'Closed IOUs do not need reminders'});
+      const previous=[...iou.reminders].reverse().find(r=>same(r.by,user.username));
+      if(previous&&Date.now()-new Date(previous.at).getTime()<259200000)return res.status(429).json({success:false,error:'A reminder can be sent once every 72 hours'});
+      const to=same(iou.debtorUsername,user.username)?iou.creditorUsername:iou.debtorUsername;
+      iou.reminders.push({by:user.username,to,at:now});
+      iou.history.push({type:'reminder_sent',by:user.username,to,at:now});
+      await safeRecordMetric(user.uid,'reminder_sent',`${iou.id}:${now.slice(0,10)}`);
     } else if(action === 'claim_partial'){
       if(!same(iou.debtorUsername,user.username) || iou.status !== 'accepted') return res.status(409).json({success:false,error:'Partial payment claim is not available'});
       if(iou.partialPayments.some(p=>p.status==='claimed')) return res.status(409).json({success:false,error:'A partial payment is already awaiting confirmation'});
@@ -77,6 +91,7 @@ export default async function handler(req,res){
       if(action === 'confirm_partial'){
         payment.status='confirmed'; payment.confirmedBy=user.username; payment.confirmedAt=now;
         iou.history.push({type:'partial_confirmed',by:user.username,amount:payment.amount,paymentId:payment.id,at:now});
+        await safeRecordMetric(user.uid,'partial_confirmed',payment.id);
       } else {
         payment.status='rejected'; payment.rejectedBy=user.username; payment.rejectedAt=now;
         iou.history.push({type:'partial_rejected',by:user.username,amount:payment.amount,paymentId:payment.id,at:now});
