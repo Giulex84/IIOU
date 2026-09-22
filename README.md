@@ -22,6 +22,10 @@ Every agreement has a private share link for its two participants. The link neve
 
 `Split expense` creates 2–12 separate shares connected by common group metadata. Each share retains its own acceptance, due date and settlement lifecycle, while each participant can read only their own bilateral agreement. Creating a split never initiates a Test-Pi payment. See `GROUP_SPLITS.md`.
 
+## Languages
+
+The dashboard and Activity Center offer English and Simplified Chinese. The selection persists locally and affects interface copy only; user content and stored agreement data are never translated. See `LOCALIZATION.md`.
+
 ## Product surfaces
 
 - `/` — main responsive IOU dashboard
