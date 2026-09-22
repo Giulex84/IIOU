@@ -4,7 +4,7 @@ import { rememberUser, claimPendingIous, getIou, saveIou } from '../lib/store.js
 import { safeRecordMetric } from '../lib/metrics.js';
 
 const same = (a,b) => String(a||'').toLowerCase() === String(b||'').toLowerCase();
-const terminal = status => ['settled','declined','cancelled'].includes(status);
+const terminal = status => ['settled','declined','cancelled','closed_by_agreement'].includes(status);
 
 function allowed(iou, user) {
   return iou.creatorUid === user.uid || iou.counterpartyUid === user.uid ||
@@ -21,12 +21,15 @@ function view(iou, user) {
     : Math.max(0, Math.round((Number(iou.amount)-paidAmount)*1e7)/1e7);
   const effectivePaidAmount = iou.status === 'settled' ? Number(iou.amount) : paidAmount;
   const pendingPartial = (iou.partialPayments || []).find(p => p.status === 'claimed') || null;
+  const closeRequest=iou.closeRequest||null;
+  const requestedByMe=closeRequest&&same(closeRequest.requestedBy,user.username);
   return {
     id:iou.id, amount:iou.amount, note:iou.note, dueDate:iou.dueDate, status:iou.status,
     debtorUsername:iou.debtorUsername, creditorUsername:iou.creditorUsername,
     creatorUsername:iou.creatorUsername, counterpartyUsername:iou.counterpartyUsername,
     createdAt:iou.createdAt, updatedAt:iou.updatedAt, settledAt:iou.settledAt || null,
     settlementClaimedAt:iou.settlementClaimedAt || null,
+    closedAt:iou.closedAt||null, closeRequest,
     role:isDebtor?'debtor':'creditor', history:Array.isArray(iou.history)?iou.history:[],
     partialPayments:iou.partialPayments || [], paidAmount, effectivePaidAmount, remainingAmount,
     recurrence:iou.recurrence||{frequency:'none'}, installmentPlan:iou.installmentPlan||null,
@@ -35,9 +38,12 @@ function view(iou, user) {
     archived:Boolean((iou.archivedBy || []).includes(user.uid)),
     permissions:{
       canAddNote:!terminal(iou.status),
-      canRemind:!terminal(iou.status)&&!([...(iou.reminders||[])].reverse().find(r=>same(r.by,user.username))&&Date.now()-new Date([...(iou.reminders||[])].reverse().find(r=>same(r.by,user.username)).at).getTime()<259200000),
+      canRemind:!terminal(iou.status)&&iou.status!=='closure_requested'&&!([...(iou.reminders||[])].reverse().find(r=>same(r.by,user.username))&&Date.now()-new Date([...(iou.reminders||[])].reverse().find(r=>same(r.by,user.username)).at).getTime()<259200000),
       canClaimPartial:isDebtor && iou.status === 'accepted' && remainingAmount > 0 && !pendingPartial,
       canReviewPartial:isCreditor && iou.status === 'accepted' && Boolean(pendingPartial),
+      canRequestClose:iou.status==='accepted'&&!pendingPartial,
+      canReviewClose:iou.status==='closure_requested'&&!requestedByMe,
+      canCancelClose:iou.status==='closure_requested'&&requestedByMe,
       canArchive:terminal(iou.status)
     }
   };
@@ -96,6 +102,21 @@ export default async function handler(req,res){
         payment.status='rejected'; payment.rejectedBy=user.username; payment.rejectedAt=now;
         iou.history.push({type:'partial_rejected',by:user.username,amount:payment.amount,paymentId:payment.id,at:now});
       }
+    } else if(action==='request_close'){
+      if(iou.status!=='accepted'||iou.partialPayments.some(p=>p.status==='claimed'))return res.status(409).json({success:false,error:'This agreement cannot be closed while another confirmation is pending'});
+      const reason=String(req.body?.reason||'other');
+      if(!['created_by_mistake','duplicate','agreement_cancelled','other'].includes(reason))return res.status(400).json({success:false,error:'Choose a valid closure reason'});
+      const text=String(req.body?.text||'').trim();if(text.length>160)return res.status(400).json({success:false,error:'Closure note is too long'});
+      iou.closeRequest={requestedBy:user.username,reason,text,requestedAt:now};iou.status='closure_requested';
+      iou.history.push({type:'close_requested',by:user.username,reason,text,at:now});await safeRecordMetric(user.uid,'closure_requested',iou.id);
+    } else if(action==='confirm_close'||action==='reject_close'||action==='cancel_close'){
+      if(iou.status!=='closure_requested'||!iou.closeRequest)return res.status(409).json({success:false,error:'There is no closure request to review'});
+      const mine=same(iou.closeRequest.requestedBy,user.username);
+      if(action==='cancel_close'&&!mine)return res.status(403).json({success:false,error:'Only the requester can cancel this request'});
+      if(action!=='cancel_close'&&mine)return res.status(403).json({success:false,error:'The other participant must review this request'});
+      if(action==='confirm_close'){iou.status='closed_by_agreement';iou.closedAt=now;iou.closedReason=iou.closeRequest.reason;iou.history.push({type:'close_confirmed',by:user.username,at:now});await safeRecordMetric(user.uid,'closed_by_agreement',iou.id)}
+      else{iou.status='accepted';iou.history.push({type:action==='reject_close'?'close_rejected':'close_cancelled',by:user.username,at:now})}
+      iou.closeRequest=null;
     } else if(action === 'archive' || action === 'unarchive'){
       if(!terminal(iou.status)) return res.status(409).json({success:false,error:'Only closed IOUs can be archived'});
       iou.archivedBy = Array.isArray(iou.archivedBy) ? iou.archivedBy : [];
