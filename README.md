@@ -26,6 +26,10 @@ Every agreement has a private share link for its two participants. The link neve
 
 The dashboard and Activity Center offer English and Simplified Chinese. The selection persists locally and affects interface copy only; user content and stored agreement data are never translated. See `LOCALIZATION.md`.
 
+## Login bootstrap
+
+After Pi authentication, `/api/auth` verifies the access token once, synchronizes pending agreements, records the login metric and returns both the verified user and the non-simulator agreement list. The dashboard and Activity Center render this payload directly; Testnet A2U diagnostics load independently after the main interface becomes available.
+
 ## Product surfaces
 
 - `/` — main responsive IOU dashboard
