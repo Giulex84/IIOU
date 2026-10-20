@@ -99,3 +99,8 @@ The browser-supplied Pi user object is presentation-only. The backend uses the a
 ## Network
 
 This repository is for the **IIOU Testnet app**. A separate Pi Mainnet application, credentials, wallet and deployment must be created and paired only after Testnet product, wallet, storage, security and payment testing are complete.
+
+
+## Minimal analytics release
+
+New Testnet analytics collection is disabled at the telemetry boundary. Existing historical data is preserved under the existing retention policy. Gameplay persistence, security controls and payment test receipts are unchanged.
