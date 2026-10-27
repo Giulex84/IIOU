@@ -3,7 +3,9 @@
   "version": "2.7.1",
   "private": true,
   "scripts": {
-    "test": "node --test tests/persistence.test.cjs"
+    "test": "node --test tests/persistence.test.cjs",
+    "test:release": "node --test tests/persistence.test.cjs tests/localization.test.cjs tests/payments.test.cjs",
+    "build:locales": "node scripts/build-locales.cjs"
   },
   "engines": {
     "node": "22.x"

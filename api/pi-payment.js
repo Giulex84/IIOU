@@ -11,7 +11,7 @@ function validatePayment(payment, user) {
   if (payment.user_uid !== user.uid) throw Object.assign(new Error('Payment does not belong to this user'), { status: 403 });
   if (payment.direction !== 'user_to_app') throw Object.assign(new Error('Invalid payment direction'), { status: 400 });
   if (payment.network !== 'Pi Testnet') throw Object.assign(new Error('This Testnet app only accepts Pi Testnet payments'), { status: 400 });
-  if (Math.abs(Number(payment.amount) - SUPPORT_AMOUNT) > 0.0000001) throw Object.assign(new Error('Invalid payment amount'), { status: 400 });
+  if (!Number.isFinite(Number(payment.amount)) || Math.abs(Number(payment.amount) - SUPPORT_AMOUNT) > 0.0000001) throw Object.assign(new Error('Invalid payment amount'), { status: 400 });
   if (payment.memo !== SUPPORT_MEMO) throw Object.assign(new Error('Invalid payment memo'), { status: 400 });
   if (payment.metadata?.product !== SUPPORT_PRODUCT) throw Object.assign(new Error('Invalid payment metadata'), { status: 400 });
 }

@@ -1,0 +1,410 @@
+Language|Lingua|语言|اللغة|Ngôn ngữ|언어|Bahasa|Language
+Privacy|Privacy|隐私政策|الخصوصية|Quyền riêng tư|개인정보 처리방침|Privasi|Privacy
+Terms|Condizioni|服务条款|الشروط|Điều khoản|이용약관|Ketentuan|Terms
+Continue with Pi|Continua con Pi|使用 Pi 继续|المتابعة باستخدام Pi|Tiếp tục với Pi|Pi로 계속|Lanjutkan dengan Pi|Continue with Pi
+Connecting to Pi…|Connessione a Pi…|正在连接 Pi…|جارٍ الاتصال بـ Pi…|Đang kết nối Pi…|Pi에 연결 중…|Menghubungkan ke Pi…|Dey connect to Pi…
+Loading your agreements…|Caricamento degli accordi…|正在加载约定…|جارٍ تحميل اتفاقاتك…|Đang tải thỏa thuận…|약정을 불러오는 중…|Memuat kesepakatan…|Dey load your agreements…
+Signed in as|Accesso come|已登录为|تم تسجيل الدخول باسم|Đã đăng nhập bằng|로그인 계정|Masuk sebagai|You sign in as
+Refresh|Aggiorna|刷新|تحديث|Làm mới|새로고침|Muat ulang|Refresh
+Cancel|Annulla|取消|إلغاء|Hủy|취소|Batal|Cancel
+Accept|Accetta|接受|قبول|Chấp nhận|수락|Terima|Accept
+Decline|Rifiuta|拒绝|رفض|Từ chối|거절|Tolak|No accept
+Completed|Completato|已完成|مكتمل|Đã hoàn tất|완료됨|Selesai|Done
+Confirmed|Confermato|已确认|مؤكد|Đã xác nhận|확인됨|Dikonfirmasi|Confirmed
+Active|Attivi|进行中|نشط|Đang hoạt động|진행 중|Aktif|Active
+All|Tutti|全部|الكل|Tất cả|전체|Semua|All
+You owe|Devi|你欠他人|عليك|Bạn nợ|내가 갚을 금액|Utang Anda|You owe
+Owed to you|Ti devono|他人欠你|لك|Người khác nợ bạn|받을 금액|Piutang Anda|Dem owe you
+Settled|Saldati|已结清|تمت التسوية|Đã tất toán|정산 완료|Lunas|Settled
+Awaiting reply|In attesa di risposta|等待回复|بانتظار الرد|Đang chờ phản hồi|응답 대기|Menunggu balasan|Dey wait for reply
+Accepted|Accettato|已接受|مقبول|Đã chấp nhận|수락됨|Diterima|Accepted
+Payment claimed|Pagamento dichiarato|已申报付款|تم الإبلاغ عن الدفع|Đã báo thanh toán|지급 신고됨|Pembayaran dilaporkan|Dem report payment
+Declined|Rifiutato|已拒绝|مرفوض|Đã từ chối|거절됨|Ditolak|No accepted
+Cancelled|Annullato|已取消|ملغى|Đã hủy|취소됨|Dibatalkan|Cancelled
+Closure requested|Chiusura richiesta|已申请关闭|طُلب الإغلاق|Đã yêu cầu đóng|종료 요청됨|Penutupan diminta|Dem request closure
+Closed by agreement|Chiuso di comune accordo|双方同意关闭|مغلق باتفاق الطرفين|Đóng theo thỏa thuận|합의로 종료됨|Ditutup atas kesepakatan|Both sides agree close am
+Keep promises clear.|Accordi sempre chiari.|让承诺清晰可见。|اجعل الاتفاقات واضحة.|Giữ cam kết rõ ràng.|약속을 명확하게.|Jaga kesepakatan tetap jelas.|Make promises clear.
+Private shared records for Pioneers|Accordi privati condivisi tra Pioneer|先锋用户的私密共享记录|سجلات مشتركة خاصة للرواد|Hồ sơ riêng được chia sẻ giữa các Pioneer|파이오니어 간 비공개 공유 기록|Catatan bersama pribadi untuk Pioneer|Private shared records for Pioneers
+What we owe should stay clear.|Sapere chi deve cosa, senza dubbi.|让每一笔约定都清楚。|يجب أن تبقى الالتزامات واضحة.|Các khoản nợ cần luôn rõ ràng.|서로의 약정을 명확하게.|Kewajiban harus tetap jelas.|Make wetin we owe clear.
+Create a personal IOU, let the other Pioneer confirm it, then keep both sides aligned until settlement.|Crea un accordo personale, fallo confermare dall'altro Pioneer e seguitelo insieme fino al saldo.|创建个人约定，由对方确认，双方共同跟踪直到结清。|أنشئ اتفاقًا شخصيًا، ودع الطرف الآخر يؤكده، ثم تابعا السجل معًا حتى التسوية.|Tạo thỏa thuận cá nhân, để Pioneer kia xác nhận và cùng theo dõi đến khi tất toán.|개인 약정을 만들고 상대방의 확인을 받은 후 정산까지 함께 관리하세요.|Buat kesepakatan pribadi, minta konfirmasi Pioneer lain, lalu pantau bersama hingga lunas.|Create personal agreement, make the other Pioneer confirm am, then follow am together till settlement.
+Pi identity|Identità Pi|Pi 身份|هوية Pi|Danh tính Pi|Pi 신원|Identitas Pi|Pi identity
+No separate account.|Nessun account aggiuntivo.|无需单独账户。|لا حاجة لحساب منفصل.|Không cần tài khoản riêng.|별도 계정이 필요 없습니다.|Tidak perlu akun terpisah.|No need another account.
+Two-sided confirmation|Conferma di entrambe le parti|双方确认|تأكيد الطرفين|Xác nhận từ hai bên|양측 확인|Konfirmasi kedua pihak|Both sides confirm
+Both people see the same record.|Entrambi vedono lo stesso accordo.|双方查看同一记录。|يرى الطرفان السجل نفسه.|Hai bên xem cùng một hồ sơ.|양측이 같은 기록을 봅니다.|Kedua pihak melihat catatan yang sama.|Both people see the same record.
+Clear history|Cronologia chiara|清晰记录|سجل واضح|Lịch sử rõ ràng|명확한 이력|Riwayat yang jelas|Clear history
+Actions stay visible in the timeline.|Le attività restano nella cronologia.|操作保留在时间线中。|تبقى الإجراءات ظاهرة في السجل.|Các thao tác được giữ trong dòng thời gian.|활동이 이력에 남습니다.|Tindakan tetap terlihat dalam riwayat.|Actions go remain for timeline.
+IIOU is a private record-keeping tool. It does not act as a bank, lender, escrow service, or dispute arbiter.|IIOU registra accordi privati. Non è una banca, un finanziatore, un servizio di deposito a garanzia o un arbitro delle controversie.|IIOU 是私密记录工具，不是银行、贷款方、托管服务或争议仲裁机构。|IIOU أداة لسجلات خاصة، وليست بنكًا أو جهة إقراض أو خدمة ضمان أو جهة فصل في النزاعات.|IIOU là công cụ ghi chép riêng, không phải ngân hàng, bên cho vay, dịch vụ ký quỹ hay cơ quan giải quyết tranh chấp.|IIOU는 비공개 기록 도구이며 은행, 대출 기관, 에스크로 또는 분쟁 중재 기관이 아닙니다.|IIOU adalah alat pencatatan pribadi, bukan bank, pemberi pinjaman, layanan escrow, atau penengah sengketa.|IIOU na private record tool. E no be bank, lender, escrow service or dispute judge.
+Next action|Prossima attività|下一步|الإجراء التالي|Việc tiếp theo|다음 작업|Tindakan berikutnya|Next action
++ New agreement|+ Nuovo accordo|+ 新建约定|+ اتفاق جديد|+ Thỏa thuận mới|+ 새 약정|+ Kesepakatan baru|+ New agreement
+Split expense|Dividi una spesa|分摊费用|تقسيم مصروف|Chia chi phí|비용 나누기|Bagi pengeluaran|Share expense
+Activity center|Centro attività|活动中心|مركز النشاط|Trung tâm hoạt động|활동 센터|Pusat aktivitas|Activity centre
+Open agreement|Apri accordo|打开约定|فتح الاتفاق|Mở thỏa thuận|약정 열기|Buka kesepakatan|Open agreement
+View details|Vedi dettagli|查看详情|عرض التفاصيل|Xem chi tiết|상세 보기|Lihat detail|See details
+Cancel request|Annulla richiesta|取消请求|إلغاء الطلب|Hủy yêu cầu|요청 취소|Batalkan permintaan|Cancel request
+Mark paid|Dichiara pagato|标记已付款|الإبلاغ عن الدفع|Báo đã thanh toán|지급 완료 신고|Tandai dibayar|Mark say you don pay
+Confirm settlement|Conferma saldo|确认结清|تأكيد التسوية|Xác nhận tất toán|정산 확인|Konfirmasi pelunasan|Confirm settlement
+Not yet|Non ancora|尚未收到|ليس بعد|Chưa|아직 아님|Belum|Never yet
+Support IIOU|Sostieni IIOU|支持 IIOU|دعم IIOU|Ủng hộ IIOU|IIOU 후원|Dukung IIOU|Support IIOU
+Support with 0.01 Pi|Sostieni con 0,01 Pi|用 0.01 Pi 支持|ادعم بمبلغ 0.01 Pi|Ủng hộ 0,01 Pi|0.01 Pi로 후원|Dukung dengan 0,01 Pi|Support with 0.01 Pi
+Optional 0.01 Pi Mainnet payment to support development. It never changes an IOU balance, due date or settlement status.|Contributo facoltativo di 0,01 Pi Mainnet per lo sviluppo. Non modifica importi, scadenze o stato degli accordi.|自愿支付 0.01 Mainnet Pi 支持开发，不会改变约定余额、到期日或结算状态。|دفعة اختيارية بقيمة 0.01 Pi على Mainnet لدعم التطوير. لا تغيّر رصيد الاتفاق أو موعده أو حالته.|Khoản ủng hộ tùy chọn 0,01 Pi Mainnet không làm thay đổi số dư, hạn trả hay trạng thái thỏa thuận.|선택적 0.01 Pi 메인넷 후원이며 약정 잔액, 기한, 정산 상태에 영향을 주지 않습니다.|Dukungan opsional 0,01 Pi Mainnet tidak mengubah saldo, tenggat, atau status kesepakatan.|Optional 0.01 Pi Mainnet support for development. E no change agreement balance, due date or settlement status.
+Support payments are separate from personal IOU records.|I contributi sono separati dagli accordi personali.|支持付款与个人约定记录分开。|دفعات الدعم منفصلة عن الاتفاقات الشخصية.|Khoản ủng hộ tách biệt với hồ sơ thỏa thuận cá nhân.|후원 결제는 개인 약정 기록과 별개입니다.|Pembayaran dukungan terpisah dari catatan kesepakatan pribadi.|Support payment no be payment for personal IOU.
+Create an agreement|Crea un accordo|创建约定|إنشاء اتفاق|Tạo thỏa thuận|약정 만들기|Buat kesepakatan|Create agreement
+Set clear terms. The other Pioneer can accept or decline the shared record.|Definisci i termini. L'altro Pioneer potrà accettare o rifiutare.|设定清晰条款，对方可以接受或拒绝。|حدد شروطًا واضحة. يمكن للطرف الآخر قبول السجل أو رفضه.|Đặt điều khoản rõ ràng. Pioneer kia có thể chấp nhận hoặc từ chối.|조건을 명확히 정하세요. 상대방이 수락하거나 거절할 수 있습니다.|Tentukan syarat yang jelas. Pioneer lain dapat menerima atau menolak.|Make terms clear. The other Pioneer fit accept or reject am.
+Relationship|Rapporto|关系|العلاقة|Quan hệ|관계|Hubungan|Relationship
+I owe them|Devo a questa persona|我欠对方|أنا مدين له|Tôi nợ họ|내가 갚아야 함|Saya berutang padanya|I owe dem
+They owe me|Questa persona mi deve|对方欠我|هو مدين لي|Họ nợ tôi|상대방이 갚아야 함|Dia berutang pada saya|Dem owe me
+Pi username|Nome utente Pi|Pi 用户名|اسم مستخدم Pi|Tên người dùng Pi|Pi 사용자 이름|Nama pengguna Pi|Pi username
+username|nome utente|用户名|اسم المستخدم|tên người dùng|사용자 이름|nama pengguna|username
+username amount|nomeutente importo|用户名 金额|اسم المستخدم المبلغ|tênngườidùng sốtiền|사용자이름 금액|namapengguna jumlah|username amount
+Amount in Pi|Importo in Pi|Pi 金额|المبلغ بوحدة Pi|Số tiền Pi|Pi 금액|Jumlah Pi|Amount for Pi
+Reason / note|Motivo / nota|原因 / 备注|السبب / الملاحظة|Lý do / ghi chú|사유 / 메모|Alasan / catatan|Reason / note
+First due date (optional)|Prima scadenza (facoltativa)|首次到期日（可选）|أول موعد استحقاق (اختياري)|Ngày đến hạn đầu tiên (tùy chọn)|첫 기한(선택)|Tanggal jatuh tempo pertama (opsional)|First due date (if you want)
+Repeat|Ripetizione|重复|التكرار|Lặp lại|반복|Pengulangan|Repeat
+One time|Una volta|一次性|مرة واحدة|Một lần|일회성|Satu kali|One time
+Every week|Ogni settimana|每周|كل أسبوع|Hàng tuần|매주|Setiap minggu|Every week
+Every month|Ogni mese|每月|كل شهر|Hàng tháng|매월|Setiap bulan|Every month
+Repayment plan|Piano di saldo|还款计划|خطة السداد|Kế hoạch trả nợ|상환 계획|Rencana pembayaran|Repayment plan
+Single payment|Unica soluzione|一次付清|دفعة واحدة|Một lần thanh toán|일시불|Sekali pembayaran|One payment
+{0} installments|{0} rate|{0} 期|{0} أقساط|{0} kỳ trả|{0}회 분할|{0} cicilan|{0} installments
+Create agreement|Crea accordo|创建约定|إنشاء الاتفاق|Tạo thỏa thuận|약정 만들기|Buat kesepakatan|Create agreement
+Split an expense|Dividi una spesa|分摊费用|تقسيم مصروف|Chia một khoản chi|비용 분할|Bagi pengeluaran|Share one expense
+Create one private share for each Pioneer. Enter one participant per line as|Crea una quota privata per ogni Pioneer. Scrivi un partecipante per riga come|为每位先锋创建私密份额，每行输入|أنشئ حصة خاصة لكل رائد. أدخل مشاركًا في كل سطر بالشكل|Tạo phần riêng cho mỗi Pioneer. Mỗi dòng nhập một người theo dạng|파이오니어별 비공개 몫을 만듭니다. 한 줄에 한 명씩 입력하세요|Buat bagian pribadi untuk setiap Pioneer. Masukkan satu peserta per baris sebagai|Create private share for each Pioneer. Put one person for each line as
+Expense title|Titolo della spesa|费用名称|عنوان المصروف|Tên khoản chi|지출 제목|Judul pengeluaran|Expense title
+Participants and shares|Partecipanti e quote|参与者与份额|المشاركون والحصص|Người tham gia và phần chia|참여자와 분담액|Peserta dan bagian|People and shares
+2–12 different Pioneers. Do not include your own username.|Da 2 a 12 Pioneer diversi. Non includere il tuo nome utente.|填写 2–12 位不同先锋，不要包含自己。|من 2 إلى 12 رائدًا مختلفًا. لا تضف اسمك.|Từ 2–12 Pioneer khác nhau. Không nhập chính bạn.|서로 다른 2~12명을 입력하세요. 본인은 제외하세요.|2–12 Pioneer berbeda. Jangan masukkan nama Anda sendiri.|Na 2–12 different Pioneers. No add your own username.
+Due date (optional)|Scadenza (facoltativa)|到期日（可选）|موعد الاستحقاق (اختياري)|Ngày đến hạn (tùy chọn)|기한(선택)|Tanggal jatuh tempo (opsional)|Due date (if you want)
+Create split|Crea quote|创建分摊|إنشاء الحصص|Tạo phần chia|분담 생성|Buat pembagian|Create shares
+Creating shares…|Creazione delle quote…|正在创建份额…|جارٍ إنشاء الحصص…|Đang tạo phần chia…|분담 생성 중…|Membuat pembagian…|Dey create shares…
+Dinner, trip, shared purchase…|Cena, viaggio, acquisto condiviso…|聚餐、旅行、共同购物…|عشاء، رحلة، شراء مشترك…|Bữa ăn, chuyến đi, mua chung…|식사, 여행, 공동 구매…|Makan malam, perjalanan, pembelian bersama…|Dinner, travel, things una buy together…
+Rent, shared purchase, personal agreement…|Affitto, acquisto condiviso, accordo personale…|房租、共同购物、个人约定…|إيجار، شراء مشترك، اتفاق شخصي…|Tiền thuê, mua chung, thỏa thuận cá nhân…|임대료, 공동 구매, 개인 약정…|Sewa, pembelian bersama, kesepakatan pribadi…|Rent, shared purchase, personal agreement…
+No due date|Nessuna scadenza|无到期日|دون موعد استحقاق|Không có hạn trả|기한 없음|Tanpa jatuh tempo|No due date
+Due today|Scade oggi|今天到期|مستحق اليوم|Đến hạn hôm nay|오늘 기한|Jatuh tempo hari ini|Due today
+Due date passed · awaiting acceptance|Scadenza passata · in attesa di accettazione|到期日已过 · 等待接受|انقضى الموعد · بانتظار القبول|Đã quá hạn · chờ chấp nhận|기한 경과 · 수락 대기|Jatuh tempo lewat · menunggu penerimaan|Due date don pass · dey wait for acceptance
+Due in {0} days|Scade tra {0} giorni|{0} 天后到期|يستحق بعد {0} أيام|Đến hạn sau {0} ngày|{0}일 후 기한|Jatuh tempo dalam {0} hari|Due for {0} days
+Due in {0} day|Scade tra {0} giorno|{0} 天后到期|يستحق بعد {0} يوم|Đến hạn sau {0} ngày|{0}일 후 기한|Jatuh tempo dalam {0} hari|Due for {0} day
+Overdue by {0} days|In ritardo di {0} giorni|已逾期 {0} 天|متأخر {0} أيام|Quá hạn {0} ngày|{0}일 연체|Terlambat {0} hari|E don late by {0} days
+Overdue by {0} day|In ritardo di {0} giorno|已逾期 {0} 天|متأخر {0} يوم|Quá hạn {0} ngày|{0}일 연체|Terlambat {0} hari|E don late by {0} day
+Due {0}|Scadenza {0}|到期日 {0}|الاستحقاق {0}|Đến hạn {0}|기한 {0}|Jatuh tempo {0}|Due {0}
+Created {0}|Creato il {0}|创建于 {0}|أُنشئ {0}|Đã tạo {0}|생성일 {0}|Dibuat {0}|Created {0}
+You owe @{0}|Devi a @{0}|你欠 @{0}|أنت مدين لـ @{0}|Bạn nợ @{0}|@{0}님에게 갚아야 함|Anda berutang kepada @{0}|You owe @{0}
+@{0} owes you|@{0} ti deve|@{0} 欠你|@{0} مدين لك|@{0} nợ bạn|@{0}님에게 받을 금액|@{0} berutang kepada Anda|@{0} owe you
+One-time agreement|Accordo singolo|一次性约定|اتفاق لمرة واحدة|Thỏa thuận một lần|일회성 약정|Kesepakatan satu kali|One-time agreement
+Repeats weekly|Si ripete ogni settimana|每周重复|يتكرر أسبوعيًا|Lặp hàng tuần|매주 반복|Berulang mingguan|E dey repeat every week
+Repeats monthly|Si ripete ogni mese|每月重复|يتكرر شهريًا|Lặp hàng tháng|매월 반복|Berulang bulanan|E dey repeat every month
+cycle {0}|ciclo {0}|周期 {0}|الدورة {0}|chu kỳ {0}|{0}번째 주기|siklus {0}|cycle {0}
+{0} installments · {1} suggested|{0} rate · {1} suggeriti|{0} 期 · 建议 {1}|{0} أقساط · المقترح {1}|{0} kỳ · gợi ý {1}|{0}회 분할 · 권장액 {1}|{0} cicilan · saran {1}|{0} installments · suggested {1}
+{0} installments · {1} suggested each|{0} rate · {1} suggeriti ciascuna|{0} 期 · 建议每期 {1}|{0} أقساط · {1} لكل قسط|{0} kỳ · gợi ý mỗi kỳ {1}|{0}회 분할 · 회당 권장액 {1}|{0} cicilan · saran {1} per cicilan|{0} installments · suggested {1} each
+{0} confirmed|{0} confermati|已确认 {0}|تم تأكيد {0}|Đã xác nhận {0}|확인 금액 {0}|{0} dikonfirmasi|{0} confirmed
+No agreements here yet.|Non ci sono ancora accordi.|暂无约定。|لا توجد اتفاقات هنا بعد.|Chưa có thỏa thuận.|아직 약정이 없습니다.|Belum ada kesepakatan.|No agreement here yet.
+Create one for a shared expense, recurring commitment or repayment plan.|Crea un accordo per una spesa condivisa, un impegno ricorrente o un piano di saldo.|为共享费用、重复约定或还款计划创建记录。|أنشئ اتفاقًا لمصروف مشترك أو التزام متكرر أو خطة سداد.|Tạo thỏa thuận cho chi phí chung, cam kết định kỳ hoặc kế hoạch trả nợ.|공동 비용, 반복 약정 또는 상환 계획을 만드세요.|Buat kesepakatan untuk biaya bersama, komitmen berulang, atau rencana pembayaran.|Create one for shared expense, repeated commitment or repayment plan.
+Opening Pi payment…|Apertura del pagamento Pi…|正在打开 Pi 付款…|جارٍ فتح دفع Pi…|Đang mở thanh toán Pi…|Pi 결제 여는 중…|Membuka pembayaran Pi…|Dey open Pi payment…
+Payment completed successfully. Thank you for supporting IIOU.|Pagamento completato. Grazie per il sostegno a IIOU.|付款成功。感谢支持 IIOU。|اكتملت الدفعة. شكرًا لدعم IIOU.|Thanh toán thành công. Cảm ơn đã ủng hộ IIOU.|결제가 완료되었습니다. IIOU 후원에 감사드립니다.|Pembayaran berhasil. Terima kasih telah mendukung IIOU.|Payment don complete. Thank you for supporting IIOU.
+Payment cancelled.|Pagamento annullato.|付款已取消。|أُلغيت الدفعة.|Đã hủy thanh toán.|결제가 취소되었습니다.|Pembayaran dibatalkan.|Payment cancelled.
+Payment failed.|Pagamento non riuscito.|付款失败。|فشلت الدفعة.|Thanh toán thất bại.|결제에 실패했습니다.|Pembayaran gagal.|Payment no work.
+Agreement created. The other Pioneer can now review it.|Accordo creato. L'altro Pioneer può verificarlo.|约定已创建，对方现在可以查看。|أُنشئ الاتفاق. يمكن للطرف الآخر مراجعته الآن.|Đã tạo thỏa thuận. Pioneer kia có thể xem xét.|약정이 생성되었습니다. 상대방이 검토할 수 있습니다.|Kesepakatan dibuat. Pioneer lain dapat meninjaunya.|Agreement don create. The other Pioneer fit review am now.
+Use one line per participant: username amount|Usa una riga per partecipante: nomeutente importo|每位参与者一行：用户名 金额|استخدم سطرًا لكل مشارك: اسم المستخدم المبلغ|Mỗi người một dòng: tênngườidùng sốtiền|한 줄에 한 명: 사용자이름 금액|Satu baris per peserta: namapengguna jumlah|Use one line for each person: username amount
+Split created: {0} private shares totaling {1}.|Create {0} quote private per un totale di {1}.|已创建 {0} 份私密份额，总计 {1}。|أُنشئت {0} حصص خاصة بإجمالي {1}.|Đã tạo {0} phần riêng, tổng {1}.|비공개 분담 {0}건 생성, 합계 {1}.|Dibuat {0} bagian pribadi dengan total {1}.|{0} private shares don create, total na {1}.
+IIOU Activity|Attività IIOU|IIOU 活动|نشاط IIOU|Hoạt động IIOU|IIOU 활동|Aktivitas IIOU|IIOU activity
+Details, confirmations and settlement history|Dettagli, conferme e cronologia dei saldi|详情、确认与结算记录|التفاصيل والتأكيدات وسجل التسوية|Chi tiết, xác nhận và lịch sử tất toán|상세 정보, 확인 및 정산 이력|Detail, konfirmasi, dan riwayat pelunasan|Details, confirmations and settlement history
+Back to IIOU|Torna a IIOU|返回 IIOU|العودة إلى IIOU|Về IIOU|IIOU로 돌아가기|Kembali ke IIOU|Go back to IIOU
+Private activity center|Centro attività privato|私密活动中心|مركز النشاط الخاص|Trung tâm hoạt động riêng|비공개 활동 센터|Pusat aktivitas pribadi|Private activity centre
+Authenticate with Pi to view only IOUs connected to your verified account.|Accedi con Pi per vedere solo gli accordi collegati al tuo account verificato.|使用 Pi 验证身份，仅查看与你账户相关的约定。|سجّل الدخول باستخدام Pi لعرض الاتفاقات المرتبطة بحسابك الموثق فقط.|Xác thực bằng Pi để chỉ xem thỏa thuận thuộc tài khoản đã xác minh của bạn.|Pi로 인증하여 본인의 확인된 계정과 연결된 약정만 보세요.|Masuk dengan Pi untuk melihat kesepakatan yang terkait akun terverifikasi Anda saja.|Sign in with Pi to see only agreements wey connect to your verified account.
+Your IOUs|I tuoi accordi|你的约定|اتفاقاتك|Thỏa thuận của bạn|내 약정|Kesepakatan Anda|Your IOUs
+All IOUs|Tutti gli accordi|全部约定|كل الاتفاقات|Tất cả thỏa thuận|모든 약정|Semua kesepakatan|All IOUs
+Open an IOU to review its full state, timeline and the actions available to you.|Apri un accordo per vedere stato, cronologia e azioni disponibili.|打开约定查看状态、时间线和可用操作。|افتح اتفاقًا لعرض حالته وسجله والإجراءات المتاحة لك.|Mở thỏa thuận để xem trạng thái, dòng thời gian và thao tác có sẵn.|약정을 열어 상태, 이력 및 가능한 작업을 확인하세요.|Buka kesepakatan untuk melihat status, riwayat, dan tindakan yang tersedia.|Open IOU to see full status, history and wetin you fit do.
+No IOUs yet.|Non ci sono ancora accordi.|暂无约定。|لا توجد اتفاقات بعد.|Chưa có thỏa thuận.|아직 약정이 없습니다.|Belum ada kesepakatan.|No IOUs yet.
+Waiting for the other Pioneer|In attesa dell'altro Pioneer|等待对方|بانتظار الطرف الآخر|Đang chờ Pioneer kia|상대방 대기 중|Menunggu Pioneer lain|Dey wait for the other Pioneer
+This IOU becomes active only after the counterparty accepts the shared record.|L'accordo diventa attivo solo quando l'altra parte lo accetta.|对方接受后，此约定才生效。|يصبح الاتفاق نشطًا فقط بعد قبول الطرف الآخر.|Thỏa thuận chỉ có hiệu lực sau khi bên kia chấp nhận.|상대방이 수락해야 약정이 활성화됩니다.|Kesepakatan aktif setelah pihak lain menerimanya.|IOU go active only after the other person accept am.
+Your confirmation is needed|Serve la tua conferma|需要你确认|تأكيدك مطلوب|Cần bạn xác nhận|확인이 필요합니다|Konfirmasi Anda diperlukan|We need your confirmation
+Review the amount, direction and note. Accept only if the record is correct.|Verifica importo, direzione e nota. Accetta solo se i dati sono corretti.|核对金额、方向和备注，仅在正确时接受。|راجع المبلغ والاتجاه والملاحظة، واقبل فقط إذا كان السجل صحيحًا.|Kiểm tra số tiền, chiều nợ và ghi chú. Chỉ chấp nhận nếu đúng.|금액, 방향, 메모를 확인하고 정확할 때만 수락하세요.|Periksa jumlah, arah, dan catatan. Terima hanya jika benar.|Check amount, who owe who and note. Accept only if everything correct.
+Active IOU|Accordo attivo|进行中的约定|اتفاق نشط|Thỏa thuận đang hoạt động|진행 중인 약정|Kesepakatan aktif|Active IOU
+When you have paid outside IIOU, mark the payment here so the creditor can confirm settlement.|Dopo aver pagato fuori da IIOU, dichiaralo qui: il creditore potrà confermare il saldo.|在 IIOU 外付款后，在此标记，供债权人确认。|بعد الدفع خارج IIOU، سجّله هنا ليؤكد الدائن التسوية.|Sau khi thanh toán ngoài IIOU, đánh dấu tại đây để chủ nợ xác nhận.|IIOU 외부에서 지급한 뒤 여기서 신고하면 채권자가 정산을 확인할 수 있습니다.|Setelah membayar di luar IIOU, tandai di sini agar pemberi piutang dapat mengonfirmasi.|After you pay outside IIOU, mark am here so the creditor fit confirm settlement.
+The debtor can mark a payment as made. You remain in control of the final settlement confirmation.|Il debitore può dichiarare il pagamento. La conferma finale del saldo spetta a te.|债务人可以申报付款，最终结清由你确认。|يمكن للمدين الإبلاغ عن الدفع، ويبقى تأكيد التسوية النهائي بيدك.|Bên nợ có thể báo đã trả. Bạn quyết định xác nhận tất toán cuối cùng.|채무자가 지급을 신고할 수 있으며 최종 정산 확인은 본인이 합니다.|Pihak yang berutang dapat melaporkan pembayaran. Konfirmasi akhir tetap di tangan Anda.|Debtor fit mark say e don pay. Na you go confirm final settlement.
+Settlement confirmation needed|Serve confermare il saldo|需要确认结清|يلزم تأكيد التسوية|Cần xác nhận tất toán|정산 확인 필요|Konfirmasi pelunasan diperlukan|Settlement confirmation needed
+The debtor says the IOU has been paid. Confirm only after you have actually received the value.|Il debitore dichiara di aver pagato. Conferma solo dopo aver ricevuto davvero l'importo.|对方申报已付款。仅在实际收到后确认。|يقول المدين إنه دفع. لا تؤكد إلا بعد استلام القيمة فعليًا.|Bên nợ báo đã trả. Chỉ xác nhận sau khi thực sự nhận đủ.|채무자가 지급했다고 합니다. 실제로 받은 후에만 확인하세요.|Pihak yang berutang mengaku sudah membayar. Konfirmasi hanya setelah benar-benar menerima.|Debtor say e don pay. Confirm only after you really receive the value.
+Waiting for creditor confirmation|In attesa della conferma del creditore|等待债权人确认|بانتظار تأكيد الدائن|Chờ chủ nợ xác nhận|채권자 확인 대기|Menunggu konfirmasi pemberi piutang|Dey wait for creditor confirmation
+You marked this IOU as paid. It remains open until the creditor confirms receipt.|Hai dichiarato il pagamento. L'accordo resta aperto finché il creditore non conferma la ricezione.|你已标记付款，约定保持开放直到对方确认收款。|سجّلت الدفع. يبقى الاتفاق مفتوحًا حتى يؤكد الدائن الاستلام.|Bạn đã báo thanh toán. Thỏa thuận vẫn mở đến khi chủ nợ xác nhận nhận tiền.|지급을 신고했습니다. 채권자가 수령을 확인할 때까지 약정은 유지됩니다.|Anda menandai sudah membayar. Kesepakatan tetap terbuka hingga penerimaan dikonfirmasi.|You mark say you don pay. IOU still open till creditor confirm receipt.
+Closure awaiting confirmation|Chiusura in attesa di conferma|等待确认关闭|الإغلاق بانتظار التأكيد|Chờ xác nhận đóng|종료 확인 대기|Penutupan menunggu konfirmasi|Closure dey wait for confirmation
+This IOU remains open until the other participant confirms. No payment has been recorded.|L'accordo resta aperto fino alla conferma dell'altra parte. Nessun pagamento è stato registrato.|约定在对方确认前保持开放，尚未记录付款。|يبقى الاتفاق مفتوحًا حتى يؤكد الطرف الآخر. لم يُسجل أي دفع.|Thỏa thuận còn mở đến khi bên kia xác nhận. Chưa ghi nhận thanh toán.|상대방이 확인할 때까지 열려 있습니다. 결제는 기록되지 않았습니다.|Kesepakatan tetap terbuka sampai pihak lain mengonfirmasi. Tidak ada pembayaran dicatat.|IOU still open till the other person confirm. No payment don record.
+Closed by mutual agreement|Chiuso di comune accordo|双方同意关闭|مغلق باتفاق الطرفين|Đóng theo đồng thuận|상호 합의로 종료|Ditutup atas persetujuan bersama|Both sides agree close am
+This IOU was closed without recording a settlement.|L'accordo è stato chiuso senza registrare un saldo.|此约定已关闭，未记录结算。|أُغلق الاتفاق دون تسجيل تسوية.|Thỏa thuận đã đóng mà không ghi nhận tất toán.|정산 기록 없이 약정이 종료되었습니다.|Kesepakatan ditutup tanpa mencatat pelunasan.|Dem close this IOU without settlement record.
+Settlement complete|Saldo completato|结算完成|اكتملت التسوية|Đã tất toán|정산 완료|Pelunasan selesai|Settlement don complete
+Both sides completed the confirmation flow. This receipt remains in the shared history.|Entrambe le parti hanno confermato. La ricevuta resta nella cronologia condivisa.|双方已完成确认，此凭证保留在共享历史中。|أكمل الطرفان التأكيد. يبقى الإيصال في السجل المشترك.|Hai bên đã xác nhận. Biên nhận được giữ trong lịch sử chung.|양측이 확인했습니다. 확인서는 공유 이력에 남습니다.|Kedua pihak selesai mengonfirmasi. Bukti tetap disimpan dalam riwayat bersama.|Both sides don confirm. This receipt go remain for shared history.
+IOU declined|Accordo rifiutato|约定已拒绝|رُفض الاتفاق|Thỏa thuận bị từ chối|약정 거절됨|Kesepakatan ditolak|Dem reject IOU
+The counterparty did not accept this proposed record. No settlement obligation is recorded by IIOU.|L'altra parte non ha accettato la proposta. IIOU non registra alcun obbligo di saldo.|对方未接受提议，IIOU 不记录结算义务。|لم يقبل الطرف الآخر الاقتراح. لا يسجل IIOU التزامًا بالتسوية.|Bên kia không chấp nhận đề xuất. IIOU không ghi nhận nghĩa vụ tất toán.|상대방이 제안을 수락하지 않아 IIOU에 정산 의무가 기록되지 않습니다.|Pihak lain tidak menerima usulan ini. IIOU tidak mencatat kewajiban pelunasan.|The other person no accept this proposal. IIOU no record settlement obligation.
+IOU cancelled|Accordo annullato|约定已取消|أُلغي الاتفاق|Thỏa thuận đã hủy|약정 취소됨|Kesepakatan dibatalkan|IOU cancelled
+This proposal was cancelled before acceptance.|Proposta annullata prima dell'accettazione.|此提议在接受前已取消。|أُلغي الاقتراح قبل قبوله.|Đề xuất đã hủy trước khi được chấp nhận.|수락 전에 제안이 취소되었습니다.|Usulan dibatalkan sebelum diterima.|Dem cancel proposal before acceptance.
+Settlement receipt|Ricevuta del saldo|结算凭证|إيصال التسوية|Biên nhận tất toán|정산 확인서|Bukti pelunasan|Settlement receipt
+Settled amount|Importo saldato|已结清金额|المبلغ المُسوّى|Số tiền đã tất toán|정산 금액|Jumlah dilunasi|Settled amount
+IIOU records the mutual confirmation only. It is not a bank, escrow service or blockchain settlement processor.|IIOU registra solo la conferma reciproca. Non è una banca, un deposito a garanzia o un servizio di regolamento blockchain.|IIOU 仅记录双方确认，不是银行、托管或区块链结算服务。|يسجل IIOU التأكيد المتبادل فقط. ليس بنكًا أو خدمة ضمان أو معالج تسوية بلوكتشين.|IIOU chỉ ghi nhận xác nhận hai bên, không phải ngân hàng, ký quỹ hay bộ xử lý thanh toán blockchain.|IIOU는 상호 확인만 기록하며 은행, 에스크로 또는 블록체인 정산 서비스가 아닙니다.|IIOU hanya mencatat konfirmasi bersama, bukan bank, escrow, atau pemroses penyelesaian blockchain.|IIOU dey record only both sides confirmation. E no be bank, escrow or blockchain settlement service.
+Review this proposal|Verifica la proposta|审核此提议|مراجعة الاقتراح|Xem xét đề xuất|제안 검토|Tinjau usulan|Review proposal
+Accept only if the amount, direction and note match what you agreed with @{0}.|Accetta solo se importo, direzione e nota corrispondono a quanto concordato con @{0}.|仅在金额、方向和备注与 @{0} 的约定一致时接受。|اقبل فقط إذا تطابق المبلغ والاتجاه والملاحظة مع اتفاقك مع @{0}.|Chỉ chấp nhận nếu số tiền, chiều nợ và ghi chú đúng với thỏa thuận với @{0}.|금액, 방향, 메모가 @{0}님과 합의한 내용일 때만 수락하세요.|Terima hanya jika jumlah, arah, dan catatan sesuai kesepakatan dengan @{0}.|Accept only if amount, who owe who and note match wetin you agree with @{0}.
+Accept IOU|Accetta accordo|接受约定|قبول الاتفاق|Chấp nhận thỏa thuận|약정 수락|Terima kesepakatan|Accept IOU
+Waiting for a reply|In attesa di risposta|等待回复|بانتظار الرد|Đang chờ phản hồi|응답 대기|Menunggu balasan|Dey wait for reply
+You can cancel this proposal while it is still awaiting confirmation.|Puoi annullare la proposta finché è in attesa di conferma.|在等待确认期间可以取消提议。|يمكنك إلغاء الاقتراح ما دام بانتظار التأكيد.|Bạn có thể hủy đề xuất khi còn chờ xác nhận.|확인 대기 중에는 제안을 취소할 수 있습니다.|Anda dapat membatalkan usulan selama masih menunggu konfirmasi.|You fit cancel proposal while e still dey wait for confirmation.
+Cancel proposal|Annulla proposta|取消提议|إلغاء الاقتراح|Hủy đề xuất|제안 취소|Batalkan usulan|Cancel proposal
+Ready to record payment?|Vuoi registrare il pagamento?|准备记录付款？|هل تريد تسجيل الدفع؟|Sẵn sàng ghi nhận thanh toán?|지급을 기록할까요?|Siap mencatat pembayaran?|You ready to record payment?
+Only mark this as paid after the real-world value has been transferred. The creditor must still confirm receipt.|Dichiara pagato solo dopo il trasferimento effettivo. Il creditore dovrà comunque confermare la ricezione.|仅在实际转账后标记付款，债权人仍须确认收款。|لا تسجل الدفع إلا بعد تحويل القيمة فعليًا. يجب على الدائن تأكيد الاستلام.|Chỉ đánh dấu đã trả sau khi thực sự chuyển giá trị. Chủ nợ vẫn phải xác nhận nhận.|실제 이전 후에만 지급을 신고하세요. 채권자의 수령 확인이 필요합니다.|Tandai sudah dibayar hanya setelah nilai benar-benar ditransfer. Penerima tetap harus mengonfirmasi.|Mark paid only after you really transfer the value. Creditor still need confirm receipt.
+Mark full amount as paid|Dichiara pagato l'intero importo|标记全额已付|الإبلاغ عن دفع المبلغ كاملًا|Báo đã thanh toán toàn bộ|전액 지급 신고|Tandai seluruh jumlah dibayar|Mark say you don pay full amount
+The debtor reports that the full amount was paid. Confirm only after you have actually received it.|Il debitore dichiara il pagamento completo. Conferma solo dopo averlo ricevuto.|对方申报全额付款，仅在实际收到后确认。|أبلغ المدين بدفع المبلغ كاملًا. أكّد فقط بعد استلامه فعليًا.|Bên nợ báo đã trả đủ. Chỉ xác nhận sau khi thực sự nhận được.|채무자가 전액 지급을 신고했습니다. 실제 수령 후에만 확인하세요.|Pihak yang berutang melaporkan pembayaran penuh. Konfirmasi setelah benar-benar diterima.|Debtor report say e don pay everything. Confirm only after you receive am.
+Confirm received|Conferma ricezione|确认收款|تأكيد الاستلام|Xác nhận đã nhận|수령 확인|Konfirmasi diterima|Confirm say you receive am
+Not received yet|Non ancora ricevuto|尚未收到|لم أستلم بعد|Chưa nhận được|아직 받지 못함|Belum diterima|I never receive am
+Add shared activity note|Aggiungi una nota condivisa|添加共享活动备注|إضافة ملاحظة مشتركة|Thêm ghi chú chung|공유 활동 메모 추가|Tambah catatan bersama|Add shared note
+Add context visible to both participants…|Aggiungi informazioni visibili a entrambi…|添加双方可见的说明…|أضف تفاصيل يراها الطرفان…|Thêm thông tin hai bên đều thấy…|양측에 보이는 내용을 추가하세요…|Tambahkan konteks untuk kedua pihak…|Add details wey both people fit see…
+Add note|Aggiungi nota|添加备注|إضافة ملاحظة|Thêm ghi chú|메모 추가|Tambah catatan|Add note
+Record a partial payment|Registra un pagamento parziale|记录部分付款|تسجيل دفعة جزئية|Ghi nhận thanh toán một phần|부분 지급 기록|Catat pembayaran sebagian|Record part payment
+Use this only after part of the amount has actually been transferred.|Usa questa funzione solo dopo un trasferimento parziale effettivo.|仅在实际转账部分金额后使用。|استخدم هذا فقط بعد تحويل جزء من المبلغ فعليًا.|Chỉ dùng sau khi thực sự chuyển một phần số tiền.|일부 금액을 실제로 이전한 후에만 사용하세요.|Gunakan hanya setelah sebagian jumlah benar-benar ditransfer.|Use am only after you really transfer part of the money.
+Claim partial payment|Dichiara pagamento parziale|申报部分付款|الإبلاغ عن دفعة جزئية|Báo thanh toán một phần|부분 지급 신고|Laporkan pembayaran sebagian|Report part payment
+Review partial payment|Verifica pagamento parziale|审核部分付款|مراجعة الدفعة الجزئية|Xem xét thanh toán một phần|부분 지급 검토|Tinjau pembayaran sebagian|Review part payment
+{0} claimed by @{1}|{0} dichiarati da @{1}|@{1} 申报 {0}|أبلغ @{1} عن {0}|@{1} báo đã trả {0}|@{1}님이 {0} 지급 신고|{0} dilaporkan oleh @{1}|@{1} report payment of {0}
+Reject claim|Rifiuta dichiarazione|拒绝申报|رفض البلاغ|Từ chối báo cáo|신고 거절|Tolak laporan|Reject claim
+Archive this closed IOU|Archivia accordo chiuso|归档已关闭约定|أرشفة الاتفاق المغلق|Lưu trữ thỏa thuận đã đóng|종료된 약정 보관|Arsipkan kesepakatan tertutup|Archive this closed IOU
+Unarchive this closed IOU|Ripristina accordo archiviato|取消归档此约定|إلغاء أرشفة الاتفاق|Bỏ lưu trữ thỏa thuận|종료된 약정 보관 해제|Keluarkan dari arsip|Bring this IOU out of archive
+Confirmed partials|Pagamenti parziali confermati|已确认部分付款|الدفعات الجزئية المؤكدة|Các khoản trả một phần đã xác nhận|확인된 부분 지급|Pembayaran sebagian dikonfirmasi|Confirmed part payments
+Remaining|Residuo|剩余|المتبقي|Còn lại|남은 금액|Sisa|Wetin remain
+Activity timeline|Cronologia attività|活动时间线|سجل النشاط|Dòng thời gian hoạt động|활동 이력|Riwayat aktivitas|Activity timeline
+Newest activity appears first.|Le attività più recenti sono in alto.|最新活动显示在最前。|تظهر أحدث الأنشطة أولًا.|Hoạt động mới nhất hiện trước.|최신 활동이 먼저 표시됩니다.|Aktivitas terbaru ditampilkan lebih dulu.|Newest activity dey first.
+No activity yet.|Nessuna attività.|暂无活动。|لا نشاط بعد.|Chưa có hoạt động.|아직 활동이 없습니다.|Belum ada aktivitas.|No activity yet.
+Agreement plan|Piano dell'accordo|约定计划|خطة الاتفاق|Kế hoạch thỏa thuận|약정 계획|Rencana kesepakatan|Agreement plan
+Send a respectful reminder|Invia un promemoria rispettoso|发送友善提醒|إرسال تذكير باحترام|Gửi lời nhắc lịch sự|정중한 알림 보내기|Kirim pengingat yang sopan|Send respectful reminder
+The other participant will see it in this private agreement. To prevent pressure or spam, each person can send one reminder every 72 hours.|L'altra parte lo vedrà nell'accordo privato. Per evitare pressioni o spam, ciascuno può inviarne uno ogni 72 ore.|对方会在此私密约定中看到提醒。为避免施压或垃圾信息，每人每 72 小时可发送一次。|يراه الطرف الآخر داخل هذا الاتفاق الخاص. لمنع الضغط أو الرسائل المزعجة، يُسمح بتذكير واحد كل 72 ساعة لكل شخص.|Bên kia sẽ thấy lời nhắc trong thỏa thuận riêng. Mỗi người chỉ được gửi một lần mỗi 72 giờ để tránh gây áp lực hoặc spam.|비공개 약정에 알림이 표시됩니다. 압박이나 스팸 방지를 위해 1인당 72시간에 한 번만 보낼 수 있습니다.|Pihak lain melihatnya dalam kesepakatan pribadi. Untuk mencegah tekanan atau spam, satu pengingat per orang setiap 72 jam.|The other person go see am inside this private agreement. Each person fit send only one reminder every 72 hours, to avoid pressure or spam.
+Send reminder|Invia promemoria|发送提醒|إرسال تذكير|Gửi lời nhắc|알림 보내기|Kirim pengingat|Send reminder
+Close without settlement|Chiudi senza saldo|不结算并关闭|الإغلاق دون تسوية|Đóng không tất toán|정산 없이 종료|Tutup tanpa pelunasan|Close without settlement
+Use this when the IOU was created by mistake, is a duplicate, or the agreement was cancelled. This does not record a payment. The other participant must confirm.|Usa questa opzione per errori, duplicati o accordi annullati. Non registra pagamenti. L'altra parte deve confermare.|用于误建、重复或取消的约定。不记录付款，需要对方确认。|استخدمه للاتفاق المنشأ بالخطأ أو المكرر أو الملغى. لا يسجل دفعة، ويجب أن يؤكد الطرف الآخر.|Dùng khi tạo nhầm, trùng lặp hoặc đã hủy thỏa thuận. Không ghi nhận thanh toán; bên kia phải xác nhận.|실수, 중복 또는 취소된 약정에 사용하세요. 지급을 기록하지 않으며 상대방 확인이 필요합니다.|Gunakan untuk kesalahan, duplikat, atau kesepakatan dibatalkan. Tidak mencatat pembayaran; pihak lain harus mengonfirmasi.|Use am for mistake, duplicate or cancelled agreement. E no record payment. The other person must confirm.
+Created by mistake|Creato per errore|误创建|أُنشئ بالخطأ|Tạo nhầm|실수로 생성|Dibuat karena kesalahan|Created by mistake
+Duplicate|Duplicato|重复记录|مكرر|Trùng lặp|중복|Duplikat|Duplicate
+Agreement cancelled|Accordo annullato|约定已取消|أُلغي الاتفاق|Thỏa thuận đã hủy|약정 취소됨|Kesepakatan dibatalkan|Agreement cancelled
+Other reason|Altro motivo|其他原因|سبب آخر|Lý do khác|기타 사유|Alasan lain|Another reason
+Optional explanation…|Spiegazione facoltativa…|可选说明…|توضيح اختياري…|Giải thích tùy chọn…|설명(선택)…|Penjelasan opsional…|Explanation if you want…
+Request closure without payment|Richiedi chiusura senza pagamento|申请无付款关闭|طلب الإغلاق دون دفع|Yêu cầu đóng không thanh toán|지급 없이 종료 요청|Minta penutupan tanpa pembayaran|Request closure without payment
+Closure request|Richiesta di chiusura|关闭申请|طلب الإغلاق|Yêu cầu đóng|종료 요청|Permintaan penutupan|Closure request
+Confirm closure|Conferma chiusura|确认关闭|تأكيد الإغلاق|Xác nhận đóng|종료 확인|Konfirmasi penutupan|Confirm closure
+Keep IOU active|Mantieni accordo attivo|保持约定有效|إبقاء الاتفاق نشطًا|Giữ thỏa thuận hoạt động|약정 유지|Pertahankan kesepakatan aktif|Keep IOU active
+Cancel closure request|Annulla richiesta di chiusura|取消关闭申请|إلغاء طلب الإغلاق|Hủy yêu cầu đóng|종료 요청 취소|Batalkan permintaan penutupan|Cancel closure request
+The IOU remains open until the other participant confirms. No payment has been recorded.|L'accordo resta aperto finché l'altra parte non conferma. Nessun pagamento registrato.|在对方确认前，约定保持开放。未记录付款。|يبقى الاتفاق مفتوحًا حتى يؤكد الطرف الآخر. لم يُسجل أي دفع.|Thỏa thuận vẫn mở đến khi bên kia xác nhận. Chưa ghi nhận thanh toán.|상대방 확인까지 열려 있으며 지급은 기록되지 않았습니다.|Kesepakatan tetap terbuka hingga pihak lain mengonfirmasi. Tidak ada pembayaran dicatat.|IOU still open till the other person confirm. No payment don record.
+Closed without settlement. No payment was recorded and no recurring cycle was created.|Chiuso senza saldo. Nessun pagamento registrato né nuovo ciclo ricorrente.|未结算关闭。未记录付款，也未创建后续周期。|أُغلق دون تسوية. لم تُسجل دفعة ولم تُنشأ دورة متكررة.|Đóng không tất toán. Không ghi nhận thanh toán hay tạo chu kỳ tiếp.|정산 없이 종료되었습니다. 지급 기록이나 다음 반복 주기가 생성되지 않았습니다.|Ditutup tanpa pelunasan. Tidak ada pembayaran atau siklus berulang baru.|Closed without settlement. No payment record and no new recurring cycle.
+Sending request…|Invio della richiesta…|正在发送请求…|جارٍ إرسال الطلب…|Đang gửi yêu cầu…|요청 전송 중…|Mengirim permintaan…|Dey send request…
+Share this request|Condividi richiesta|分享此请求|مشاركة الطلب|Chia sẻ yêu cầu|요청 공유|Bagikan permintaan|Share this request
+Shared expense|Spesa condivisa|共享费用|مصروف مشترك|Chi phí chung|공동 지출|Pengeluaran bersama|Shared expense
+Send this private request to the other participant. Authentication and participant access are still required.|Condividi la richiesta privata con l'altra parte. Restano necessari autenticazione e autorizzazione.|将私密请求发送给对方，仍须验证身份和参与者权限。|أرسل الطلب الخاص للطرف الآخر. تبقى المصادقة وصلاحية المشاركة مطلوبة.|Gửi yêu cầu riêng cho bên kia. Vẫn cần xác thực và quyền tham gia.|상대방에게 비공개 요청을 보내세요. 인증 및 참여 권한이 필요합니다.|Kirim permintaan pribadi ke pihak lain. Autentikasi dan izin peserta tetap diperlukan.|Send this private request to the other person. Dem still need sign in and participant access.
+Share agreement link|Condividi link dell'accordo|分享约定链接|مشاركة رابط الاتفاق|Chia sẻ liên kết thỏa thuận|약정 링크 공유|Bagikan tautan kesepakatan|Share agreement link
+Part of “{0}” · {1} shares · {2} total|Parte di “{0}” · {1} quote · totale {2}|属于“{0}” · {1} 份 · 总计 {2}|جزء من «{0}» · {1} حصص · الإجمالي {2}|Thuộc “{0}” · {1} phần · tổng {2}|“{0}”의 일부 · {1}건 · 합계 {2}|Bagian dari “{0}” · {1} bagian · total {2}|Part of “{0}” · {1} shares · total {2}
+Private agreement link copied.|Link privato copiato.|私密约定链接已复制。|نُسخ رابط الاتفاق الخاص.|Đã sao chép liên kết riêng.|비공개 약정 링크가 복사되었습니다.|Tautan pribadi disalin.|Private agreement link don copy.
+IOU created|Accordo creato|约定已创建|أُنشئ الاتفاق|Đã tạo thỏa thuận|약정 생성됨|Kesepakatan dibuat|IOU don create
+Counterparty accepted|Accettato dall'altra parte|对方已接受|قبله الطرف الآخر|Bên kia đã chấp nhận|상대방이 수락함|Pihak lain menerima|The other person don accept
+Counterparty declined|Rifiutato dall'altra parte|对方已拒绝|رفضه الطرف الآخر|Bên kia đã từ chối|상대방이 거절함|Pihak lain menolak|The other person no accept
+Debtor marked paid|Il debitore ha dichiarato il pagamento|债务人标记已付款|أبلغ المدين عن الدفع|Bên nợ đã báo trả|채무자가 지급을 신고함|Pihak berutang melaporkan pembayaran|Debtor mark say e don pay
+Settlement confirmed|Saldo confermato|结算已确认|تأكدت التسوية|Đã xác nhận tất toán|정산 확인됨|Pelunasan dikonfirmasi|Settlement confirmed
+Payment claim rejected|Dichiarazione di pagamento rifiutata|付款申报被拒绝|رُفض بلاغ الدفع|Báo thanh toán bị từ chối|지급 신고 거절됨|Laporan pembayaran ditolak|Payment claim rejected
+Shared note|Nota condivisa|共享备注|ملاحظة مشتركة|Ghi chú chung|공유 메모|Catatan bersama|Shared note
+Partial payment claimed|Pagamento parziale dichiarato|已申报部分付款|تم الإبلاغ عن دفعة جزئية|Đã báo thanh toán một phần|부분 지급 신고됨|Pembayaran sebagian dilaporkan|Part payment reported
+Partial payment confirmed|Pagamento parziale confermato|部分付款已确认|تأكدت الدفعة الجزئية|Đã xác nhận thanh toán một phần|부분 지급 확인됨|Pembayaran sebagian dikonfirmasi|Part payment confirmed
+Partial payment rejected|Pagamento parziale rifiutato|部分付款被拒绝|رُفضت الدفعة الجزئية|Thanh toán một phần bị từ chối|부분 지급 거절됨|Pembayaran sebagian ditolak|Part payment rejected
+Closure confirmed|Chiusura confermata|关闭已确认|تأكد الإغلاق|Đã xác nhận đóng|종료 확인됨|Penutupan dikonfirmasi|Closure confirmed
+Closure rejected|Chiusura rifiutata|关闭被拒绝|رُفض الإغلاق|Yêu cầu đóng bị từ chối|종료 거절됨|Penutupan ditolak|Closure rejected
+Closure request cancelled|Richiesta di chiusura annullata|关闭申请已取消|أُلغي طلب الإغلاق|Đã hủy yêu cầu đóng|종료 요청 취소됨|Permintaan penutupan dibatalkan|Closure request cancelled
+Confirm a settlement|Conferma un saldo|确认结清|تأكيد تسوية|Xác nhận tất toán|정산 확인|Konfirmasi pelunasan|Confirm settlement
+Review settlement|Verifica saldo|审核结算|مراجعة التسوية|Xem xét tất toán|정산 검토|Tinjau pelunasan|Review settlement
+An agreement needs your reply|Un accordo attende la tua risposta|约定等待你回复|اتفاق يحتاج ردك|Một thỏa thuận cần bạn phản hồi|응답이 필요한 약정|Kesepakatan membutuhkan balasan|Agreement need your reply
+Review request|Verifica richiesta|审核请求|مراجعة الطلب|Xem yêu cầu|요청 검토|Tinjau permintaan|Review request
+Waiting for acceptance|In attesa di accettazione|等待接受|بانتظار القبول|Đang chờ chấp nhận|수락 대기|Menunggu penerimaan|Dey wait for acceptance
+An agreement is overdue|Un accordo è scaduto|约定已逾期|اتفاق متأخر|Một thỏa thuận đã quá hạn|연체된 약정|Kesepakatan melewati tenggat|Agreement due date don pass
+Settlement confirmation pending|Conferma del saldo in attesa|等待结算确认|تأكيد التسوية معلق|Chờ xác nhận tất toán|정산 확인 대기|Konfirmasi pelunasan tertunda|Settlement confirmation pending
+A payment claim is waiting for the creditor to confirm receipt.|Un pagamento dichiarato attende la conferma del creditore.|付款申报等待债权人确认收款。|بلاغ دفع بانتظار تأكيد الدائن للاستلام.|Một báo cáo thanh toán đang chờ chủ nợ xác nhận nhận.|지급 신고가 채권자의 수령 확인을 기다리고 있습니다.|Laporan pembayaran menunggu konfirmasi penerimaan.|Payment claim dey wait for creditor to confirm receipt.
+A due date is close|Una scadenza è vicina|到期日临近|موعد استحقاق قريب|Sắp đến hạn|기한 임박|Jatuh tempo mendekat|Due date dey near
+@{0} marked {1} as paid. Confirm only after you actually received the value.|@{0} dichiara di aver pagato {1}. Conferma solo dopo la ricezione effettiva.|@{0} 标记已付 {1}，仅在实际收到后确认。|أبلغ @{0} بدفع {1}. أكّد فقط بعد الاستلام فعليًا.|@{0} báo đã trả {1}. Chỉ xác nhận sau khi nhận thật.|@{0}님이 {1} 지급을 신고했습니다. 실제 수령 후에만 확인하세요.|@{0} menandai {1} dibayar. Konfirmasi setelah benar-benar menerima.|@{0} mark {1} as paid. Confirm only after you really receive am.
+@{0} created a {1} agreement that is waiting for your decision.|@{0} ha creato un accordo di {1} in attesa della tua decisione.|@{0} 创建了 {1} 的约定，等待你决定。|أنشأ @{0} اتفاقًا بقيمة {1} بانتظار قرارك.|@{0} tạo thỏa thuận {1} đang chờ bạn quyết định.|@{0}님이 {1} 약정을 만들고 결정을 기다립니다.|@{0} membuat kesepakatan {1} yang menunggu keputusan Anda.|@{0} create agreement of {1} wey dey wait for your decision.
+The agreement with @{0} is not active until they accept it.|L'accordo con @{0} diventa attivo solo dopo la sua accettazione.|与 @{0} 的约定须由对方接受后生效。|الاتفاق مع @{0} لا ينشط حتى يقبله.|Thỏa thuận với @{0} chỉ có hiệu lực khi họ chấp nhận.|@{0}님이 수락해야 약정이 활성화됩니다.|Kesepakatan dengan @{0} aktif setelah diterima.|Agreement with @{0} no active till dem accept am.
+{0} with @{1} is overdue by {2} days.|{0} con @{1} è in ritardo di {2} giorni.|与 @{1} 的 {0} 已逾期 {2} 天。|{0} مع @{1} متأخر {2} أيام.|{0} với @{1} quá hạn {2} ngày.|@{1}님과의 {0} 약정이 {2}일 연체되었습니다.|{0} dengan @{1} terlambat {2} hari.|{0} with @{1} don late by {2} days.
+{0} with @{1} is overdue by {2} day.|{0} con @{1} è in ritardo di {2} giorno.|与 @{1} 的 {0} 已逾期 {2} 天。|{0} مع @{1} متأخر {2} يوم.|{0} với @{1} quá hạn {2} ngày.|@{1}님과의 {0} 약정이 {2}일 연체되었습니다.|{0} dengan @{1} terlambat {2} hari.|{0} with @{1} don late by {2} day.
+{0} with @{1}: Due today.|{0} con @{1}: scade oggi.|与 @{1} 的 {0} 今天到期。|{0} مع @{1}: مستحق اليوم.|{0} với @{1}: đến hạn hôm nay.|@{1}님과의 {0}: 오늘 기한.|{0} dengan @{1}: jatuh tempo hari ini.|{0} with @{1}: due today.
+{0} with @{1}: Due in {2} days.|{0} con @{1}: scade tra {2} giorni.|与 @{1} 的 {0} 将于 {2} 天后到期。|{0} مع @{1}: يستحق بعد {2} أيام.|{0} với @{1}: đến hạn sau {2} ngày.|@{1}님과의 {0}: {2}일 후 기한.|{0} dengan @{1}: jatuh tempo dalam {2} hari.|{0} with @{1}: due for {2} days.
+{0} with @{1}: Due in {2} day.|{0} con @{1}: scade tra {2} giorno.|与 @{1} 的 {0} 将于 {2} 天后到期。|{0} مع @{1}: يستحق بعد {2} يوم.|{0} với @{1}: đến hạn sau {2} ngày.|@{1}님과의 {0}: {2}일 후 기한.|{0} dengan @{1}: jatuh tempo dalam {2} hari.|{0} with @{1}: due for {2} day.
+PI MAINNET|PI MAINNET|PI 主网|شبكة PI الرئيسية|PI MAINNET|PI 메인넷|PI MAINNET|PI MAINNET
+PI MAINNET · LIVE REALM|PI MAINNET · REGNO ONLINE|PI 主网 · 在线王国|شبكة PI الرئيسية · المملكة المباشرة|PI MAINNET · VƯƠNG QUỐC TRỰC TUYẾN|PI 메인넷 · 실시간 왕국|PI MAINNET · KERAJAAN AKTIF|PI MAINNET · LIVE REALM
+Build a realm that can survive its own ambition.|Costruisci un regno capace di sostenere le proprie ambizioni.|建立一个能承载自身雄心的王国。|ابنِ مملكة تصمد أمام طموحاتها.|Xây vương quốc đủ sức theo đuổi tham vọng.|야망을 감당할 수 있는 왕국을 건설하세요.|Bangun kerajaan yang mampu menopang ambisinya.|Build realm wey fit carry im own ambition.
+Population|Popolazione|人口|السكان|Dân số|인구|Populasi|Population
+Production|Produzione|生产力|الإنتاج|Sản xuất|생산|Produksi|Production
+Food|Cibo|粮食|الغذاء|Lương thực|식량|Pangan|Food
+Bronze|Bronzo|青铜|البرونز|Đồng|청동|Perunggu|Bronze
+Knowledge|Conoscenza|知识|المعرفة|Tri thức|지식|Pengetahuan|Knowledge
+Stability|Stabilità|稳定度|الاستقرار|Ổn định|안정도|Stabilitas|Stability
+Realm|Regno|王国|المملكة|Vương quốc|왕국|Kerajaan|Realm
+Realm condition|Condizioni del regno|王国状况|حالة المملكة|Tình trạng vương quốc|왕국 상태|Kondisi kerajaan|Realm condition
+Realm event|Evento del regno|王国事件|حدث المملكة|Sự kiện vương quốc|왕국 사건|Peristiwa kerajaan|Realm event
+Foundations|Fondamenta|奠基时代|التأسيس|Thời kỳ nền móng|건국 시대|Masa Pendirian|Foundations
+Bronze Age|Età del bronzo|青铜时代|العصر البرونزي|Thời đại đồ đồng|청동기 시대|Zaman Perunggu|Bronze Age
+Iron Age|Età del ferro|铁器时代|العصر الحديدي|Thời đại đồ sắt|철기 시대|Zaman Besi|Iron Age
+Medieval Age|Medioevo|中世纪|العصور الوسطى|Thời Trung cổ|중세 시대|Abad Pertengahan|Medieval Age
+Renaissance|Rinascimento|文艺复兴|عصر النهضة|Thời Phục hưng|르네상스|Renaisans|Renaissance
+Advance Era|Passa all'era successiva|进入下一时代|الانتقال للعصر التالي|Sang thời đại tiếp|다음 시대로|Lanjut ke era berikutnya|Move to next era
+Current campaign complete|Campagna attuale completata|当前战役已完成|اكتملت الحملة الحالية|Đã hoàn thành chiến dịch hiện tại|현재 캠페인 완료|Kampanye saat ini selesai|Current campaign don complete
+Royal missions|Missioni reali|皇家任务|المهام الملكية|Nhiệm vụ hoàng gia|왕실 임무|Misi kerajaan|Royal missions
+Mission effects happen immediately. The timer only limits how often a new mission can be launched.|Gli effetti sono immediati. Il conto alla rovescia indica quando potrai avviare la prossima missione.|任务效果立即生效，计时器仅限制下次任务的启动时间。|تحدث آثار المهمة فورًا. يحدد المؤقت وقت بدء المهمة التالية فقط.|Hiệu quả nhiệm vụ có ngay. Bộ đếm chỉ giới hạn thời điểm bắt đầu nhiệm vụ tiếp theo.|임무 효과는 즉시 적용됩니다. 타이머는 다음 임무 시작 시간만 제한합니다.|Efek misi langsung berlaku. Penghitung waktu hanya membatasi kapan misi berikutnya dapat dimulai.|Mission effect dey happen now. Timer na only when you fit start next mission.
+Build the city|Costruisci la città|建设城市|بناء المدينة|Xây thành phố|도시 건설|Bangun kota|Build the city
+Tap an occupied tile to remove that building.|Tocca una casella occupata per rimuovere l'edificio.|点击已占用地块可移除建筑。|اضغط مربعًا مشغولًا لإزالة المبنى.|Chạm ô có công trình để gỡ bỏ.|사용 중인 칸을 눌러 건물을 철거하세요.|Ketuk petak terisi untuk menghapus bangunan.|Tap occupied tile to remove the building.
+Upgrade Council|Potenzia il Consiglio|升级议会|ترقية المجلس|Nâng cấp hội đồng|의회 업그레이드|Tingkatkan dewan|Upgrade Council
+Royal policy|Politica reale|王国政策|السياسة الملكية|Chính sách hoàng gia|왕실 정책|Kebijakan kerajaan|Royal policy
+Council Patronage|Patrocinio del Consiglio|议会赞助|رعاية المجلس|Bảo trợ hội đồng|의회 후원|Dukungan dewan|Council Patronage
+Patronage reroll|Nuovo evento con patrocinio|赞助重抽事件|إعادة اختيار حدث بالرعاية|Đổi sự kiện nhờ bảo trợ|후원으로 사건 다시 뽑기|Ulang peristiwa dengan dukungan|Patronage event reroll
+Optional 0.1 Pi purchase. Improves stability recovery and grants one realm-event reroll per era. It is never required to progress.|Acquisto facoltativo di 0,1 Pi. Migliora il recupero della stabilità e consente di cambiare un evento per era. Non è mai necessario per avanzare.|自愿购买 0.1 Pi，提升稳定度恢复并每时代可重抽一次事件。推进不需要购买。|شراء اختياري بقيمة 0.1 Pi. يحسن تعافي الاستقرار ويمنح إعادة اختيار حدث مرة لكل عصر. ليس مطلوبًا للتقدم.|Mua tùy chọn 0,1 Pi giúp hồi ổn định và đổi một sự kiện mỗi thời đại. Không bắt buộc để tiến lên.|선택적 0.1 Pi 구매로 안정도 회복과 시대별 사건 재선택 1회를 제공합니다. 진행에 필수는 아닙니다.|Pembelian opsional 0,1 Pi meningkatkan pemulihan stabilitas dan satu pengulangan peristiwa per era. Tidak wajib untuk maju.|Optional 0.1 Pi purchase. E improve stability recovery and give one event reroll per era. You no need buy am to progress.
+Unlock for 0.1 Pi|Sblocca con 0,1 Pi|花费 0.1 Pi 解锁|فتح مقابل 0.1 Pi|Mở với 0,1 Pi|0.1 Pi로 해제|Buka dengan 0,1 Pi|Unlock for 0.1 Pi
+Offline economy|Economia offline|离线经济|الاقتصاد دون اتصال|Kinh tế ngoại tuyến|오프라인 경제|Ekonomi luring|Offline economy
+Your realm keeps producing while you are away, but long absences have diminishing returns and a six-hour collection cap. Active play remains substantially faster.|Il regno produce anche mentre sei assente, con rendimenti ridotti e un limite di sei ore. Giocare attivamente resta molto più rapido.|离线时王国继续生产，长时间离线收益递减，最多累计六小时。主动游玩仍快得多。|تواصل المملكة الإنتاج أثناء غيابك، بعوائد متناقصة وحد أقصى ست ساعات. اللعب النشط أسرع بكثير.|Vương quốc vẫn sản xuất khi bạn vắng mặt, nhưng lợi ích giảm dần và tối đa sáu giờ. Chơi chủ động vẫn nhanh hơn nhiều.|부재 중에도 생산하지만 장기 부재 수익은 감소하며 최대 6시간까지 누적됩니다. 직접 플레이하면 훨씬 빠릅니다.|Kerajaan tetap berproduksi saat Anda pergi, dengan hasil menurun dan batas enam jam. Bermain aktif tetap jauh lebih cepat.|Realm still dey produce when you no dey, but long absence get smaller returns and six-hour cap. Active play still faster well well.
+Pi payments are real Mainnet transactions ·|I pagamenti Pi sono transazioni Mainnet reali ·|Pi 付款是真实主网交易 ·|دفعات Pi معاملات حقيقية على Mainnet ·|Thanh toán Pi là giao dịch Mainnet thật ·|Pi 결제는 실제 메인넷 거래입니다 ·|Pembayaran Pi adalah transaksi Mainnet nyata ·|Pi payments na real Mainnet transactions ·
+Initializing…|Avvio…|正在初始化…|جارٍ التهيئة…|Đang khởi tạo…|초기화 중…|Memulai…|Dey start…
+Balanced|Equilibrio|平衡|متوازن|Cân bằng|균형|Seimbang|Balanced
+Growth|Crescita|发展|النمو|Tăng trưởng|성장|Pertumbuhan|Growth
+Order|Ordine|秩序|النظام|Trật tự|질서|Ketertiban|Order
+Innovation|Innovazione|创新|الابتكار|Đổi mới|혁신|Inovasi|Innovation
+Settlement|Insediamento|聚落|مستوطنة|Khu định cư|정착지|Permukiman|Settlement
+Workshop|Officina|工坊|ورشة|Xưởng|작업장|Bengkel|Workshop
+Farm|Fattoria|农场|مزرعة|Nông trại|농장|Ladang|Farm
+Council|Consiglio|议会|المجلس|Hội đồng|의회|Dewan|Council
+Mine|Miniera|矿场|منجم|Mỏ|광산|Tambang|Mine
+Library|Biblioteca|图书馆|مكتبة|Thư viện|도서관|Perpustakaan|Library
+Work crews|Squadre di lavoro|工作队|فرق العمل|Đội lao động|작업 인력|Regu kerja|Work crews
+Trade caravan|Carovana commerciale|贸易商队|قافلة تجارية|Đoàn thương nhân|상단|Karavan dagang|Trade caravan
+Royal study|Studio reale|皇家研究|الدراسة الملكية|Nghiên cứu hoàng gia|왕실 연구|Kajian kerajaan|Royal study
+Settle families|Accogli famiglie|安置家庭|توطين الأسر|Đón các gia đình|가족 정착|Tempatkan keluarga|Settle families
+Bronze requisition|Approvvigionamento di bronzo|征集青铜|تأمين البرونز|Trưng thu đồng|청동 조달|Pengadaan perunggu|Bronze requisition
+Emergency relief|Soccorso d'emergenza|紧急救济|إغاثة عاجلة|Cứu trợ khẩn cấp|긴급 구호|Bantuan darurat|Emergency relief
+Council session|Seduta del Consiglio|议会会议|جلسة المجلس|Phiên họp hội đồng|의회 회의|Sidang dewan|Council session
+Mission ready now.|Missione disponibile.|任务已就绪。|المهمة جاهزة الآن.|Nhiệm vụ đã sẵn sàng.|지금 임무를 시작할 수 있습니다.|Misi siap sekarang.|Mission ready now.
+Next mission available in {0}|Prossima missione tra {0}|下次任务还需 {0}|المهمة التالية متاحة خلال {0}|Nhiệm vụ tiếp theo sau {0}|다음 임무까지 {0}|Misi berikutnya dalam {0}|Next mission ready in {0}
+ready in {0}|disponibile tra {0}|{0} 后就绪|جاهز خلال {0}|sẵn sàng sau {0}|{0} 후 준비|siap dalam {0}|ready in {0}
+Patronage active for this era|Patrocinio attivo per questa era|本时代赞助已生效|الرعاية نشطة لهذا العصر|Bảo trợ đang có hiệu lực trong thời đại này|현재 시대 후원 활성화|Dukungan aktif untuk era ini|Patronage active for this era
+housing {0}|alloggi {0}|住房 {0}|السكن {0}|chỗ ở {0}|주거 {0}|hunian {0}|housing {0}
+cap {0}|limite {0}|上限 {0}|الحد {0}|giới hạn {0}|한도 {0}|batas {0}|cap {0}
+Remove {0}|Rimuovi {0}|移除 {0}|إزالة {0}|Gỡ {0}|{0} 철거|Hapus {0}|Remove {0}
+Realm restored.|Regno ripristinato.|王国已恢复。|استُعيدت المملكة.|Đã khôi phục vương quốc.|왕국을 불러왔습니다.|Kerajaan dipulihkan.|Realm don restore.
+Decision saved by server.|Decisione salvata.|决定已由服务器保存。|حُفظ القرار على الخادم.|Quyết định đã lưu trên máy chủ.|결정이 서버에 저장되었습니다.|Keputusan disimpan di server.|Server don save your decision.
+Mission completed. The countdown is for the next mission.|Missione completata. Il conto alla rovescia riguarda la prossima.|任务已完成，倒计时针对下次任务。|اكتملت المهمة. العد التنازلي للمهمة التالية.|Nhiệm vụ hoàn tất. Bộ đếm dành cho nhiệm vụ tiếp theo.|임무가 완료되었습니다. 카운트다운은 다음 임무까지의 시간입니다.|Misi selesai. Hitung mundur untuk misi berikutnya.|Mission don complete. Countdown na for next mission.
+Patronage activated.|Patrocinio attivato.|赞助已激活。|فُعّلت الرعاية.|Đã kích hoạt bảo trợ.|후원이 활성화되었습니다.|Dukungan diaktifkan.|Patronage don activate.
+Pi authentication unavailable. Open Idle Realm in Pi Browser.|Accesso Pi non disponibile. Apri Idle Realm in Pi Browser.|Pi 身份验证不可用。请在 Pi Browser 打开 Idle Realm。|مصادقة Pi غير متاحة. افتح Idle Realm في Pi Browser.|Không thể xác thực Pi. Hãy mở Idle Realm trong Pi Browser.|Pi 인증을 사용할 수 없습니다. Pi Browser에서 Idle Realm을 여세요.|Autentikasi Pi tidak tersedia. Buka Idle Realm di Pi Browser.|Pi sign-in no available. Open Idle Realm for Pi Browser.
+Build 3 Settlements|Costruisci 3 insediamenti|建造 3 个聚落|بناء 3 مستوطنات|Xây 3 khu định cư|정착지 3개 건설|Bangun 3 permukiman|Build 3 Settlements
+Reach 80 Production|Raggiungi 80 di produzione|达到 80 生产力|بلوغ 80 إنتاجًا|Đạt 80 sản xuất|생산 80 달성|Capai 80 produksi|Reach 80 Production
+Establish Council|Istituisci il Consiglio|建立议会|تأسيس المجلس|Thành lập hội đồng|의회 설립|Dirikan dewan|Establish Council
+Stability 65%+|Stabilità almeno 65%|稳定度至少 65%|استقرار 65% فأكثر|Ổn định từ 65%|안정도 65% 이상|Stabilitas 65% ke atas|Stability 65% or more
+Operate 2 Mines|Gestisci 2 miniere|运营 2 个矿场|تشغيل منجمين|Vận hành 2 mỏ|광산 2개 운영|Operasikan 2 tambang|Operate 2 Mines
+Stockpile 90 Bronze|Accumula 90 di bronzo|储备 90 青铜|تخزين 90 برونزًا|Tích trữ 90 đồng|청동 90 비축|Simpan 90 perunggu|Stockpile 90 Bronze
+Council II|Consiglio II|议会 II|المجلس II|Hội đồng II|의회 II|Dewan II|Council II
+Reach 35 Knowledge|Raggiungi 35 di conoscenza|达到 35 知识|بلوغ 35 معرفة|Đạt 35 tri thức|지식 35 달성|Capai 35 pengetahuan|Reach 35 Knowledge
+Population 42|Popolazione 42|人口 42|السكان 42|Dân số 42|인구 42|Populasi 42|Population 42
+Knowledge 100|Conoscenza 100|知识 100|المعرفة 100|Tri thức 100|지식 100|Pengetahuan 100|Knowledge 100
+Council III|Consiglio III|议会 III|المجلس III|Hội đồng III|의회 III|Dewan III|Council III
+Stability 72%+|Stabilità almeno 72%|稳定度至少 72%|استقرار 72% فأكثر|Ổn định từ 72%|안정도 72% 이상|Stabilitas 72% ke atas|Stability 72% or more
+Population 65|Popolazione 65|人口 65|السكان 65|Dân số 65|인구 65|Populasi 65|Population 65
+Food 140|Cibo 140|粮食 140|الغذاء 140|Lương thực 140|식량 140|Pangan 140|Food 140
+Council IV|Consiglio IV|议会 IV|المجلس IV|Hội đồng IV|의회 IV|Dewan IV|Council IV
+Stability 68%+|Stabilità almeno 68%|稳定度至少 68%|استقرار 68% فأكثر|Ổn định từ 68%|안정도 68% 이상|Stabilitas 68% ke atas|Stability 68% or more
+Production 1,500|Produzione 1.500|生产力 1,500|الإنتاج 1,500|Sản xuất 1.500|생산 1,500|Produksi 1.500|Production 1,500
+Knowledge 600|Conoscenza 600|知识 600|المعرفة 600|Tri thức 600|지식 600|Pengetahuan 600|Knowledge 600
+Council V|Consiglio V|议会 V|المجلس V|Hội đồng V|의회 V|Dewan V|Council V
+Stability 75%+|Stabilità almeno 75%|稳定度至少 75%|استقرار 75% فأكثر|Ổn định từ 75%|안정도 75% 이상|Stabilitas 75% ke atas|Stability 75% or more
+A generous harvest|Un raccolto abbondante|丰收|حصاد وفير|Mùa màng bội thu|풍년|Panen melimpah|Plenty harvest
+Farmers report an unexpected surplus.|Gli agricoltori segnalano un'eccedenza inattesa.|农民报告意外的丰收盈余。|أبلغ المزارعون عن فائض غير متوقع.|Nông dân báo có lượng dư bất ngờ.|농민들이 예상 밖의 잉여를 보고합니다.|Petani melaporkan surplus tak terduga.|Farmers report extra harvest wey dem no expect.
+Store grain|Conserva il grano|储存粮食|تخزين الحبوب|Trữ ngũ cốc|곡물 저장|Simpan gandum|Store grain
+Hold a feast|Organizza un banchetto|举办宴会|إقامة وليمة|Mở tiệc|연회 개최|Adakan pesta|Hold feast
+Sell the surplus|Vendi l'eccedenza|出售盈余|بيع الفائض|Bán phần dư|잉여 판매|Jual surplus|Sell the extra
+A rich mineral vein|Un ricco filone minerario|富矿脉|عرق معدني غني|Mạch khoáng giàu|풍부한 광맥|Urat mineral kaya|Rich mineral vein
+Miners discover an unusually rich seam.|I minatori scoprono un filone molto ricco.|矿工发现了异常丰富的矿脉。|اكتشف العمال عرقًا معدنيًا غنيًا بشكل غير معتاد.|Thợ mỏ phát hiện mạch khoáng đặc biệt giàu.|광부들이 매우 풍부한 광맥을 발견했습니다.|Penambang menemukan urat yang sangat kaya.|Miners discover mineral plenty well well.
+Extract aggressively|Estrai intensamente|大规模开采|استخراج مكثف|Khai thác mạnh|집중 채굴|Tambang secara agresif|Mine am plenty
+Mine carefully|Estrai con prudenza|谨慎开采|استخراج بحذر|Khai thác thận trọng|신중하게 채굴|Tambang dengan hati-hati|Mine am carefully
+Reinforce the tunnels|Rinforza le gallerie|加固隧道|تدعيم الأنفاق|Gia cố đường hầm|갱도 보강|Perkuat terowongan|Reinforce the tunnels
+Travelling scholars|Studiosi in viaggio|游学学者|علماء مسافرون|Các học giả du hành|여행 중인 학자들|Cendekiawan keliling|Travelling scholars
+A group of scholars asks for royal support.|Un gruppo di studiosi chiede sostegno reale.|一群学者请求王室支持。|يطلب علماء دعمًا ملكيًا.|Một nhóm học giả xin sự hỗ trợ hoàng gia.|학자들이 왕실의 지원을 요청합니다.|Sekelompok cendekiawan meminta dukungan kerajaan.|Some scholars ask for royal support.
+Fund their work|Finanzia il loro lavoro|资助研究|تمويل عملهم|Tài trợ nghiên cứu|연구 지원|Danai pekerjaan mereka|Fund their work
+Host the delegation|Ospita la delegazione|接待代表团|استضافة الوفد|Đón tiếp phái đoàn|대표단 접대|Jamu delegasi|Host the delegation
+Collect passage tax|Riscuoti il pedaggio|征收通行税|تحصيل رسم المرور|Thu phí qua đường|통행세 징수|Pungut pajak lintas|Collect passage tax
+Families at the border|Famiglie al confine|边境家庭|أسر على الحدود|Các gia đình ở biên giới|국경의 가족들|Keluarga di perbatasan|Families for border
+New settlers ask permission to enter the realm.|Nuovi coloni chiedono di entrare nel regno.|新居民请求进入王国。|يطلب مستوطنون جدد دخول المملكة.|Người định cư mới xin vào vương quốc.|새 정착민들이 왕국 입국을 요청합니다.|Pemukim baru meminta izin masuk kerajaan.|New settlers ask to enter the realm.
+Welcome them|Accoglili|欢迎他们|الترحيب بهم|Chào đón họ|환영하기|Sambut mereka|Welcome dem
+Fortify instead|Rafforza le difese|改为加固防御|تعزيز التحصينات بدلًا من ذلك|Củng cố phòng thủ|대신 방어 강화|Perkuat pertahanan|Fortify instead
+Demand a levy|Richiedi un tributo|征收入境税|فرض جباية|Yêu cầu nộp thuế|부담금 요구|Minta pungutan|Demand levy
+Workshop breakthrough|Innovazione in officina|工坊突破|إنجاز في الورشة|Đột phá tại xưởng|작업장 혁신|Terobosan bengkel|Workshop breakthrough
+Artisans propose an experimental production method.|Gli artigiani propongono un metodo produttivo sperimentale.|工匠提出实验性生产方法。|يقترح الحرفيون طريقة إنتاج تجريبية.|Thợ thủ công đề xuất cách sản xuất thử nghiệm.|장인들이 실험적인 생산 방식을 제안합니다.|Perajin mengusulkan metode produksi eksperimental.|Artisans propose new production method to try.
+Rush production|Accelera la produzione|加速生产|تسريع الإنتاج|Đẩy nhanh sản xuất|생산 가속|Percepat produksi|Rush production
+Refine the design|Migliora il progetto|改进设计|تحسين التصميم|Cải tiến thiết kế|설계 개선|Sempurnakan desain|Improve the design
+Royal inspection|Ispezione reale|皇家检查|تفتيش ملكي|Thanh tra hoàng gia|왕실 시찰|Inspeksi kerajaan|Royal inspection
+Realm festival|Festa del regno|王国庆典|مهرجان المملكة|Lễ hội vương quốc|왕국 축제|Festival kerajaan|Realm festival
+The people ask for a public celebration.|Il popolo chiede una festa pubblica.|民众要求举办公共庆典。|يطلب الناس احتفالًا عامًا.|Người dân muốn tổ chức lễ hội công cộng.|백성들이 공개 축제를 요청합니다.|Rakyat meminta perayaan umum.|People ask for public celebration.
+Sponsor a grand festival|Finanzia una grande festa|资助盛大庆典|رعاية مهرجان كبير|Tài trợ lễ hội lớn|대규모 축제 후원|Danai festival besar|Sponsor big festival
+Keep it modest|Organizza una festa modesta|从简举办|إقامة احتفال بسيط|Tổ chức vừa phải|소박하게 진행|Adakan secara sederhana|Keep am small
+Cancel the festival|Annulla la festa|取消庆典|إلغاء المهرجان|Hủy lễ hội|축제 취소|Batalkan festival|Cancel festival
+Famine|Carestia|饥荒|مجاعة|Nạn đói|기근|Kelaparan|Famine
+Food critical|Cibo in esaurimento|粮食危急|الغذاء في حالة حرجة|Lương thực nguy cấp|식량 위기|Pangan kritis|Food don nearly finish
+Food warning|Attenzione al cibo|粮食警告|تحذير غذائي|Cảnh báo lương thực|식량 경고|Peringatan pangan|Food warning
+Food is exhausted while consumption is still negative. Population and stability are now at risk.|Il cibo è esaurito e il consumo supera la produzione. Popolazione e stabilità sono a rischio.|粮食耗尽且消耗仍大于产出，人口与稳定度面临风险。|نفد الغذاء ولا يزال الاستهلاك يفوق الإنتاج. السكان والاستقرار في خطر.|Lương thực đã hết trong khi tiêu thụ vẫn vượt sản xuất. Dân số và ổn định gặp nguy.|식량이 고갈되었고 소비가 생산보다 많습니다. 인구와 안정도가 위험합니다.|Pangan habis dan konsumsi masih melebihi produksi. Populasi dan stabilitas terancam.|Food don finish and consumption still pass production. Population and stability dey risk.
+Food is falling. At the current rate reserves last about {0}.|Il cibo diminuisce. Al ritmo attuale le scorte durano circa {0}.|粮食减少，按当前速度储备约可维持 {0}。|يتناقص الغذاء. تكفي المخزونات نحو {0} بالمعدل الحالي.|Lương thực đang giảm. Với tốc độ này, dự trữ còn khoảng {0}.|식량이 줄고 있습니다. 현재 속도라면 약 {0} 남았습니다.|Pangan menurun. Pada laju ini, persediaan cukup sekitar {0}.|Food dey reduce. At this rate reserve go last about {0}.
+Food is slightly negative, but reserves last about {0}. No immediate action is required.|Il bilancio del cibo è leggermente negativo, ma le scorte durano circa {0}. Non serve agire subito.|粮食略有赤字，但储备约可维持 {0}，无需立即行动。|ميزان الغذاء سلبي قليلًا، لكن المخزون يكفي نحو {0}. لا يلزم إجراء فوري.|Lương thực âm nhẹ nhưng dự trữ còn khoảng {0}. Chưa cần hành động ngay.|식량 수지가 약간 적자지만 비축량은 약 {0} 유지됩니다. 즉시 조치할 필요는 없습니다.|Neraca pangan sedikit negatif, tetapi persediaan cukup sekitar {0}. Belum perlu tindakan segera.|Food dey reduce small, but reserve fit last {0}. No need act immediately.
+Food production is sustainable.|La produzione di cibo è sostenibile.|粮食生产可持续。|إنتاج الغذاء مستدام.|Sản xuất lương thực bền vững.|식량 생산이 안정적입니다.|Produksi pangan berkelanjutan.|Food production fit sustain the realm.
+Stability is falling. Target for this era: {0}%.|La stabilità diminuisce. Obiettivo di questa era: {0}%.|稳定度下降，本时代目标为 {0}%。|يتراجع الاستقرار. هدف هذا العصر: {0}%.|Ổn định đang giảm. Mục tiêu thời đại này: {0}%.|안정도가 하락 중입니다. 현재 시대 목표: {0}%.|Stabilitas menurun. Target era ini: {0}%.|Stability dey fall. Target for this era na {0}%.
+Stability target: {0}%. Passive recovery would take about {1}.|Obiettivo di stabilità: {0}%. Il recupero passivo richiede circa {1}.|稳定度目标 {0}%，被动恢复约需 {1}。|هدف الاستقرار: {0}%. يستغرق التعافي السلبي نحو {1}.|Mục tiêu ổn định: {0}%. Hồi phục thụ động mất khoảng {1}.|안정도 목표: {0}%. 자연 회복에는 약 {1} 걸립니다.|Target stabilitas: {0}%. Pemulihan pasif memerlukan sekitar {1}.|Stability target na {0}%. Passive recovery go take about {1}.
+Stability target: {0}%.|Obiettivo di stabilità: {0}%.|稳定度目标：{0}%。|هدف الاستقرار: {0}%.|Mục tiêu ổn định: {0}%.|안정도 목표: {0}%.|Target stabilitas: {0}%.|Stability target na {0}%.
+Stability target {0}% is secured.|Obiettivo di stabilità del {0}% raggiunto.|已达到 {0}% 稳定度目标。|تحقق هدف الاستقرار {0}%.|Đã đạt mục tiêu ổn định {0}%.|안정도 목표 {0}%를 달성했습니다.|Target stabilitas {0}% tercapai.|Stability target of {0}% don reach.
+Payment recovery: {0}|Recupero pagamento: {0}|恢复付款：{0}|استعادة الدفع: {0}|Khôi phục thanh toán: {0}|결제 복구: {0}|Pemulihan pembayaran: {0}|Payment recovery: {0}
+Payment error: {0}|Errore di pagamento: {0}|付款错误：{0}|خطأ الدفع: {0}|Lỗi thanh toán: {0}|결제 오류: {0}|Kesalahan pembayaran: {0}|Payment error: {0}
+Event resolved: {0}|Evento risolto: {0}|事件已解决：{0}|حُسم الحدث: {0}|Đã xử lý sự kiện: {0}|사건 해결: {0}|Peristiwa diselesaikan: {0}|Event don resolve: {0}
+Event resolved by server.|Evento risolto dal server.|服务器已处理事件。|حُسم الحدث على الخادم.|Máy chủ đã xử lý sự kiện.|서버에서 사건을 처리했습니다.|Peristiwa diselesaikan oleh server.|Server don resolve event.
+Mission completed now: {0} Cooldown started.|Missione completata: {0} Tempo di attesa avviato.|任务已完成：{0} 冷却已开始。|اكتملت المهمة الآن: {0} بدأت فترة الانتظار.|Nhiệm vụ vừa hoàn tất: {0} Đã bắt đầu hồi chiêu.|임무 완료: {0} 대기 시간이 시작되었습니다.|Misi selesai sekarang: {0} Waktu tunggu dimulai.|Mission don complete now: {0} Cooldown don start.
+Mission completed now. Cooldown started.|Missione completata. Tempo di attesa avviato.|任务已完成，冷却已开始。|اكتملت المهمة. بدأت فترة الانتظار.|Nhiệm vụ hoàn tất. Đã bắt đầu hồi chiêu.|임무가 완료되어 대기 시간이 시작되었습니다.|Misi selesai. Waktu tunggu dimulai.|Mission don complete. Cooldown don start.
+s|s|秒|ث|giây|초|d|s
+min|min|分|د|phút|분|mnt|min
+h|h|小时|س|giờ|시간|jam|h
+Request failed ({0})|Richiesta non riuscita ({0})|请求失败（{0}）|فشل الطلب ({0})|Yêu cầu thất bại ({0})|요청 실패 ({0})|Permintaan gagal ({0})|Request no work ({0})
+Realm changed in another request. Refresh saved progress before another action.|Il regno è cambiato in un'altra richiesta. Aggiorna i progressi prima di agire.|王国已被另一请求更新。请先刷新进度再操作。|تغيّرت المملكة في طلب آخر. حدّث التقدم المحفوظ قبل إجراء آخر.|Vương quốc đã đổi trong yêu cầu khác. Làm mới tiến trình trước khi thao tác tiếp.|다른 요청으로 왕국이 변경되었습니다. 저장된 진행 상황을 새로고침하세요.|Kerajaan berubah pada permintaan lain. Muat ulang progres sebelum tindakan berikutnya.|Another request don change realm. Refresh saved progress before another action.
+Saved realm requires review; no progress has been overwritten|I dati del regno richiedono verifica; nessun progresso è stato sovrascritto|王国数据需要检查，未覆盖任何进度|تحتاج بيانات المملكة مراجعة؛ لم يُستبدل أي تقدم|Dữ liệu vương quốc cần kiểm tra; chưa ghi đè tiến trình|왕국 데이터 확인이 필요합니다. 진행 상황을 덮어쓰지 않았습니다|Data kerajaan perlu ditinjau; progres tidak ditimpa|Realm data need check; no progress don overwrite
+IOU changed in another request. Reload before trying again.|L'accordo è cambiato in un'altra richiesta. Ricarica prima di riprovare.|约定已被另一请求更新。请刷新后重试。|تغيّر الاتفاق في طلب آخر. أعد التحميل قبل المحاولة.|Thỏa thuận đã đổi trong yêu cầu khác. Tải lại trước khi thử.|다른 요청으로 약정이 변경되었습니다. 다시 불러온 후 시도하세요.|Kesepakatan berubah pada permintaan lain. Muat ulang sebelum mencoba lagi.|Another request don change IOU. Reload before you try again.
+Stored IOU requires review; no record has been overwritten|L'accordo salvato richiede verifica; nessun dato è stato sovrascritto|约定数据需要检查，未覆盖任何记录|يحتاج الاتفاق المحفوظ مراجعة؛ لم يُستبدل أي سجل|Thỏa thuận cần kiểm tra; chưa ghi đè hồ sơ|저장된 약정을 확인해야 합니다. 기록을 덮어쓰지 않았습니다|Kesepakatan tersimpan perlu ditinjau; catatan tidak ditimpa|Saved IOU need check; no record don overwrite
+Stored IOU indexes require review|Gli indici degli accordi richiedono verifica|约定索引需要检查|تحتاج فهارس الاتفاق مراجعة|Chỉ mục thỏa thuận cần kiểm tra|약정 색인 확인이 필요합니다|Indeks kesepakatan perlu ditinjau|IOU indexes need check
+Missing Pi access token|Sessione Pi mancante. Accedi di nuovo.|缺少 Pi 会话，请重新登录。|جلسة Pi مفقودة. سجّل الدخول مجددًا.|Thiếu phiên Pi. Hãy đăng nhập lại.|Pi 세션이 없습니다. 다시 로그인하세요.|Sesi Pi tidak ada. Masuk kembali.|Pi session no dey. Sign in again.
+Invalid or expired Pi session|Sessione Pi non valida o scaduta|Pi 会话无效或已过期|جلسة Pi غير صالحة أو منتهية|Phiên Pi không hợp lệ hoặc hết hạn|유효하지 않거나 만료된 Pi 세션|Sesi Pi tidak valid atau kedaluwarsa|Pi session no valid or e don expire
+Unauthorized|Accesso non autorizzato|未经授权|غير مصرح|Không được phép|인증되지 않음|Tidak diizinkan|No permission
+Database unavailable|Database non disponibile|数据库不可用|قاعدة البيانات غير متاحة|Cơ sở dữ liệu không khả dụng|데이터베이스를 사용할 수 없습니다|Basis data tidak tersedia|Database no available
+Game service error|Servizio di gioco non disponibile|游戏服务错误|خطأ في خدمة اللعبة|Lỗi dịch vụ trò chơi|게임 서비스 오류|Kesalahan layanan permainan|Game service get error
+Council is busy|Il Consiglio è occupato|议会正忙|المجلس مشغول|Hội đồng đang bận|의회가 처리 중입니다|Dewan sedang sibuk|Council dey busy
+Build unavailable|Costruzione non disponibile|无法建造|البناء غير متاح|Không thể xây dựng|건설할 수 없습니다|Pembangunan tidak tersedia|You no fit build now
+Need {0} Production|Servono {0} di produzione|需要 {0} 生产力|تحتاج {0} إنتاجًا|Cần {0} sản xuất|생산 {0} 필요|Perlu {0} produksi|You need {0} Production
+Building locked until Bronze Age|Edificio disponibile dall'età del bronzo|建筑在青铜时代解锁|المبنى متاح من العصر البرونزي|Công trình mở từ thời đại đồ đồng|청동기 시대부터 건설할 수 있습니다|Bangunan terbuka mulai Zaman Perunggu|Building go unlock for Bronze Age
+Council exists|Il Consiglio esiste già|议会已存在|المجلس موجود بالفعل|Hội đồng đã tồn tại|의회가 이미 있습니다|Dewan sudah ada|Council don exist
+Invalid city slot|Casella della città non valida|城市地块无效|خانة مدينة غير صالحة|Ô thành phố không hợp lệ|유효하지 않은 도시 칸|Petak kota tidak valid|City slot no valid
+Council upgrade unavailable|Potenziamento del Consiglio non disponibile|无法升级议会|ترقية المجلس غير متاحة|Không thể nâng cấp hội đồng|의회를 업그레이드할 수 없습니다|Peningkatan dewan tidak tersedia|Council upgrade no available
+Not enough resources for Council upgrade|Risorse insufficienti per potenziare il Consiglio|升级议会的资源不足|موارد غير كافية لترقية المجلس|Không đủ tài nguyên nâng cấp hội đồng|의회 업그레이드 자원 부족|Sumber daya untuk peningkatan dewan tidak cukup|Resources no reach to upgrade Council
+Era objectives incomplete|Obiettivi dell'era non completati|时代目标未完成|أهداف العصر غير مكتملة|Chưa hoàn thành mục tiêu thời đại|시대 목표 미완료|Tujuan era belum selesai|Era objectives never complete
+No realm event available|Nessun evento disponibile|没有可用王国事件|لا حدث متاح|Không có sự kiện|진행할 사건이 없습니다|Tidak ada peristiwa tersedia|No realm event available
+Invalid event choice|Scelta dell'evento non valida|事件选项无效|خيار حدث غير صالح|Lựa chọn sự kiện không hợp lệ|유효하지 않은 사건 선택|Pilihan peristiwa tidak valid|Event choice no valid
+Not enough resources for that decision|Risorse insufficienti per questa decisione|资源不足以执行此决定|موارد غير كافية لهذا القرار|Không đủ tài nguyên cho quyết định|결정에 필요한 자원 부족|Sumber daya tidak cukup untuk keputusan ini|Resources no reach for that decision
+Event reroll unavailable|Cambio dell'evento non disponibile|无法重抽事件|إعادة اختيار الحدث غير متاحة|Không thể đổi sự kiện|사건을 다시 뽑을 수 없습니다|Pengulangan peristiwa tidak tersedia|Event reroll no available
+Royal mission is still preparing|La missione reale non è ancora pronta|皇家任务仍在准备|المهمة الملكية قيد التجهيز|Nhiệm vụ hoàng gia đang chuẩn bị|왕실 임무 준비 중|Misi kerajaan masih disiapkan|Royal mission still dey prepare
+Invalid mission|Missione non valida|任务无效|مهمة غير صالحة|Nhiệm vụ không hợp lệ|유효하지 않은 임무|Misi tidak valid|Mission no valid
+Build a Council first|Costruisci prima un Consiglio|请先建立议会|ابنِ مجلسًا أولًا|Hãy xây hội đồng trước|먼저 의회를 건설하세요|Bangun dewan terlebih dahulu|Build Council first
+Housing is full. Build another Settlement first|Alloggi esauriti. Costruisci prima un altro insediamento|住房已满，请先建造另一个聚落|السكن ممتلئ. ابنِ مستوطنة أخرى أولًا|Chỗ ở đầy. Hãy xây thêm khu định cư|주거 공간이 찼습니다. 정착지를 더 건설하세요|Hunian penuh. Bangun permukiman lain dahulu|Housing don full. Build another Settlement first
+Bronze requisition unlocks in the Bronze Age|L'approvvigionamento di bronzo si sblocca nell'età del bronzo|征集青铜在青铜时代解锁|يُفتح تأمين البرونز في العصر البرونزي|Trưng thu đồng mở ở thời đại đồ đồng|청동기 시대에 청동 조달이 해제됩니다|Pengadaan perunggu terbuka di Zaman Perunggu|Bronze requisition go unlock for Bronze Age
+Not enough resources for that mission|Risorse insufficienti per la missione|任务资源不足|موارد غير كافية للمهمة|Không đủ tài nguyên cho nhiệm vụ|임무 자원 부족|Sumber daya tidak cukup untuk misi|Resources no reach for that mission
+Invalid action|Azione non valida|操作无效|إجراء غير صالح|Thao tác không hợp lệ|유효하지 않은 작업|Tindakan tidak valid|Action no valid
+Too many requests. Please try again shortly.|Troppe richieste. Riprova tra poco.|请求过多，请稍后重试。|طلبات كثيرة. حاول مجددًا بعد قليل.|Quá nhiều yêu cầu. Vui lòng thử lại sau.|요청이 너무 많습니다. 잠시 후 다시 시도하세요.|Terlalu banyak permintaan. Coba sebentar lagi.|Too many requests. Try again small time.
+This IOU is being updated. Please retry in a moment.|L'accordo è in aggiornamento. Riprova tra poco.|约定正在更新，请稍后重试。|يجري تحديث الاتفاق. حاول بعد قليل.|Thỏa thuận đang cập nhật. Hãy thử lại sau.|약정을 업데이트 중입니다. 잠시 후 다시 시도하세요.|Kesepakatan sedang diperbarui. Coba sebentar lagi.|IOU dey update. Try again small time.
+IOU not found|Accordo non trovato|找不到约定|الاتفاق غير موجود|Không tìm thấy thỏa thuận|약정을 찾을 수 없습니다|Kesepakatan tidak ditemukan|IOU no dey
+You do not have access to this IOU|Non hai accesso a questo accordo|你无权访问此约定|لا تملك صلاحية لهذا الاتفاق|Bạn không có quyền xem thỏa thuận|이 약정에 접근할 수 없습니다|Anda tidak memiliki akses ke kesepakatan ini|You no get access to this IOU
+This action is not available for the current IOU state|Azione non disponibile nello stato attuale dell'accordo|当前约定状态下无法执行此操作|الإجراء غير متاح لحالة الاتفاق الحالية|Không thể thao tác trong trạng thái hiện tại|현재 약정 상태에서는 이 작업을 할 수 없습니다|Tindakan tidak tersedia untuk status saat ini|You no fit do this action for current IOU status
+
+Agreement terms set|Condizioni dell’accordo impostate|已设置约定条款|تم تحديد شروط الاتفاق|Đã đặt điều khoản thỏa thuận|약정 조건 설정됨|Ketentuan kesepakatan ditetapkan|Agreement terms don set
+Recurring cycle created|Ciclo ricorrente creato|已创建重复周期|تم إنشاء دورة متكررة|Đã tạo chu kỳ định kỳ|반복 주기 생성됨|Siklus berulang dibuat|Recurring cycle don create
+Reminder sent|Promemoria inviato|提醒已发送|تم إرسال التذكير|Đã gửi lời nhắc|알림 전송됨|Pengingat dikirim|Reminder don send
+
+PI TESTNET|PI TESTNET|PI 测试网|شبكة PI التجريبية|PI TESTNET|PI 테스트넷|PI TESTNET|PI TESTNET
+Amount in Test-Pi|Importo in Test-Pi|Test-Pi 金额|المبلغ بوحدة Test-Pi|Số tiền Test-Pi|Test-Pi 금액|Jumlah Test-Pi|Amount for Test-Pi
+Support with 0.1 Test-Pi|Sostieni con 0,1 Test-Pi|支持 0.1 Test-Pi|ادعم بمبلغ 0.1 Test-Pi|Ủng hộ 0,1 Test-Pi|0.1 Test-Pi로 후원|Dukung dengan 0,1 Test-Pi|Support with 0.1 Test-Pi
+Optional 0.1 Test-Pi payment to support development. It never changes an IOU balance, due date or settlement status.|Contributo facoltativo di 0,1 Test-Pi per lo sviluppo. Non modifica importi, scadenze o stato degli accordi.|可选择支付 0.1 Test-Pi 支持开发。不会更改约定余额、到期日或结算状态。|دفعة اختيارية بقيمة 0.1 Test-Pi لدعم التطوير. لا تغيّر رصيد الاتفاق أو موعده أو حالته.|Khoản ủng hộ tùy chọn 0,1 Test-Pi cho phát triển. Không thay đổi số dư, hạn hoặc trạng thái thỏa thuận.|개발을 위한 선택적 0.1 Test-Pi 후원입니다. 약정 잔액, 기한 또는 정산 상태를 변경하지 않습니다.|Dukungan opsional 0,1 Test-Pi untuk pengembangan. Tidak mengubah saldo, tenggat, atau status kesepakatan.|Optional 0.1 Test-Pi to support development. E no dey change agreement amount, date or status.
+Testnet A2U validation|Verifica A2U Testnet|Testnet A2U 验证|التحقق من A2U على Testnet|Xác thực A2U Testnet|Testnet A2U 검증|Validasi A2U Testnet|Testnet A2U validation
+One-time App-to-User Test-Pi validation for this authenticated Pioneer. This is used only to satisfy Pi Testnet wallet-readiness requirements.|Verifica unica App-to-User in Test-Pi per questo Pioneer autenticato, solo per i requisiti di preparazione del wallet Testnet.|为此已认证先锋进行一次性 App-to-User Test-Pi 验证，仅用于满足 Pi Testnet 钱包就绪要求。|تحقق App-to-User لمرة واحدة بوحدة Test-Pi لهذا المستخدم المصادق عليه، لتلبية متطلبات جاهزية محفظة Testnet فقط.|Xác thực App-to-User Test-Pi một lần cho Pioneer đã đăng nhập, chỉ để đáp ứng yêu cầu sẵn sàng ví Testnet.|인증된 사용자를 위한 일회성 App-to-User Test-Pi 검증입니다. Testnet 지갑 준비 요건에만 사용됩니다.|Validasi App-to-User Test-Pi sekali untuk Pioneer terautentikasi, hanya untuk persyaratan kesiapan dompet Testnet.|One-time App-to-User Test-Pi check for this signed-in Pioneer, only to meet Testnet wallet readiness rules.
+Checking eligibility…|Verifica dei requisiti…|正在检查资格…|جارٍ التحقق من الأهلية…|Đang kiểm tra điều kiện…|자격 확인 중…|Memeriksa kelayakan…|Dey check eligibility…
+Receive 0.01 Test-Pi|Ricevi 0,01 Test-Pi|接收 0.01 Test-Pi|استلم 0.01 Test-Pi|Nhận 0,01 Test-Pi|0.01 Test-Pi 받기|Terima 0,01 Test-Pi|Receive 0.01 Test-Pi
+Eligible|Requisiti soddisfatti|符合资格|مؤهل|Đủ điều kiện|자격 충족|Memenuhi syarat|You qualify
+Not eligible for another validation|Non è disponibile un'altra verifica|无法再次验证|غير مؤهل لتحقق آخر|Không đủ điều kiện xác thực thêm|추가 검증 대상 아님|Tidak memenuhi syarat validasi lagi|You no qualify for another validation
+Validation {0}.|Verifica {0}.|验证 {0}。|التحقق {0}.|Xác thực {0}.|검증 {0}.|Validasi {0}.|Validation {0}.
+Validation unavailable: {0}|Verifica non disponibile: {0}|验证不可用：{0}|التحقق غير متاح: {0}|Không thể xác thực: {0}|검증 불가: {0}|Validasi tidak tersedia: {0}|Validation no dey available: {0}
+Validation failed: {0}|Verifica non riuscita: {0}|验证失败：{0}|فشل التحقق: {0}|Xác thực thất bại: {0}|검증 실패: {0}|Validasi gagal: {0}|Validation fail: {0}
+Receive the one-time 0.01 Test-Pi validation payout?|Ricevere il pagamento unico di verifica da 0,01 Test-Pi?|接收一次性 0.01 Test-Pi 验证付款？|هل تريد استلام دفعة التحقق لمرة واحدة بقيمة 0.01 Test-Pi؟|Nhận khoản xác thực một lần 0,01 Test-Pi?|일회성 0.01 Test-Pi 검증 지급을 받으시겠습니까?|Terima pembayaran validasi sekali sebesar 0,01 Test-Pi?|Receive the one-time 0.01 Test-Pi validation payout?
+Testnet A2U validation completed.|Verifica A2U Testnet completata.|Testnet A2U 验证已完成。|اكتمل التحقق من A2U على Testnet.|Đã hoàn tất xác thực A2U Testnet.|Testnet A2U 검증 완료.|Validasi A2U Testnet selesai.|Testnet A2U validation don complete.

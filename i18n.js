@@ -1,12 +1,105 @@
-(()=>{
-const ZH={
-'IIOU':'IIOU','Keep promises clear.':'让承诺清晰可见。','Private shared records for Pioneers':'先锋用户的私密共享记录','What we owe should stay clear.':'让每一笔约定都清清楚楚。','Create a personal IOU, let the other Pioneer confirm it, then keep both sides aligned until settlement.':'创建个人约定，由另一位先锋确认，并持续跟踪直到完成。','Continue with Pi':'使用 Pi 继续','Connecting to Pi…':'正在连接 Pi…','Loading your agreements…':'正在加载你的约定…','Pi identity':'Pi 身份','No separate account.':'无需单独账户。','Two-sided confirmation':'双方确认','Both people see the same record.':'双方查看同一记录。','Clear history':'清晰记录','Actions stay visible in the timeline.':'所有操作都会保留在时间线中。','Signed in as':'已登录','Refresh':'刷新','You owe':'你欠他人','Owed to you':'他人欠你','Settled':'已完成','Next action':'下一步','Active':'进行中','All':'全部','+ New agreement':'+ 新建约定','+ New IOU':'+ 新建约定','Split expense':'分摊费用','Activity center':'活动中心','Open agreement':'打开约定','Cancel request':'取消请求','Mark paid':'标记已支付','Confirm settlement':'确认收款','Not yet':'尚未收到','Create an agreement':'创建约定','Set clear terms. The other Pioneer can accept or decline the shared record.':'设定清晰条款，对方可以接受或拒绝。','Set clear terms. The other Pioneer can accept or decline.':'设定清晰条款，对方可以接受或拒绝。','Relationship':'关系','I owe them':'我欠对方','They owe me':'对方欠我','Pi username':'Pi 用户名','Amount in Pi':'Pi 金额','Amount in Test-Pi':'Test-Pi 金额','Reason / note':'原因 / 备注','First due date (optional)':'首次到期日（可选）','Repeat':'重复','One time':'一次性','Every week':'每周','Every month':'每月','Repayment plan':'还款计划','Single payment':'一次付清','Cancel':'取消','Create agreement':'创建约定','Split an expense':'分摊费用','Create one private share for each Pioneer. Enter one participant per line as':'为每位先锋创建一份私密份额。每行输入：','Expense title':'费用名称','Participants and shares':'参与者与份额','2–12 different Pioneers. Do not include your own username.':'填写 2–12 位不同先锋，请勿包含自己。','Due date (optional)':'到期日（可选）','Create split':'创建分摊','Creating shares…':'正在创建份额…','Support IIOU':'支持 IIOU','Support with 0.01 Pi':'用 0.01 Pi 支持','Privacy':'隐私政策','Terms':'服务条款','Awaiting reply':'等待回复','Accepted':'已接受','Payment claimed':'已申报支付','Declined':'已拒绝','Cancelled':'已取消','Closure requested':'已申请关闭','Closed by agreement':'双方同意关闭','IIOU Activity':'IIOU 活动','Details, confirmations and settlement history':'详情、确认与结算记录','Details, timeline and settlement history':'详情、时间线与结算记录','Back to IIOU':'返回 IIOU','Private activity center':'私密活动中心','Authenticate with Pi to view only IOUs connected to your verified account.':'使用 Pi 验证身份，仅查看与你账户相关的约定。','Your IOUs':'你的约定','All IOUs':'全部约定','Agreement plan':'约定计划','One-time agreement':'一次性约定','Confirmed':'已确认','Remaining':'剩余','Confirmed partials':'已确认的部分金额','Send a respectful reminder':'发送友善提醒','Send reminder':'发送提醒','Add shared activity note':'添加共享活动备注','Add private shared activity note':'添加私密共享备注','Add note':'添加备注','Activity timeline':'活动时间线','Newest activity appears first.':'最新活动显示在最前。','Share this request':'分享此请求','Shared expense':'共享费用','Share agreement link':'分享约定链接','Close without settlement':'不记录付款并关闭','Request closure without payment':'申请无付款关闭','Closure request':'关闭申请','Confirm closure':'确认关闭','Keep IOU active':'保持约定有效','Keep active':'保持有效','Closure awaiting confirmation':'等待对方确认关闭','Cancel closure request':'取消关闭申请','Closed by mutual agreement':'双方同意关闭','IOU created':'约定已创建','Counterparty accepted':'对方已接受','Shared note':'共享备注','Closure requested':'已申请关闭','Created by mistake':'误创建','Duplicate':'重复记录','Agreement cancelled':'约定已取消','Other reason':'其他原因','Optional explanation…':'可选说明…','Add context visible to both participants…':'添加双方可见的说明…','Add context for both participants…':'添加双方可见的说明…','Dinner, trip, shared purchase…':'聚餐、旅行、共同购物…','Rent, shared purchase, personal agreement…':'房租、共同购物、个人约定…','username':'用户名'};
-const patterns=[
-[/^You owe @(.+)$/,'你欠 @$1'],[/^@(.+) owes you$/,'@$1 欠你'],[/^Overdue by (\d+) days?$/,'已逾期 $1 天'],[/^Due in (\d+) days?$/,'$1 天后到期'],[/^Due today$/,'今天到期'],[/^Due date passed · awaiting acceptance$/,'到期日已过 · 等待接受'],[/^Due (.+)$/,'到期日 $1'],[/^Created (.+)$/,'创建于 $1'],[/^Part of “(.+)” · (\d+) shares · (.+) total$/,'属于“$1” · $2 份 · 总计 $3'],[/^Split created: (\d+) private shares totaling (.+)\.$/,'已创建 $1 份私密份额，总计 $2。'],[/^(.+) installments$/,'$1 期'],[/^(.+) installments · (.+) suggested each$/,'$1 期 · 建议每期 $2']];
-function tr(value){const v=String(value||'').trim();if(!v)return v;if(ZH[v])return ZH[v];for(const [re,to] of patterns)if(re.test(v))return v.replace(re,to);return v}
-function translate(root=document){if(lang()!=='zh-CN')return;const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);const nodes=[];while(w.nextNode())nodes.push(w.currentNode);for(const n of nodes){if(['SCRIPT','STYLE'].includes(n.parentElement?.tagName))continue;const raw=n.nodeValue,trim=raw.trim(),next=tr(trim);if(trim&&next!==trim)n.nodeValue=raw.replace(trim,next)}for(const el of root.querySelectorAll?.('[placeholder]')||[]){const v=tr(el.placeholder);if(v!==el.placeholder)el.placeholder=v}}
-function lang(){return localStorage.getItem('iiou-language')||'en'}
-function setLang(v){localStorage.setItem('iiou-language',v);location.reload()}
-function init(){document.documentElement.lang=lang()==='zh-CN'?'zh-CN':'en';const box=document.createElement('label');box.className='iiou-language';box.innerHTML='<span>Language</span><select aria-label="Language"><option value="en">English</option><option value="zh-CN">简体中文</option></select>';box.querySelector('select').value=lang();box.querySelector('select').onchange=e=>setLang(e.target.value);document.body.appendChild(box);if(lang()==='zh-CN'){translate();new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType===1)translate(n);else if(n.nodeType===3&&n.parentElement)translate(n.parentElement)}))).observe(document.body,{childList:true,subtree:true})}}
-const style=document.createElement('style');style.textContent='.iiou-language{position:fixed;right:10px;bottom:12px;z-index:1000;display:flex;align-items:center;gap:7px;padding:7px 9px;border:1px solid #29405f;border-radius:999px;background:#0e1a2cf2;color:#dce7f5;font:12px system-ui;box-shadow:0 8px 24px #0005}.iiou-language select{border:0;background:transparent;color:inherit;font:inherit;font-weight:700}.iiou-language option{color:#07101e;background:#fff}';document.head.appendChild(style);window.IIOU_I18N={tr,lang,setLang};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init()
+(() => {
+'use strict';
+const app=document.documentElement.dataset.app || 'app';
+const storageKey=app==='iiou'?'iiou-language':'idle-realm-language';
+const languages=[['en','English'],['it','Italiano'],['zh-CN','简体中文'],['ar','العربية'],['vi','Tiếng Việt'],['ko','한국어'],['id','Bahasa Indonesia'],['pcm','Naijá Pidgin']];
+const locales={en:'en-US',it:'it-IT','zh-CN':'zh-CN',ar:'ar',vi:'vi-VN',ko:'ko-KR',id:'id-ID',pcm:'en-NG'};
+const catalog=window.APP_TRANSLATIONS||{};
+let selected='en';
+try{const saved=localStorage.getItem(storageKey);if(languages.some(([code])=>code===saved))selected=saved;}catch{}
+const textSources=new WeakMap(),attributeSources=new WeakMap();
+const patterns=Object.keys(catalog).filter(key=>/\{\d+\}/.test(key)).map(key=>{
+ const slots=[];
+ const escaped=key.split(/(\{\d+\})/).map(part=>{
+  if(/^\{\d+\}$/.test(part)){slots.push(Number(part.slice(1,-1)));return '(.+?)';}
+  return part.replace(/[.*+?^$()|[\]{}\\]/g,'\\$&');
+ }).join('');
+ return {key,slots,re:new RegExp('^'+escaped+'$','u')};
+});
+function template(key,args){
+ const value=selected==='en'?key:(catalog[key]?.[selected]||key);
+ return value.replace(/\{(\d+)\}/g,(_,i)=>{
+  const raw=String(args[Number(i)]??'');
+  return selected==='ar'?'\u2068'+raw+'\u2069':raw;
+ });
+}
+function tr(value){
+ const source=String(value??'');
+ if(selected==='en'||!source.trim())return source;
+ if(catalog[source])return template(source,[]);
+ for(const pattern of patterns){
+  const match=source.match(pattern.re);if(!match)continue;
+  const args=[];pattern.slots.forEach((slot,i)=>args[slot]=match[i+1]);
+  return template(pattern.key,args);
+ }
+ if(source.includes(' · '))return source.split(' · ').map(tr).join(' · ');
+ const icon=source.match(/^([←⚠️⚡⭐⚔️🏰✔☐\s]+)(.+)$/u);
+ if(icon)return icon[1]+tr(icon[2]);
+ return source;
+}
+function protectedNode(node){
+ return !!node.parentElement?.closest('script,style,textarea,[translate="no"],[data-user-content],.language-selector');
+}
+function translateText(node){
+ if(protectedNode(node))return;
+ const raw=node.nodeValue,prior=textSources.get(node);
+ const source=prior&&raw===prior.last?prior.source:raw;
+ const trimmed=source.trim(),translated=tr(trimmed);
+ const next=trimmed?source.replace(trimmed,translated):source;
+ textSources.set(node,{source,last:next});
+ if(raw!==next)node.nodeValue=next;
+}
+function translate(root=document.body){
+ if(!root)return;
+ if(root.nodeType===3){translateText(root);return;}
+ const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT),nodes=[];
+ while(walker.nextNode())nodes.push(walker.currentNode);
+ nodes.forEach(translateText);
+ for(const el of root.querySelectorAll?.('[placeholder],[title],[aria-label]')||[]){
+  if(el.closest('[translate="no"],.language-selector'))continue;
+  let state=attributeSources.get(el)||{};
+  for(const attr of ['placeholder','title','aria-label']){
+   const raw=el.getAttribute(attr);if(raw===null)continue;
+   const prior=state[attr],source=prior&&raw===prior.last?prior.source:raw,next=tr(source);
+   state[attr]={source,last:next};if(raw!==next)el.setAttribute(attr,next);
+  }
+  attributeSources.set(el,state);
+ }
+}
+function apply(){
+ document.documentElement.lang=selected;
+ document.documentElement.dir=selected==='ar'?'rtl':'ltr';
+ translate();
+ const box=document.querySelector('.language-selector');if(box)box.querySelector('select').value=selected;
+ window.dispatchEvent(new CustomEvent('app-language-change',{detail:{language:selected}}));
+}
+function setLang(code){
+ if(!languages.some(([id])=>id===code))return;
+ selected=code;try{localStorage.setItem(storageKey,code)}catch{}
+ apply();
+}
+function init(){
+ const box=document.createElement('label');box.className='language-selector';
+ const caption=document.createElement('span');caption.textContent='🌐';
+ const select=document.createElement('select');select.setAttribute('aria-label','Language / Lingua');
+ for(const [code,name]of languages){const option=document.createElement('option');option.value=code;option.textContent=name;option.lang=code;option.dir=code==='ar'?'rtl':'ltr';select.appendChild(option);}
+ select.value=selected;select.onchange=e=>setLang(e.target.value);box.append(caption,select);
+ const main=document.querySelector('main');(main?.querySelector('header')||main?.firstElementChild||document.body).after(box);
+ apply();
+ new MutationObserver(records=>{
+  for(const record of records){
+   if(record.type==='characterData')translate(record.target);
+   else for(const node of record.addedNodes)translate(node);
+  }
+ }).observe(document.body,{subtree:true,childList:true,characterData:true});
+ const nativeAlert=window.alert.bind(window),nativeConfirm=window.confirm.bind(window);
+ window.alert=value=>nativeAlert(tr(value));
+ window.confirm=value=>nativeConfirm(tr(value));
+}
+const style=document.createElement('style');
+style.textContent='.language-selector{display:flex;align-items:center;justify-content:flex-end;gap:8px;max-width:760px;margin:10px auto;padding:0 14px;color:#f6f2e8;font:14px system-ui}.language-selector select{max-width:100%;padding:10px;border:1px solid #34435f;border-radius:12px;background:#111827;color:#f6f2e8;font:inherit}.language-selector option{background:#111827;color:#f6f2e8}button,a,input,select,textarea{max-width:100%}button{overflow-wrap:anywhere}html[dir=rtl] .timeline{border-left:0;border-inline-start:2px solid #29476c;margin-left:0;margin-inline-start:12px;padding-left:0;padding-inline-start:18px}html[dir=rtl] .event:before{left:auto;inset-inline-start:-25px}html[dir=rtl] .amount,html[dir=rtl] .rate,html[dir=rtl] input[type=number]{direction:ltr;unicode-bidi:isolate}html[dir=rtl] .priority-kicker{letter-spacing:normal}[data-user-content],[translate=no]{unicode-bidi:plaintext}';
+document.head.appendChild(style);
+window.APP_I18N={tr,template,lang:()=>selected,locale:()=>locales[selected],setLang,languages};
+window.IIOU_I18N=window.APP_I18N;
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
