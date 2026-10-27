@@ -2,8 +2,10 @@
 
 ## Prepared persistence correction — 27 October 2026
 
-Local Testnet candidate based on upstream
-`3fa699f21ab8906b9510cf4c1330be91199cc2f5`; not deployed.
+Testnet correction based on upstream
+`3fa699f21ab8906b9510cf4c1330be91199cc2f5`. Publication authorized on
+27 October 2026; isolated real Redis validation passed on Vercel.
+Authenticated Pi Browser acceptance remains pending.
 IOU records and their user/pending indexes are saved in one Lua operation with
 an exact snapshot comparison. A stale writer receives HTTP 409. Malformed
 records or wrong-type indexes fail closed instead of resetting existing data.

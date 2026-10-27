@@ -1,6 +1,11 @@
 # IIOU Testnet — candidate for review
 
-Status: prepared locally, not pushed, deployed or verified in Pi Browser.
+Status: Testnet publication authorized; isolated real Redis validation passed.
+Authenticated Pi Browser acceptance is pending.
+
+The preparation notes below describe the initial local checks. Their real-Redis
+release gate was subsequently satisfied by the isolated Vercel validation;
+manual device checks remain open.
 Source: Giulex84/IIOU at 3fa699f21ab8906b9510cf4c1330be91199cc2f5.
 
 ## Change
@@ -58,3 +63,13 @@ The validation does not call Pi APIs, read user records, change credentials or
 reset any database. It deletes only its own temporary test keys.
 The previous deployment and source commit remain the code rollback reference.
 Final deployment status and manual acceptance are recorded separately.
+
+## Real Redis validation evidence
+
+- Validation deployment: dpl_5aK9B8cSEXbKhGaf8ZhyXfr8JPBn.
+- Reviewed implementation commit: f17cb2b9092eaa28a8ca7af02b4c2b3a49219f98.
+- Build output confirmed: PASS isolated real Redis persistence checks and cleanup.
+- Keys were confined to a random audit:testnet namespace; no user records or Pi payments were used.
+- Previous domain deployment for code rollback: dpl_CZLRThrsExmtTjG81tje1axNEAT2.
+- Changes to Mainnet, credentials, database configuration or product prices: none.
+- User trial: single owner account; two-person authorization checks remain a separate manual gate.
