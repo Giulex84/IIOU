@@ -2,6 +2,9 @@
   "name": "iiou-app",
   "version": "2.7.1",
   "private": true,
+  "scripts": {
+    "test": "node --test tests/persistence.test.cjs"
+  },
   "engines": {
     "node": "22.x"
   },

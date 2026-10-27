@@ -1,5 +1,23 @@
 # IIOU — Personal IOUs for Pioneers
 
+## Prepared persistence correction — 27 October 2026
+
+Local Testnet candidate based on upstream
+`3fa699f21ab8906b9510cf4c1330be91199cc2f5`; not deployed.
+IOU records and their user/pending indexes are saved in one Lua operation with
+an exact snapshot comparison. A stale writer receives HTTP 409. Malformed
+records or wrong-type indexes fail closed instead of resetting existing data.
+Recurring settlement commits the source, its next cycle and indexes together;
+retry after a lost response returns the persisted cycle identifier. Pending
+username claims use the same snapshot guard. Group creation uses the explicit
+single-record save callback; the whole group remains a set of separate commits.
+
+Run `npm test` with Node.js 22/24, Python 3 and a local Lua 5.3/5.4 shared library.
+The tests block network access and execute the production Lua scripts against
+a small in-memory command model. This is not a real Redis or Upstash integration
+test. Payment code, SDK mode, Testnet namespaces, agreement rules and credentials
+are unchanged. See `TESTNET-CANDIDATE-2026-10-27.md` for gates and rollback limits.
+
 IIOU is a Pi Testnet application for creating, confirming, tracking, and settling personal IOU records between Pioneers.
 
 ## Product model

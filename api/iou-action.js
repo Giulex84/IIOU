@@ -7,7 +7,7 @@ function sameUsername(a, b) {
   return String(a || '').toLowerCase() === String(b || '').toLowerCase();
 }
 function nextDueDate(value,frequency){if(!value||!['weekly','monthly'].includes(frequency))return null;const d=new Date(`${value}T00:00:00Z`);if(frequency==='weekly')d.setUTCDate(d.getUTCDate()+7);else{const day=d.getUTCDate();d.setUTCDate(1);d.setUTCMonth(d.getUTCMonth()+1);const last=new Date(Date.UTC(d.getUTCFullYear(),d.getUTCMonth()+1,0)).getUTCDate();d.setUTCDate(Math.min(day,last))}return d.toISOString().slice(0,10)}
-async function generateNextCycle(iou,now){const frequency=iou.recurrence?.frequency;if(!['weekly','monthly'].includes(frequency)||iou.recurrenceGeneratedId)return null;const id=randomUUID();const next={...iou,id,status:'proposed',dueDate:nextDueDate(iou.dueDate,frequency),createdAt:now,updatedAt:now,settledAt:null,settlementClaimedAt:null,partialPayments:[],reminders:[],archivedBy:[],recurrence:{frequency,seriesId:iou.recurrence.seriesId||iou.id,cycle:Number(iou.recurrence.cycle||1)+1},history:[{type:'recurring_cycle_created',by:'IIOU',at:now,previousIouId:iou.id}]};delete next.recurrenceGeneratedId;iou.recurrenceGeneratedId=id;await saveIou(next);return next}
+function generateNextCycle(iou,now){const frequency=iou.recurrence?.frequency;if(!['weekly','monthly'].includes(frequency)||iou.recurrenceGeneratedId)return null;const id=randomUUID();const next={...iou,id,status:'proposed',dueDate:nextDueDate(iou.dueDate,frequency),createdAt:now,updatedAt:now,settledAt:null,settlementClaimedAt:null,partialPayments:[],reminders:[],archivedBy:[],recurrence:{frequency,seriesId:iou.recurrence.seriesId||iou.id,cycle:Number(iou.recurrence.cycle||1)+1},history:[{type:'recurring_cycle_created',by:'IIOU',at:now,previousIouId:iou.id}]};delete next.recurrenceGeneratedId;iou.recurrenceGeneratedId=id;return next}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -33,6 +33,12 @@ export default async function handler(req, res) {
       return res.status(403).json({ success: false, error: 'You do not have access to this IOU' });
     }
 
+    // A lost reply after settlement must return the persisted cycle, not create another.
+    if(action==='confirm_paid' && isCreditor && iou.status==='settled') {
+      return res.status(200).json({success:true,status:iou.status,updatedAt:iou.updatedAt,
+        nextIouId:iou.recurrenceGeneratedId || null,alreadyConfirmed:true});
+    }
+
     let nextStatus = null;
     if (action === 'accept' && isCounterparty && iou.status === 'proposed') nextStatus = 'accepted';
     if (action === 'decline' && isCounterparty && iou.status === 'proposed') nextStatus = 'declined';
@@ -54,8 +60,8 @@ export default async function handler(req, res) {
     iou.history = Array.isArray(iou.history) ? iou.history : [];
     iou.history.push({ type: action, by: user.username, at: now });
 
-    const recurring=nextStatus==='settled'?await generateNextCycle(iou,now):null;
-    await saveIou(iou);
+    const recurring=nextStatus==='settled'?generateNextCycle(iou,now):null;
+    await saveIou(iou,recurring);
     await safeRecordMetric(user.uid, nextStatus === 'settled' ? 'iou_settled' : 'iou_action', `${iou.id}:${action}`);
     if(recurring)await safeRecordMetric(user.uid,'recurring_cycle_generated',recurring.id);
     return res.status(200).json({ success: true, status: iou.status, updatedAt: iou.updatedAt, nextIouId: recurring?.id || null });
