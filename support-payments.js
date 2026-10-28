@@ -1,5 +1,6 @@
 /* No credentials or receipts are trusted from browser storage: only an opaque payment reference. */
-window.createSupportPayments=function({network,memo,unit,Pi,request,getSession,storage=localStorage}){
+window.createSupportPayments=function({network,memo,unit,Pi,request,getSession,storage}){
+ if(!storage){try{storage=localStorage}catch{storage=null}}
  const button=document.getElementById('supportBtn'),status=document.getElementById('supportStatus'),check=document.getElementById('supportCheck');
  let busy=false,verifying=false,last=null,queued=null,sticky=false,activeId=null;
  const key=()=>{const uid=getSession()?.uid;return uid?'iiou:support:'+network+':'+uid:null};
@@ -13,9 +14,9 @@ window.createSupportPayments=function({network,memo,unit,Pi,request,getSession,s
   if(data?.state==='cancelled'){show('Payment cancelled.','cancelled');sticky=false;lock(false);check.hidden=true;return false}
   pending();return false;
  }
- async function inspect(action='status',id=saved()){
+ async function inspect(action='status',id=activeId||saved()){
   if(!id||!getSession()?.uid)return;
-  if(verifying)return;verifying=true;remember(id);pending('Checking payment with the server…');
+  if(verifying)return;verifying=true;activeId=id;remember(id);pending('Checking payment with the server…');
   try{accept(await request({action,paymentId:id}))}catch{pending('Unable to verify the payment. Do not pay again. Use Check payment.')}finally{verifying=false}
  }
  async function recover(payment){const id=payment?.identifier||payment?.paymentId;if(!id)return;queued=id;if(!getSession()?.uid)return;queued=null;await inspect('recover',id)}
