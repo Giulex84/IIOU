@@ -3672,6 +3672,105 @@ window.APP_TRANSLATIONS={
     "id": "Validasi A2U Testnet selesai.",
     "pcm": "Testnet A2U validation don complete."
   },
+  "Support with 1 Pi": {
+    "it": "Sostieni con 1 Pi",
+    "zh-CN": "支持 1 Pi",
+    "ar": "ادعم بمبلغ 1 Pi",
+    "vi": "Ủng hộ 1 Pi",
+    "ko": "1 Pi로 후원",
+    "id": "Dukung dengan 1 Pi",
+    "pcm": "Support with 1 Pi"
+  },
+  "Support with 1 Test-Pi": {
+    "it": "Sostieni con 1 Test-Pi",
+    "zh-CN": "支持 1 Test-Pi",
+    "ar": "ادعم بمبلغ 1 Test-Pi",
+    "vi": "Ủng hộ 1 Test-Pi",
+    "ko": "1 Test-Pi로 후원",
+    "id": "Dukung dengan 1 Test-Pi",
+    "pcm": "Support with 1 Test-Pi"
+  },
+  "Optional 1 Pi Mainnet payment to support development. It never changes an IOU balance, due date or settlement status.": {
+    "it": "Contributo facoltativo di 1 Pi Mainnet per lo sviluppo. Non modifica importi, scadenze o stato degli accordi.",
+    "zh-CN": "可选择支付 1 Pi Mainnet 支持开发。不会更改约定余额、到期日或结算状态。",
+    "ar": "دفعة اختيارية بقيمة 1 Pi على Mainnet لدعم التطوير. لا تغيّر رصيد الاتفاق أو موعده أو حالته.",
+    "vi": "Khoản ủng hộ tùy chọn 1 Pi Mainnet cho phát triển. Không thay đổi số dư, hạn hoặc trạng thái thỏa thuận.",
+    "ko": "개발을 위한 선택적 1 Pi Mainnet 후원입니다. 약정 잔액, 기한 또는 정산 상태를 변경하지 않습니다.",
+    "id": "Dukungan opsional 1 Pi Mainnet untuk pengembangan. Tidak mengubah saldo, tenggat, atau status kesepakatan.",
+    "pcm": "Optional 1 Pi Mainnet to support development. E no dey change agreement amount, date or status."
+  },
+  "Optional 1 Test-Pi payment to support development. It never changes an IOU balance, due date or settlement status.": {
+    "it": "Contributo facoltativo di 1 Test-Pi per lo sviluppo. Non modifica importi, scadenze o stato degli accordi.",
+    "zh-CN": "可选择支付 1 Test-Pi 支持开发。不会更改约定余额、到期日或结算状态。",
+    "ar": "دفعة اختيارية بقيمة 1 Test-Pi لدعم التطوير. لا تغيّر رصيد الاتفاق أو موعده أو حالته.",
+    "vi": "Khoản ủng hộ tùy chọn 1 Test-Pi cho phát triển. Không thay đổi số dư, hạn hoặc trạng thái thỏa thuận.",
+    "ko": "개발을 위한 선택적 1 Test-Pi 후원입니다. 약정 잔액, 기한 또는 정산 상태를 변경하지 않습니다.",
+    "id": "Dukungan opsional 1 Test-Pi untuk pengembangan. Tidak mengubah saldo, tenggat, atau status kesepakatan.",
+    "pcm": "Optional 1 Test-Pi to support development. E no dey change agreement amount, date or status."
+  },
+  "Check payment": {
+    "it": "Verifica pagamento",
+    "zh-CN": "检查付款",
+    "ar": "تحقق من الدفع",
+    "vi": "Kiểm tra thanh toán",
+    "ko": "결제 확인",
+    "id": "Periksa pembayaran",
+    "pcm": "Check payment"
+  },
+  "Payment verification pending. Do not pay again.": {
+    "it": "Verifica del pagamento in sospeso. Non pagare di nuovo.",
+    "zh-CN": "付款验证待处理。请勿再次付款。",
+    "ar": "التحقق من الدفع معلّق. لا تدفع مرة أخرى.",
+    "vi": "Đang chờ xác minh thanh toán. Đừng thanh toán lại.",
+    "ko": "결제 확인 대기 중입니다. 다시 결제하지 마세요.",
+    "id": "Verifikasi pembayaran tertunda. Jangan bayar lagi.",
+    "pcm": "Payment check dey pending. No pay again."
+  },
+  "Checking payment with the server…": {
+    "it": "Verifica del pagamento sul server…",
+    "zh-CN": "正在向服务器验证付款…",
+    "ar": "جارٍ التحقق من الدفع مع الخادم…",
+    "vi": "Đang xác minh thanh toán với máy chủ…",
+    "ko": "서버에서 결제 확인 중…",
+    "id": "Memeriksa pembayaran dengan server…",
+    "pcm": "Dey check payment with server…"
+  },
+  "Payment approved. Confirm it in Pi Wallet.": {
+    "it": "Pagamento autorizzato. Confermalo nel Pi Wallet.",
+    "zh-CN": "付款已批准。请在 Pi 钱包确认。",
+    "ar": "تمت الموافقة على الدفع. أكّده في محفظة Pi.",
+    "vi": "Thanh toán được phê duyệt. Hãy xác nhận trong Pi Wallet.",
+    "ko": "결제가 승인되었습니다. Pi Wallet에서 확인하세요.",
+    "id": "Pembayaran disetujui. Konfirmasikan di Pi Wallet.",
+    "pcm": "Payment approved. Confirm am for Pi Wallet."
+  },
+  "Unable to verify the payment. Do not pay again. Use Check payment.": {
+    "it": "Impossibile verificare il pagamento. Non pagare di nuovo. Premi Verifica pagamento.",
+    "zh-CN": "无法验证付款。请勿再次付款。请选择检查付款。",
+    "ar": "تعذّر التحقق من الدفع. لا تدفع مرة أخرى. اختر تحقق من الدفع.",
+    "vi": "Không thể xác minh thanh toán. Đừng trả lại. Chọn Kiểm tra thanh toán.",
+    "ko": "결제를 확인할 수 없습니다. 다시 결제하지 말고 결제 확인을 누르세요.",
+    "id": "Pembayaran tidak dapat diverifikasi. Jangan bayar lagi. Pilih Periksa pembayaran.",
+    "pcm": "We no fit verify payment. No pay again. Use Check payment."
+  },
+  "Payment confirmed by the server: {0} {1}. Thank you.": {
+    "it": "Pagamento confermato dal server: {0} {1}. Grazie.",
+    "zh-CN": "服务器已确认付款：{0} {1}。谢谢。",
+    "ar": "أكّد الخادم الدفع: {0} {1}. شكرًا.",
+    "vi": "Máy chủ đã xác nhận thanh toán: {0} {1}. Cảm ơn.",
+    "ko": "서버에서 결제 확인: {0} {1}. 감사합니다.",
+    "id": "Pembayaran dikonfirmasi server: {0} {1}. Terima kasih.",
+    "pcm": "Server don confirm payment: {0} {1}. Thank you."
+  },
+  "Payment did not start. No payment reference received.": {
+    "it": "Pagamento non avviato. Nessun identificativo ricevuto.",
+    "zh-CN": "付款未开始。未收到付款编号。",
+    "ar": "لم يبدأ الدفع. لم يتم استلام معرّف الدفع.",
+    "vi": "Thanh toán chưa bắt đầu. Chưa nhận được mã thanh toán.",
+    "ko": "결제가 시작되지 않았습니다. 결제 참조를 받지 못했습니다.",
+    "id": "Pembayaran belum dimulai. Referensi pembayaran belum diterima.",
+    "pcm": "Payment never start. We no receive payment reference."
+  },
   "← Back to IIOU": {
     "it": "← Torna a IIOU",
     "zh-CN": "← 返回 IIOU",
